@@ -119,10 +119,10 @@ class DashboardController extends Controller
         ->select('email', 'name')
         ->where('email', 'LIKE', '%'. '$buscar' .'%');
         //echo $prueba
-        //dd($prueba);
+        dd($prueba);
         //return $prueba;
         //return redirect('/instalacion-register')->back()->withInput();
-        return Instalacion::route('/instalacion-register', array('instalacion' => $prueba));
+        
      
     }
 }
