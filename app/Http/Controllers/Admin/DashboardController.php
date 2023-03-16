@@ -75,8 +75,10 @@ class DashboardController extends Controller
     }
 
     public function instalacion(){
+        $userId = User::select('id','email')->get(); 
+        $deviceIds = Device::select('id','modeloSensor')->get(); 
         $instalacion = Instalacion::all();
-        return view('admin.instalacion') ->with('instalacion', $instalacion);
+        return view('admin.instalacion', compact('userId', 'deviceIds')) ->with('instalacion', $instalacion);
     }
 
     public function savenewinstalacion(Request $request){
@@ -117,11 +119,14 @@ class DashboardController extends Controller
         //$prueba = Device::select('id', 'modeloSensor');
         $prueba = DB::table('users')
         ->select('email', 'name')
-        ->where('email', 'LIKE', '%'. '$buscar' .'%');
+        ->where('id', $email)
+        ->first();
         //echo $prueba
         dd($prueba);
         //return $prueba;
         //return redirect('/instalacion-register')->back()->withInput();
+
+        return view('admin.instalacion', compact('prueba')) ->with('instalacion', $instalacion);
         
      
     }

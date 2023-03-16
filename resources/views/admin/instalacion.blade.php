@@ -34,16 +34,19 @@
             </div>
           </div>
 
+          <!--Select Id. Modelo:User -->
           <div class="form-group">
             <label for="inputState">Email</label>
             <select id="inputState" class="form-control">
-              <option selected>Choose a email...</option>
-              <option>...</option>
+              @foreach ($userId as $prueba)
+              <option value="{{ $prueba->id}}"> {{ $prueba->email}} </option> 
+              @endforeach
             </select>
           </div>
 
 
           <form action="/search-email" method="GET">
+          {{ csrf_field() }} 
               <div class="form-group">
                 <label for="recipient-name" class="col-form-label">Id Dispositivo:</label>
                 <div class="input-group">
@@ -54,16 +57,20 @@
           </form>
 
             <form class="form-inline" action="/search-byemail" method="GET">
+            {{ csrf_field() }} 
               <input class="form-control mr-sm-2" name="buscar" type="search" placeholder="Search" aria-label="Search">
               <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
 
-
+          <!--Select Id - modelo dispositivo modelo:Device-->
           <div class="form-group">
             <label for="inputState">Id - modelo dispositivo</label>
             <select id="inputState" class="form-control">
-              <option selected>Choose a email...</option>
-              <option>...</option>
+              @foreach ($deviceIds as $deviceId)
+              <option value="{{ $deviceId->id}}"> {{ $deviceId->id}} -> {{ $deviceId->modeloSensor}}</option> 
+              @endforeach
+              <!--<option selected>Choose a email...</option>
+              <option>...</option> -->
             </select>
           </div>
 
