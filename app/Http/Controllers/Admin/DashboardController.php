@@ -74,11 +74,12 @@ class DashboardController extends Controller
         return redirect('/role-register') ->with('status', 'New user was added');
     }
 
+    //cambios en la funcion
     public function instalacion(){
-        $userId = User::select('id','email')->get(); 
+        //$userId = User::select('id','email')->get(); 
         $deviceIds = Device::select('id','modeloSensor')->get(); 
         $instalacion = Instalacion::all();
-        return view('admin.instalacion', compact('userId', 'deviceIds')) ->with('instalacion', $instalacion);
+        return view('admin.instalacion') ->with('instalacion', $instalacion);
     }
 
     public function savenewinstalacion(Request $request){
@@ -113,21 +114,28 @@ class DashboardController extends Controller
     public function serachbyemail(Request $request){
 
         echo $request->buscar;
-        //print $request;
-        //$bucarId = $request->input('buscar');
-        $bucarId = trim($request->get('buscar'));
-        //$prueba = Device::select('id', 'modeloSensor');
-        $prueba = DB::table('users')
-        ->select('email', 'name')
-        ->where('id', $email)
-        ->first();
+        print $request;
+        //$deviceIds = $request->input('buscar');
+        $texto = trim($request->get('buscar'));
+        $deviceIds = Device::select('id', 'modeloSensor')
+        ->where('id', 'like', '%' .request($texto). '%');
+
+        //$prueba = DB::table('users')
+        //->select('id', 'name')
+        //->where('id', $id)
+        //->first();
         //echo $prueba
-        dd($prueba);
+        //dd($prueba);
         //return $prueba;
         //return redirect('/instalacion-register')->back()->withInput();
 
-        return view('admin.instalacion', compact('prueba')) ->with('instalacion', $instalacion);
+        //return view('admin.instalacion', compact('prueba')) ->with('instalacion', $instalacion);
         
-     
+        /*$deviceIds = Device::query()->with(['device'])->when(request('buscar'), function($query){
+            return $query->where('id', 'like', '%' .request('buscar'). '%');
+        });*/
+        return view('admin.instalacion', compact('deviceIds'));
     }
+     
+    
 }

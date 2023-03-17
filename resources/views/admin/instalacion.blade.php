@@ -37,10 +37,8 @@
           <!--Select Id. Modelo:User -->
           <div class="form-group">
             <label for="inputState">Email</label>
-            <select id="inputState" class="form-control">
-              @foreach ($userId as $prueba)
-              <option value="{{ $prueba->id}}"> {{ $prueba->email}} </option> 
-              @endforeach
+            <select id="inputState1" class="form-control">
+
             </select>
           </div>
 
@@ -62,12 +60,12 @@
               <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
 
-          <!--Select Id - modelo dispositivo modelo:Device-->
+          <!--Select Id - modelo dispositivo. Modelo:Device-->
           <div class="form-group">
             <label for="inputState">Id - modelo dispositivo</label>
             <select id="inputState" class="form-control">
               @foreach ($deviceIds as $deviceId)
-              <option value="{{ $deviceId->id}}"> {{ $deviceId->id}} -> {{ $deviceId->modeloSensor}}</option> 
+              <option value="{{ $deviceId->idUsuario}}"> {{ $deviceId->idUsuario}} -> {{ $deviceId->modeloSensor}}</option> 
               @endforeach
               <!--<option selected>Choose a email...</option>
               <option>...</option> -->
@@ -175,3 +173,4 @@
 @section('scripts')
 
 @endsection
+
