@@ -32,7 +32,7 @@ Route::group(['middleware' => ['auth', 'admin']], function(){
         return view('admin.dashboard',compact('user'));
     });*/
 
-    Route::get('/dashboard', [DashboardController::class,'viewdashboard']);
+    Route::get('/dasboard', [DashboardController::class,'viewdashboard']);
 
     Route::post('/save-new-user', [DashboardController::class,'savenewuser']);
 
@@ -51,10 +51,6 @@ Route::group(['middleware' => ['auth', 'admin']], function(){
     Route::get('/instalacion-register', [DashboardController::class,'instalacion']);
 
     Route::post('/save-new-instalacion', [DashboardController::class,'savenewinstalacion']);
-
-    Route::get('/search-email', 'App\Http\Controllers\Admin\DashboardController@index');
-
-    Route::any('/search-byemail', 'App\Http\Controllers\Admin\DashboardController@serachbyemail');
     
 });
 

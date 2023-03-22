@@ -111,49 +111,5 @@ class DashboardController extends Controller
         
         return redirect('/instalacion-register') ->with('status', 'New user was added');
     }
-
-    public function index(Request $request){
-
-        echo $request;
-        print $request;
-        $bucarId = $request->input('idDispositivo');
-        $prueba = Device::select('id', 'modeloSensor',);
-
-        return $bucarId;
-     
-    }
-    
-    public function serachbyemail(Request $request){
-
-        echo $request->buscar;
-        print $request;
-        $texto = $request->input('buscar');
-        //$texto = trim($request->get('buscar'));
-        
-
-        //$deviceIds = User::where('email', '=', $texto )->get();
-        //dd($deviceIds);
-
-        $deviceIds = DB::table('device')->where('modeloSensor', '=', $texto )->select('id', 'modeloSensor')->get();
-        //dd($deviceIds);
-        echo $deviceIds;
-
-        //$prueba = DB::table('users')
-        //->select('id', 'name')
-        //->where('id', $id)
-        //->first();
-        //echo $prueba
-        //dd($prueba);
-        //return $prueba;
-        //return redirect('/instalacion-register')->back()->withInput();
-
-        //return view('admin.instalacion', compact('prueba')) ->with('instalacion', $instalacion);
-        
-        /*$deviceIds = Device::query()->with(['device'])->when(request('buscar'), function($query){
-            return $query->where('id', 'like', '%' .request('buscar'). '%');
-        });*/
-        return view('admin.register-new-instalacion', compact('deviceIds'));
-    }
-     
     
 }
