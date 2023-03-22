@@ -32,7 +32,7 @@ Route::group(['middleware' => ['auth', 'admin']], function(){
         return view('admin.dashboard',compact('user'));
     });*/
 
-    Route::get('/dasboard', [DashboardController::class,'viewdashboard']);
+    Route::get('/dashboard', [DashboardController::class,'viewdashboard']);
 
     Route::post('/save-new-user', [DashboardController::class,'savenewuser']);
 
@@ -57,6 +57,7 @@ Route::group(['middleware' => ['auth', 'admin']], function(){
 Route::group(['middleware' => ['auth', 'user']], function(){
 
     Route::get('/user-dashboard', [UserDashboardController::class,'viewdashboard']);
+    Route::get('/user-installation', [UserDashboardController::class,'viewuserinstallation']);
     
 });
 

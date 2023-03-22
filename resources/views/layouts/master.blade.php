@@ -76,12 +76,6 @@
             @endif
           @endisset
 
-          <!--<li> 
-            <a href="./tables.html">
-              <i class="now-ui-icons design_bullet-list-67"></i>
-              <p>Table List</p>
-            </a>
-          </li> -->
           @isset($user)
             @if($user->usertype == "admin")    
               <li class="{{ 'device-register' == request()->path() ? 'active' : '' }}">
@@ -111,6 +105,13 @@
               </li>
             @endif
           @endisset
+      
+          <li {{ 'user-installation' == request()->path() ? 'active' : '' }}> 
+            <a href="/user-installation">
+              <i class="now-ui-icons design_bullet-list-67"></i>
+              <p>Installation</p>
+            </a>
+          </li>
 
         </ul>
       </div>

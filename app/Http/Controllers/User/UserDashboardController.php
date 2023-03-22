@@ -4,6 +4,8 @@ namespace App\Http\Controllers\User;
 
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Device;
+use App\Models\Instalacion;
 use App\Http\Controllers\Controller;
 
 class UserDashboardController extends Controller
@@ -13,6 +15,11 @@ class UserDashboardController extends Controller
         $user = Auth::user();
         $users = User::all();
         return view('user.userDashboard',compact('user'))->with('users', $users);
+    }
+
+    public function viewuserinstallation(){
+        $instalacion = Instalacion::all();
+        return view('user.instalacionUser') ->with('instalacion', $instalacion);
     }
 
 }

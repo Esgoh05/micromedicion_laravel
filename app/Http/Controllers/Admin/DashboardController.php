@@ -94,7 +94,6 @@ class DashboardController extends Controller
     public function savenewinstalacion(Request $request){
         $instalacion = new Instalacion;
 
-        //$instalacion->idUsuario = $request->input('idUsuario');
         $instalacion->idUsuario = $request->input('idUsuario');
         $instalacion->idDispositivo = $request->input('idDispositivo');
         $instalacion->diametroTuberia = $request->input('diametroTuberia');
