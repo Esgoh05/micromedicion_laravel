@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Device;
 use App\Models\Instalacion;
@@ -14,9 +15,17 @@ use Illuminate\Http\RedirectResponse;
 class DashboardController extends Controller
 {
     //
-    public function registered(){
+    public function viewdashboard(){
+        $user = Auth::user();
         $users = User::all();
-        return view('admin.register') ->with('users', $users);
+        return view('admin.dashboard',compact('user'))->with('users', $users);
+    }
+
+
+    public function registered(){
+        $user = Auth::user();
+        $users = User::all();
+        return view('admin.register', compact('user')) ->with('users', $users);
     }
 
     public function registeredit(Request $request, $id){
@@ -76,15 +85,16 @@ class DashboardController extends Controller
 
     //cambios en la funcion
     public function instalacion(){
-        //$userId = User::select('id','email')->get(); 
+        $userId = User::select('id','email')->get(); 
         $deviceIds = Device::select('id','modeloSensor')->get(); 
         $instalacion = Instalacion::all();
-        return view('admin.instalacion') ->with('instalacion', $instalacion);
+        return view('admin.instalacion', compact('userId', 'deviceIds')) ->with('instalacion', $instalacion);
     }
 
     public function savenewinstalacion(Request $request){
         $instalacion = new Instalacion;
 
+        //$instalacion->idUsuario = $request->input('idUsuario');
         $instalacion->idUsuario = $request->input('idUsuario');
         $instalacion->idDispositivo = $request->input('idDispositivo');
         $instalacion->diametroTuberia = $request->input('diametroTuberia');
@@ -94,7 +104,9 @@ class DashboardController extends Controller
         
         
        // input('password');
-
+       echo $request->input('idUsuario');
+       echo $request->input('idDispositivo');
+       echo $request->input('diametroTuberia');
         $instalacion->save();
         
         return redirect('/instalacion-register') ->with('status', 'New user was added');
@@ -115,10 +127,16 @@ class DashboardController extends Controller
 
         echo $request->buscar;
         print $request;
-        //$deviceIds = $request->input('buscar');
-        $texto = trim($request->get('buscar'));
-        $deviceIds = Device::select('id', 'modeloSensor')
-        ->where('id', 'like', '%' .request($texto). '%');
+        $texto = $request->input('buscar');
+        //$texto = trim($request->get('buscar'));
+        
+
+        //$deviceIds = User::where('email', '=', $texto )->get();
+        //dd($deviceIds);
+
+        $deviceIds = DB::table('device')->where('modeloSensor', '=', $texto )->select('id', 'modeloSensor')->get();
+        //dd($deviceIds);
+        echo $deviceIds;
 
         //$prueba = DB::table('users')
         //->select('id', 'name')
@@ -134,7 +152,7 @@ class DashboardController extends Controller
         /*$deviceIds = Device::query()->with(['device'])->when(request('buscar'), function($query){
             return $query->where('id', 'like', '%' .request('buscar'). '%');
         });*/
-        return view('admin.instalacion', compact('deviceIds'));
+        return view('admin.register-new-instalacion', compact('deviceIds'));
     }
      
     

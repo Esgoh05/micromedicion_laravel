@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\User\UserDashboardController;
+use App\Http\Controllers\Admin\DashboardController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,38 +24,47 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 /*Cambié la ruta. Ruta anterior /dashboard */
 Route::group(['middleware' => ['auth', 'admin']], function(){
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    });
-    Route::post('/save-new-user', 'App\Http\Controllers\Admin\DashboardController@savenewuser');
+    /*Route::get('/dashboard', function () {
+        $user = Auth::user();
+        return view('admin.dashboard',compact('user'));
+    });*/
 
-    Route::get('/role-register', 'App\Http\Controllers\Admin\DashboardController@registered');
+    Route::get('/dashboard', [DashboardController::class,'viewdashboard']);
 
-    Route::get('/role-edit/{id}', 'App\Http\Controllers\Admin\DashboardController@registeredit');
+    Route::post('/save-new-user', [DashboardController::class,'savenewuser']);
 
-    Route::put('/role-register-update/{id}', 'App\Http\Controllers\Admin\DashboardController@registerupdate');
+    Route::get('/role-register', [DashboardController::class,'registered']);
 
-    Route::delete('/role-delete/{id}', 'App\Http\Controllers\Admin\DashboardController@registerdelete');
+    Route::get('/role-edit/{id}', [DashboardController::class,'registeredit']);
 
-    Route::get('/device-register', 'App\Http\Controllers\Admin\DashboardController@deviceregister');
+    Route::put('/role-register-update/{id}', [DashboardController::class,'registerupdate']);
 
-    Route::post('/save-new-device', 'App\Http\Controllers\Admin\DashboardController@savenewdevice');
+    Route::delete('/role-delete/{id}', [DashboardController::class,'registerdelete']);
 
-    Route::get('/instalacion-register', 'App\Http\Controllers\Admin\DashboardController@instalacion');
+    Route::get('/device-register', [DashboardController::class,'deviceregister']);
 
-    Route::post('/save-new-instalacion', 'App\Http\Controllers\Admin\DashboardController@savenewinstalacion');
+    Route::post('/save-new-device', [DashboardController::class,'savenewdevice']);
+
+    Route::get('/instalacion-register', [DashboardController::class,'instalacion']);
+
+    Route::post('/save-new-instalacion', [DashboardController::class,'savenewinstalacion']);
 
     Route::get('/search-email', 'App\Http\Controllers\Admin\DashboardController@index');
 
-    Route::get('/search-byemail', 'App\Http\Controllers\Admin\DashboardController@serachbyemail');
+    Route::any('/search-byemail', 'App\Http\Controllers\Admin\DashboardController@serachbyemail');
     
 });
+
+Route::group(['middleware' => ['auth', 'user']], function(){
+
+    Route::get('/user-dashboard', [UserDashboardController::class,'viewdashboard']);
+    
+});
+
+
 
 
 

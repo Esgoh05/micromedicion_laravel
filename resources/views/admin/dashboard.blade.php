@@ -12,31 +12,35 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title"> Simple Table</h4>
+                <h4 class="card-title"> Users</h4>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
                   <table class="table">
-                    <thead class=" text-primary">
+                  <thead class=" text-primary">
+                      <th>ID</th>  
                       <th>Name</th>
-                      <th>Country</th>
-                      <th>City</th>
-                      <th>Salary</th>
+                      <th>Phone</th>
+                      <th>Usertype</th>
+                      <th>Email</th>
                     </thead>
                     <tbody>
+                      @foreach($users as $row)
                       <tr>
-                        <td>Dakota Rice</td>
-                        <td>Niger</td>
-                        <td>Oud-Turnhout</td>
-                        <td>$36,738</td>
+                        <td>{{ $row->id }}</td>  
+                        <td>{{ $row->name }}</td>
+                        <td>{{ $row->phone }}</td>
+                        <td>{{ $row->usertype }}</td>
+                        <td>{{ $row->email }}</td>
                       </tr>
+                      @endforeach
                     </tbody>
                   </table>
                 </div>
               </div>
             </div>
           </div>
-          
+         
 </div>
 
 @endsection

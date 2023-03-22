@@ -30,7 +30,7 @@
                                         <label>Give Role</label>
                                         <select name="usertype" class="form-control">
                                             <option value="admin">Admin</option>
-                                            <option value="vendor">Vendor</option>
+                                            <option value="user">User</option>
                                         </select>
                                 </div>
                                 <button type="submit" class="btn btn-success">Update</button>

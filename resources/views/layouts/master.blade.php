@@ -19,9 +19,6 @@
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
 
-  <link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css"/>
-<script src="assets/plugins/global/plugins.bundle.js"></script>
-
       <!-- Scripts -->
       @vite(['resources/js/app.js'])
   
@@ -43,19 +40,19 @@
       </div>
       <div class="sidebar-wrapper" id="sidebar-wrapper">
         <ul class="nav">
-          <li>
-            <a href="/dashboard">
-              <i class="now-ui-icons design_app"></i>
-              <p>Dashboard</p>
-            </a>
-          </li>
-          <li>
-            <a href="./icons.html">
-              <i class="now-ui-icons education_atom"></i>
-              <p>Icons</p>
-            </a>
-          </li>
-          <li>
+
+          @isset($user)
+            @if($user->usertype == "admin")        
+            <li>
+              <a href="/dashboard">
+                <i class="now-ui-icons design_app"></i>
+                <p>Dashboard</p>
+              </a>
+            </li>
+            @endif
+          @endisset
+        
+          <!--<li>
             <a href="./map.html">
               <i class="now-ui-icons location_map-big"></i>
               <p>Maps</p>
@@ -66,31 +63,55 @@
               <i class="now-ui-icons ui-1_bell-53"></i>
               <p>Notifications</p>
             </a>
-          </li>
-          <li class="{{ 'role-register' == request()->path() ? 'active' : '' }}">
-            <a href="/role-register">
-              <i class="now-ui-icons users_single-02"></i>
-              <p>User Profile</p>
-            </a>
-          </li>
-          <li> 
+          </li> -->
+
+          @isset($user)
+            @if($user->usertype == "admin")    
+              <li class="{{ 'role-register' == request()->path() ? 'active' : '' }}">
+                <a href="/role-register">
+                  <i class="now-ui-icons users_single-02"></i>
+                  <p>User Profile</p>
+                </a>
+              </li>
+            @endif
+          @endisset
+
+          <!--<li> 
             <a href="./tables.html">
               <i class="now-ui-icons design_bullet-list-67"></i>
               <p>Table List</p>
             </a>
-          </li>
-          <li class="{{ 'device-register' == request()->path() ? 'active' : '' }}">
-            <a href="/device-register">
-              <i class="now-ui-icons ui-1_lock-circle-open"></i>
-              <p>Devices</p>
-            </a>
-          </li>
+          </li> -->
+          @isset($user)
+            @if($user->usertype == "admin")    
+              <li class="{{ 'device-register' == request()->path() ? 'active' : '' }}">
+                <a href="/device-register">
+                  <i class="now-ui-icons ui-1_lock-circle-open"></i>
+                  <p>Devices</p>
+                </a>
+              </li>
+            @endif
+          @endisset
+
           <li class="{{ 'instalacion-register' == request()->path() ? 'active' : '' }}">
             <a href="/instalacion-register">
               <i class="now-ui-icons arrows-1_cloud-download-93"></i>
-              <p>Instalacion</p>
+              <p>Installation</p>
             </a>
           </li>
+
+
+          @isset($user)
+            @if($user->usertype == "user") 
+              <li class="{{ 'user-dashboard' == request()->path() ? 'active' : '' }}">
+                <a href="/user-dashboard">
+                  <i class="now-ui-icons education_atom"></i>
+                  <p>Abstract</p>
+                </a>
+              </li>
+            @endif
+          @endisset
+
         </ul>
       </div>
     </div>
@@ -115,7 +136,9 @@
             <span class="navbar-toggler-bar navbar-kebab"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-end" id="navigation">
-            <form>
+
+          <!-- Search -->
+            <!--<form>
               <div class="input-group no-border">
                 <input type="text" value="" class="form-control" placeholder="Search...">
                 <div class="input-group-append">
@@ -124,8 +147,10 @@
                   </div>
                 </div>
               </div>
-            </form>
+            </form> -->
+
             <ul class="navbar-nav">
+
             <!--<li class="nav-item">
                 <a class="nav-link" href="#pablo">
                   <i class="now-ui-icons media-2_sound-wave"></i>
@@ -166,14 +191,17 @@
                   <a class="dropdown-item" href="#">Something else here</a>-->
                 </div>
               </li> 
-              <li class="nav-item">
+
+              
+              <!-- <li class="nav-item">
                 <a class="nav-link" href="#pablo">
                   <i class="now-ui-icons users_single-02"></i>
                   <p>
                     <span class="d-lg-none d-md-block">Account</span>
                   </p>
                 </a>
-              </li>
+              </li> -->
+
             </ul>
           </div>
         </div>
