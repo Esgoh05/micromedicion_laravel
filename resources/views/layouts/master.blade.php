@@ -32,18 +32,20 @@
     -->
       <div class="logo">
         <a href="http://www.creative-tim.com" class="simple-text logo-mini">
-          CT
+          <img src="../../assets/img/gotita_emergiendo_min.png" alt="Logo">
         </a>
+        <br>
         <a class="simple-text logo-normal">
-          Micromedición
+          Micromedición IoT
         </a>
       </div>
+
       <div class="sidebar-wrapper" id="sidebar-wrapper">
         <ul class="nav">
 
           @isset($user)
             @if($user->usertype == "admin")        
-            <li>
+            <li class="{{ 'dashboard' == request()->path() ? 'active' : '' }}">
               <a href="/dashboard">
                 <i class="now-ui-icons design_app"></i>
                 <p>Dashboard</p>
@@ -87,12 +89,16 @@
             @endif
           @endisset
 
-          <li class="{{ 'instalacion-register' == request()->path() ? 'active' : '' }}">
-            <a href="/instalacion-register">
-              <i class="now-ui-icons arrows-1_cloud-download-93"></i>
-              <p>Installation</p>
-            </a>
-          </li>
+          @isset($user)
+            @if($user->usertype == "admin")  
+              <li class="{{ 'instalacion-register' == request()->path() ? 'active' : '' }}">
+                <a href="/instalacion-register">
+                  <i class="now-ui-icons arrows-1_cloud-download-93"></i>
+                  <p>Installation</p>
+                </a>
+              </li>
+            @endif
+          @endisset
 
 
           @isset($user)
@@ -106,12 +112,16 @@
             @endif
           @endisset
       
-          <li {{ 'user-installation' == request()->path() ? 'active' : '' }}> 
-            <a href="/user-installation">
-              <i class="now-ui-icons design_bullet-list-67"></i>
-              <p>Installation</p>
-            </a>
-          </li>
+          @isset($user)
+            @if($user->usertype == "user") 
+              <li {{ 'user-installation' == request()->path() ? 'active' : '' }}> 
+                <a href="/user-installation">
+                  <i class="now-ui-icons design_bullet-list-67"></i>
+                  <p>Installation</p>
+                </a>
+              </li>
+            @endif
+          @endisset
 
         </ul>
       </div>

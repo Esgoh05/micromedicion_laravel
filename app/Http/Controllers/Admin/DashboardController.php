@@ -29,8 +29,9 @@ class DashboardController extends Controller
     }
 
     public function registeredit(Request $request, $id){
+        $user = Auth::user();
         $users = User::findOrFail($id);
-        return view('admin.register-edit') ->with('users', $users);
+        return view('admin.register-edit', compact('user')) ->with('users', $users);
     }
 
     public function registerupdate(Request $request, $id){
@@ -52,8 +53,9 @@ class DashboardController extends Controller
     }
 
     public function deviceregister(){
+        $user = Auth::user();
         $device = Device::all();
-        return view('admin.registerDevices') ->with('devices', $device);
+        return view('admin.registerDevices', compact('user')) ->with('devices', $device);
     }
 
     public function savenewdevice(Request $request){
@@ -85,10 +87,11 @@ class DashboardController extends Controller
 
     //cambios en la funcion
     public function instalacion(){
+        $user = Auth::user();
         $userId = User::select('id','email')->get(); 
         $deviceIds = Device::select('id','modeloSensor')->get(); 
         $instalacion = Instalacion::all();
-        return view('admin.instalacion', compact('userId', 'deviceIds')) ->with('instalacion', $instalacion);
+        return view('admin.instalacion', compact('user','userId', 'deviceIds')) ->with('instalacion', $instalacion);
     }
 
     public function savenewinstalacion(Request $request){
