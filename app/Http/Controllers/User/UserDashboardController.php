@@ -18,8 +18,9 @@ class UserDashboardController extends Controller
     }
 
     public function viewuserinstallation(){
+        $user = Auth::user();
         $instalacion = Instalacion::all();
-        return view('user.instalacionUser') ->with('instalacion', $instalacion);
+        return view('user.instalacionUser',compact('user')) ->with('instalacion', $instalacion);
     }
 
 }

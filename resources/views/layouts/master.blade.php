@@ -19,6 +19,8 @@
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
       <!-- Scripts -->
       @vite(['resources/js/app.js'])
   
@@ -47,7 +49,7 @@
             @if($user->usertype == "admin")        
             <li class="{{ 'dashboard' == request()->path() ? 'active' : '' }}">
               <a href="/dashboard">
-                <i class="now-ui-icons design_app"></i>
+                <i class="bi bi-clipboard2-data"></i>
                 <p>Dashboard</p>
               </a>
             </li>
@@ -71,8 +73,8 @@
             @if($user->usertype == "admin")    
               <li class="{{ 'role-register' == request()->path() ? 'active' : '' }}">
                 <a href="/role-register">
-                  <i class="now-ui-icons users_single-02"></i>
-                  <p>User Profile</p>
+                  <i class="bi bi-file-earmark-person"></i>
+                  <p>Users</p>
                 </a>
               </li>
             @endif
@@ -82,7 +84,7 @@
             @if($user->usertype == "admin")    
               <li class="{{ 'device-register' == request()->path() ? 'active' : '' }}">
                 <a href="/device-register">
-                  <i class="now-ui-icons ui-1_lock-circle-open"></i>
+                  <i class="bi bi-box-seam"></i>
                   <p>Devices</p>
                 </a>
               </li>
@@ -93,7 +95,7 @@
             @if($user->usertype == "admin")  
               <li class="{{ 'instalacion-register' == request()->path() ? 'active' : '' }}">
                 <a href="/instalacion-register">
-                  <i class="now-ui-icons arrows-1_cloud-download-93"></i>
+                  <i class="bi bi-house-gear"></i>
                   <p>Installation</p>
                 </a>
               </li>
@@ -105,7 +107,7 @@
             @if($user->usertype == "user") 
               <li class="{{ 'user-dashboard' == request()->path() ? 'active' : '' }}">
                 <a href="/user-dashboard">
-                  <i class="now-ui-icons education_atom"></i>
+                  <i class="bi bi-clipboard2-data"></i>
                   <p>Abstract</p>
                 </a>
               </li>
@@ -114,9 +116,9 @@
       
           @isset($user)
             @if($user->usertype == "user") 
-              <li {{ 'user-installation' == request()->path() ? 'active' : '' }}> 
+              <li class="{{ 'user-installation' == request()->path() ? 'active' : '' }}"> 
                 <a href="/user-installation">
-                  <i class="now-ui-icons design_bullet-list-67"></i>
+                  <i class="bi bi-house-check"></i>
                   <p>Installation</p>
                 </a>
               </li>
@@ -139,7 +141,7 @@
               </button>
             </div>
             <!-- <a class="navbar-brand" href="#pablo">Table List</a> -->
-            <a class="navbar-brand">{{ Auth::user()->name }}</a>
+            <a class="navbar-brand">Hi, {{ Auth::user()->name }}.</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -197,7 +199,12 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="{{ route('logout') }}"onclick="event.preventDefault();
-                                   document.getElementById('logout-form').submit();">Logout</a>
+                                   document.getElementById('logout-form').submit();">
+                                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+                                    <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+                                  </svg>
+                                   Logout</a>
                   <!--<a class="dropdown-item" href="#">Another action</a>
                   <a class="dropdown-item" href="#">Something else here</a>-->
                 </div>
@@ -233,9 +240,7 @@
           <nav>
             <ul>
               <li>
-                <a href="https://www.creative-tim.com">
-                  Micromedición IoT
-                </a>
+                <p>Micromedición IoT</p>
               </li>
               <li>
                 <a href="http://presentation.creative-tim.com">
