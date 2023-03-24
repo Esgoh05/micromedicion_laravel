@@ -51,6 +51,10 @@ Route::group(['middleware' => ['auth', 'admin']], function(){
     Route::get('/instalacion-register', [DashboardController::class,'instalacion']);
 
     Route::post('/save-new-instalacion', [DashboardController::class,'savenewinstalacion']);
+
+    Route::get('/devices-edit/{id}', [DashboardController::class,'registerdeviceedit']);
+
+    Route::put('/register-devices-update/{id}', [DashboardController::class,'deviceupdate']);
     
 });
 
@@ -58,6 +62,7 @@ Route::group(['middleware' => ['auth', 'user']], function(){
 
     Route::get('/user-dashboard', [UserDashboardController::class,'viewdashboard']);
     Route::get('/user-installation', [UserDashboardController::class,'viewuserinstallation']);
+    
     
 });
 

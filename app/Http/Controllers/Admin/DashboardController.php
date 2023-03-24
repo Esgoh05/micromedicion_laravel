@@ -70,6 +70,23 @@ class DashboardController extends Controller
         return redirect('/device-register') ->with('status', 'New device was added');
     }
 
+    public function registerdeviceedit(Request $request, $id){
+        $user = Auth::user();
+        $device = Device::findOrFail($id);
+        return view('admin.registerDevicesEdit', compact('user')) ->with('device', $device);
+    }
+
+    public function deviceupdate(Request $request, $id){
+        $device = Device::find($id);
+        $device->direccionMac = $request->input('direccionMac');
+        $device->modeloSensor = $request->input('modeloSensor');
+        $device->factorK = $request->input('factorK');
+        $device->update();
+
+
+        return redirect('/device-register') ->with('status','Your data is updated');
+    }
+
     public function savenewuser(Request $request){
         $data = new User;
 

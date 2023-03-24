@@ -12,7 +12,7 @@
   <div class="modal-dialog p-5" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add new device</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Add a new device</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -20,7 +20,6 @@
       <div class="modal-body">
         <form action="/save-new-device" method="POST">
         {{ csrf_field() }} 
-
 
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Dirección Mac:</label>
@@ -90,7 +89,7 @@
                         <td>{{ $row->modeloSensor }}</td>
                         <td>{{ $row->factorK }}</td>
                         <td>
-                            <a href="/role-edit/{{ $row->id }}" class="btn btn-success">EDIT</a>
+                            <a href="/devices-edit/{{ $row->id }}" class="btn btn-success">EDIT</a>
                         </td>
                         <td>
                             <form action="/role-delete/{{ $row->id }}" method="post">
