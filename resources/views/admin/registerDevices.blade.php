@@ -53,9 +53,9 @@
 <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title">Devices 
+                <h3 class="card-title">Devices 
                  
-                </h4>
+                </h3>
                 <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">ADD</button>
               </div>  
             </div>
@@ -64,7 +64,7 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title">Registered Devices</h4>
+                <h3 class="card-title">Registered Devices</h3>
                 @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}

@@ -66,7 +66,7 @@
           </div> -->
         
           </div>
-          <div class="modal-footer">
+          <div class="modal-footer border-white">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-primary">Save</button>
           </div>
@@ -79,9 +79,9 @@
 <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title">Instalacion
+                <h3 class="card-title">Installation
                  
-                </h4>
+                </h3>
                 <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">ADD</button>
               </div>  
             </div>
@@ -90,7 +90,7 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title">Registered Devices</h4>
+                <h3 class="card-title">Registered Devices</h3>
                 @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}

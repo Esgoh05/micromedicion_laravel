@@ -12,10 +12,10 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Edit Role for Register User.</h4>
+                    <h4 class="editRole">Edit Role for Register User.</h4>
                 </div>
                 <div class="card-body">
-                    <div class="row">
+                    <div class="rowPrueba">
                         <div class="col-md-6">
                             <form action="/role-register-update/{{ $users->id }}" method="POST">
                             {{ csrf_field() }}    
