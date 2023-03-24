@@ -73,7 +73,7 @@
             @if($user->usertype == "admin")    
               <li class="{{ 'role-register' == request()->path() ? 'active' : '' }}">
                 <a href="/role-register">
-                  <i class="bi bi-file-earmark-person"></i>
+                  <i class="bi bi-people-fill"></i>
                   <p>Users</p>
                 </a>
               </li>
@@ -84,7 +84,7 @@
             @if($user->usertype == "admin")    
               <li class="{{ 'device-register' == request()->path() ? 'active' : '' }}">
                 <a href="/device-register">
-                  <i class="bi bi-box-seam"></i>
+                  <i class="bi bi-cpu"></i>
                   <p>Devices</p>
                 </a>
               </li>

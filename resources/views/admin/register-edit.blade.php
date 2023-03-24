@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-   Edit Registered | Micromedicion
+   Edit User | Micromedicion
 
 @endsection
 
@@ -12,7 +12,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="editRole">Edit Register User.</h4>
+                    <h4 class="editRole">Edit User Registration.</h4>
                 </div>
                 <div class="card-body">
                     <div class="rowPrueba">

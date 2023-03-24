@@ -89,8 +89,14 @@
 <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Register Users</h3>
-                <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">ADD</button>
+                <h3 class="card-title">
+                  <i class="bi bi-people-fill"></i>
+                  Users
+                </h3>
+                <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
+                  <i class="bi bi-plus"></i>
+                  ADD NEW USER
+                </button>
               </div>  
             </div>
 
@@ -98,7 +104,7 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Registered Roles</h3>
+                <h3 class="card-title">Registered Users</h3>
                 @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
@@ -126,10 +132,16 @@
                         <td>{{ $row->usertype }}</td>
                         <td>{{ $row->email }}</td>
                         <td>
-                            <a href="/role-edit/{{ $row->id }}" class="btn btn-success">EDIT</a>
+                            <a href="/role-edit/{{ $row->id }}" class="btn btn-success">
+                              <i class="bi bi-pencil"></i>
+                              EDIT
+                            </a>
                         </td>
                         <td>
-                          <a href="javascript:void(0)" class="btn btn-danger deletebtn" >DELETE</a>
+                          <a href="javascript:void(0)" class="btn btn-danger deletebtn">
+                            <i class="bi bi-trash3"></i>
+                            DELETE
+                          </a>
                         </td>
                       </tr>
                       @endforeach

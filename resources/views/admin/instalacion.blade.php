@@ -79,8 +79,14 @@
 <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Installation</h3>
-                <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">ADD</button>
+                <h3 class="card-title">
+                  <i class="bi bi-house-gear"></i>
+                  Installation
+                </h3>
+                <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
+                  <i class="bi bi-plus"></i>
+                  ADD NEW INSTALLATION
+                </button>
               </div>  
             </div>
 
@@ -116,13 +122,19 @@
                         <td>{{ $row->diametroTuberia }}</td>
                         <td>{{ $row->ubicacionDispositivo }}</td>
                         <td>
-                            <a href="/role-edit/{{ $row->id }}" class="btn btn-success">EDIT</a>
+                            <a href="/role-edit/{{ $row->id }}" class="btn btn-success">
+                              <i class="bi bi-pencil"></i>
+                              EDIT
+                            </a>
                         </td>
                         <td>
                             <form action="/role-delete/{{ $row->id }}" method="post">
                               {{  csrf_field()  }}
                               {{  method_field('DELETE')  }}
-                              <button type="submit" class="btn btn-danger">DELETE</button>
+                              <button type="submit" class="btn btn-danger">
+                                <i class="bi bi-trash3"></i>
+                                DELETE
+                              </button>
                             </form>
                         </td>
                       </tr>

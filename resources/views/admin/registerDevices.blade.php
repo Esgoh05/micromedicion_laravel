@@ -48,14 +48,45 @@
   </div>
 </div>
 
+<!-- Modal Delete-->
+<div class="modal fade" id="deletemodalpop" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete this device?</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form id="delete_modal" method="post">
+        {{  csrf_field()  }}
+        {{  method_field('DELETE')  }}
+      <div class="modal-body">
+        <input type="hidden" id="delete">
+        <img src="../../assets/img/gotita_stop.jpg" alt="">
+      </div>
+      <div class="modal-footer border-white">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Yes, delete it.</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- End Modal Delete -->
+
 <div class="row">
 <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Devices 
-                 
+                <h3 class="card-title">
+                  <i class="bi bi-cpu"></i>
+                  Devices 
                 </h3>
-                <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">ADD</button>
+                <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
+                  <i class="bi bi-plus"></i>
+                  ADD NEW DEVICE
+                </button>
               </div>  
             </div>
 
@@ -72,7 +103,7 @@
               </div>
               <div class="card-body">
                 <div class="table-responsive">
-                  <table class="table">
+                  <table id="deviceDatatable" class="table">
                     <thead class=" text-primary">
                       <th>Id</th>  
                       <th>Dirección Mac</th>
@@ -89,14 +120,16 @@
                         <td>{{ $row->modeloSensor }}</td>
                         <td>{{ $row->factorK }}</td>
                         <td>
-                            <a href="/devices-edit/{{ $row->id }}" class="btn btn-success">EDIT</a>
+                            <a href="/devices-edit/{{ $row->id }}" class="btn btn-success">
+                              <i class="bi bi-pencil"></i>
+                              EDIT
+                            </a>
                         </td>
                         <td>
-                            <form action="/device-delete/{{ $row->id }}" method="post">
-                              {{  csrf_field()  }}
-                              {{  method_field('DELETE')  }}
-                              <button type="submit" class="btn btn-danger">DELETE</button>
-                            </form>
+                            <a href="javascript:void(0)" class="btn btn-danger deletebtn">
+                              <i class="bi bi-trash3"></i>
+                              DELETE
+                            </a>
                         </td>
                       </tr>
                       @endforeach
@@ -113,5 +146,21 @@
 
 
 @section('scripts')
+
+<script>
+  $(document).ready( function(){
+      $('#deviceDatatable').on('click','.deletebtn', function(){
+        $tr = $(this).closest('tr');
+        var data = $tr.children("td").map(function () {
+          return $(this).text();
+        }).get();
+        console.log(data);
+        $('#delete').val(data[0]);
+        $('#delete_modal').attr('action', '/device-delete/'+data[0]);
+        $('#deletemodalpop').modal('show');
+
+      });
+  });
+</script>
 
 @endsection
