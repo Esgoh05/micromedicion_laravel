@@ -92,7 +92,7 @@
                             <a href="/devices-edit/{{ $row->id }}" class="btn btn-success">EDIT</a>
                         </td>
                         <td>
-                            <form action="/role-delete/{{ $row->id }}" method="post">
+                            <form action="/device-delete/{{ $row->id }}" method="post">
                               {{  csrf_field()  }}
                               {{  method_field('DELETE')  }}
                               <button type="submit" class="btn btn-danger">DELETE</button>

@@ -55,6 +55,8 @@ Route::group(['middleware' => ['auth', 'admin']], function(){
     Route::get('/devices-edit/{id}', [DashboardController::class,'registerdeviceedit']);
 
     Route::put('/register-devices-update/{id}', [DashboardController::class,'deviceupdate']);
+
+    Route::delete('/device-delete/{id}', [DashboardController::class,'devicedelete']);
     
 });
 

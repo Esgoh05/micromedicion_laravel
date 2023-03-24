@@ -36,8 +36,10 @@ class DashboardController extends Controller
 
     public function registerupdate(Request $request, $id){
         $users = User::find($id);
-        $users->name = $request->input('username');
+        $users->name = $request->input('name');
+        $users->phone = $request->input('phone');
         $users->usertype = $request->input('usertype');
+        $users->email = $request->input('email');
         $users->update();
 
 
@@ -85,6 +87,14 @@ class DashboardController extends Controller
 
 
         return redirect('/device-register') ->with('status','Your data is updated');
+    }
+
+    public function devicedelete(Request $request, $id){
+        $device = Device::findOrFail($id);
+        $device->delete();
+
+
+        return redirect('/device-register') ->with('status','Your data is deleted');
     }
 
     public function savenewuser(Request $request){

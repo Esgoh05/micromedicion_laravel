@@ -23,12 +23,12 @@
 
                                 <div class="form-group">
                                         <label>Name</label>
-                                        <input type="text" name="username" value="{{ $users->name }}" class="form-control">
+                                        <input type="text" name="name" value="{{ $users->name }}" class="form-control">
                                 </div>
 
                                 <div class="form-group">
                                     <label>Phone</label>
-                                    <input type="text" name="username" value="{{ $users->phone }}" class="form-control">
+                                    <input type="text" name="phone" value="{{ $users->phone }}" class="form-control">
                                 </div>
 
                                 <div class="form-group">
@@ -41,7 +41,7 @@
 
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input type="text" name="username" value="{{ $users->email }}" class="form-control">
+                                    <input type="text" name="email" value="{{ $users->email }}" class="form-control">
                                 </div>
 
                                 <button type="submit" class="btn btn-success">Update</button>
