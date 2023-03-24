@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-   Edit Device Registration | Micromedicion
+   Edit Installation's Registry | Micromedicion
 
 @endsection
 
@@ -12,32 +12,32 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="editRole">Edit Device Registration.</h4>
+                    <h4 class="editRole">Edit Installation's Registry.</h4>
                 </div>
                 <div class="card-body">
                     <div class="rowPrueba">
                         <div class="col-md-6">
-                            <form action="/register-devices-update/{{ $device->id }}" method="POST">
+                            <form action="/installation-update/{{ $instalacion->id }}" method="POST">
                             {{ csrf_field() }}    
                             {{ method_field('PUT') }}
 
                                 <div class="form-group">
-                                        <label>Dirección Mac</label>
-                                        <input type="text" name="direccionMac" value="{{ $device->direccionMac }}" class="form-control">
+                                        <label>User Id</label>
+                                        <input type="text" name="idUsuario" value="{{ $instalacion->idUsuario }}" class="form-control">
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Sensor Model</label>
-                                    <input type="text" name="modeloSensor" value="{{ $device->modeloSensor }}" class="form-control">
+                                    <label>Device Id</label>
+                                    <input type="text" name="idDispositivo" value="{{ $instalacion->idDispositivo }}" class="form-control">
                                 </div>
 
                                 <div class="form-group">
-                                    <label>K factor</label>
-                                    <input type="text" name="factorK" value="{{ $device->factorK }}" class="form-control">
+                                    <label>Pipe Size</label>
+                                    <input type="text" name="diametroTuberia" value="{{ $instalacion->diametroTuberia }}" class="form-control">
                                 </div>
 
                                 <button type="submit" class="btn btn-success">Update</button>
-                                <a href="/device-register" class="btn btn-danger">Cancel</a>
+                                <a href="/instalacion-register" class="btn btn-danger">Cancel</a>
                             </form>
                         </div>
 

@@ -140,5 +140,11 @@ class DashboardController extends Controller
         
         return redirect('/instalacion-register') ->with('status', 'New user was added');
     }
+
+    public function instalacionedit(Request $request, $id){
+        $user = Auth::user();
+        $instalacion = Instalacion::findOrFail($id);
+        return view('admin.instalacionEdit', compact('user')) ->with('instalacion', $instalacion);
+    }
     
 }

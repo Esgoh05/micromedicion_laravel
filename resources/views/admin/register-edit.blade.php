@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-   Edit User | Micromedicion
+   Edit User Registration| Micromedicion
 
 @endsection
 

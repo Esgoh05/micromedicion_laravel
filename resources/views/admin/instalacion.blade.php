@@ -122,7 +122,7 @@
                         <td>{{ $row->diametroTuberia }}</td>
                         <td>{{ $row->ubicacionDispositivo }}</td>
                         <td>
-                            <a href="/role-edit/{{ $row->id }}" class="btn btn-success">
+                            <a href="/instalacion-edit/{{ $row->id }}" class="btn btn-success">
                               <i class="bi bi-pencil"></i>
                               EDIT
                             </a>
