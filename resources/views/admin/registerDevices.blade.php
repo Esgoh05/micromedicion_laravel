@@ -149,6 +149,11 @@
 @section('scripts')
 
 <script>
+      
+  $(document).ready( function() {
+      $('#deviceDatatable').DataTable();
+  });
+
   $(document).ready( function(){
       $('#deviceDatatable').on('click','.deletebtn', function(){
         $tr = $(this).closest('tr');

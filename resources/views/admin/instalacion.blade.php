@@ -178,6 +178,10 @@
 @section('scripts')
 
 <script>
+  $(document).ready( function() {
+    $('#installationDatatable').DataTable();
+  });
+
   $(document).ready( function(){
       $('#installationDatatable').on('click','.deletebtn', function(){
         $tr = $(this).closest('tr');
