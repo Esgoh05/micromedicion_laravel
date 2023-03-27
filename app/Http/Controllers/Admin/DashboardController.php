@@ -146,5 +146,24 @@ class DashboardController extends Controller
         $instalacion = Instalacion::findOrFail($id);
         return view('admin.instalacionEdit', compact('user')) ->with('instalacion', $instalacion);
     }
+
+    public function installationupdate(Request $request, $id){
+        $instalacion = Instalacion::find($id);
+        $instalacion->idUsuario = $request->input('idUsuario');
+        $instalacion->idDispositivo = $request->input('idDispositivo');
+        $instalacion->diametroTuberia = $request->input('diametroTuberia');
+        $instalacion->update();
+
+
+        return redirect('/instalacion-register') ->with('status','Your data is updated');
+    }
+
+    public function installationdelete(Request $request, $id){
+        $instalacion = Instalacion::findOrFail($id);
+        $instalacion->delete();
+
+
+        return redirect('/instalacion-register') ->with('status','Your data is deleted');
+    }
     
 }

@@ -19,6 +19,9 @@
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
 
+  <link rel="stylesheet" href="../assets/css/dataTables.min.css">
+   <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">-->
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 
       <!-- Scripts -->
@@ -267,7 +270,11 @@
   <script src="../assets/js/core/jquery.min.js"></script>
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap.min.js"></script>
+  
   <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+
+  <script src="../assets/dataTables.min.js"></script>
+  <!--<script> src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"</script>-->
 
   <!--  Google Maps Plugin    -->
   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>

@@ -59,6 +59,10 @@ Route::group(['middleware' => ['auth', 'admin']], function(){
     Route::delete('/device-delete/{id}', [DashboardController::class,'devicedelete']);
 
     Route::get('/instalacion-edit/{id}', [DashboardController::class,'instalacionedit']);
+
+    Route::put('/installation-update/{id}', [DashboardController::class,'installationupdate']);
+
+    Route::delete('/installation-delete/{id}', [DashboardController::class,'installationdelete']);
     
 });
 

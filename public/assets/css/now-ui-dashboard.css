@@ -22,13 +22,33 @@ Licensed under the MIT license - http://opensource.org/licenses/MIT
 
 Copyright (c) 2015 Daniel Eden
 */
-
+.navbar-brand{
+  color: linear-gradient(to right, #0c2646 0%, #204065 60%, #2a5788 100%);
+}
 .modal-header{
-  background: linear-gradient(to right, #0c2646 0%, #204065 60%, #2a5788 100%);;
+  background: linear-gradient(to right, #0c2646 0%, #204065 60%, #2a5788 100%);
 }
 
 .modal-title{
   color: #FFFFFF;
+}
+
+.pngGotaWelcome{
+  display: block;
+  margin: auto;
+  width:30%;
+}
+
+.pngGotitaStop{
+  display: block;
+  margin: auto;
+  width: 60%;
+}
+
+.imgPrueba{
+  display: block;
+  margin: auto;
+  width: 10%;
 }
 
 .rowPrueba{

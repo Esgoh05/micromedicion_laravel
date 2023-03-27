@@ -18,6 +18,7 @@
         </button>
       </div>
       <div class="modal-body">
+        <img src="../../assets/img/gota_welcome.png" alt="Gota Welcome" class="pngGotaWelcome">
         <form action="/save-new-user" method="POST">
         {{ csrf_field() }} 
 
@@ -73,7 +74,7 @@
         {{  method_field('DELETE')  }}
       <div class="modal-body">
         <input type="hidden" id="delete">
-        <img src="../../assets/img/gotita_stop.jpg" alt="">
+        <img class="pngGotitaStop" src="../../assets/img/gotita_stop.jpg" alt="">
       </div>
       <div class="modal-footer border-white">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -160,6 +161,10 @@
 @section('scripts')
 
     <script>
+      $(document).ready( function() {
+          $('#userDatatable').DataTable();
+      });
+
       $(document).ready( function(){
           $('#userDatatable').on('click','.deletebtn', function(){
             $tr = $(this).closest('tr');
