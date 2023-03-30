@@ -286,6 +286,19 @@
   <script src="../assets/js/now-ui-dashboard.min.js?v=1.5.0" type="text/javascript"></script><!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
   <script src="../assets/demo/demo.js"></script>
 
+  <script src="../assets/sweetalert.js"></script>
+  <script>
+      @if (session('status'))
+          //alert('{{ session('status') }}');
+          swal({
+            title: '{{ session('status') }}',
+            //text: "You clicked the button!",
+            icon: '{{ session('statuscode') }}',
+            button: "OK",
+          });
+      @endif
+  </script>
+
   @yield('scripts')
 </body>
 

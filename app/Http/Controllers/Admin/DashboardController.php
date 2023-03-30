@@ -7,10 +7,12 @@ use App\Models\User;
 use App\Models\Device;
 use App\Models\Instalacion;
 use App\Http\Controllers\Controller;
+//use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\RedirectResponse;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class DashboardController extends Controller
 {
@@ -21,10 +23,13 @@ class DashboardController extends Controller
         return view('admin.dashboard',compact('user'))->with('users', $users);
     }
 
-
     public function registered(){
         $user = Auth::user();
         $users = User::all();
+        $value = 'success';
+
+        //Session::flash('statuscode', 'success');
+        //$request->session()->flash('statuscode', $value);
         return view('admin.register', compact('user')) ->with('users', $users);
     }
 

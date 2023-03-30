@@ -24,12 +24,10 @@
                         <table class="table">
                             <thead class=" text-primary">
                                 <th>Id</th>  
-                                <th>Id Usuario</th>
-                                <th>Id Dispositivo</th>
-                                <th>Diametro de tuberia</th>
-                                <th>Ubicacion de dispositivo</th>
-                                <th>EDIT</th>
-                                <th>DELETE</th>
+                                <th>User Id</th>
+                                <th>Device Id</th>
+                                <th>Pipe Size</th>
+                                <th>Device Position</th>
                             </thead>
                         </table>
                     </div>

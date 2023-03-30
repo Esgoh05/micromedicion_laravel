@@ -70,6 +70,7 @@ Route::group(['middleware' => ['auth', 'user']], function(){
 
     Route::get('/user-dashboard', [UserDashboardController::class,'viewdashboard']);
     Route::get('/user-installation', [UserDashboardController::class,'viewuserinstallation']);
+    Route::get('/edit-installation-user/{id}', [UserDashboardController::class,'viewinstallationedit']);
     
     
 });

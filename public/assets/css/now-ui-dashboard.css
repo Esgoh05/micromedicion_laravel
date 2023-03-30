@@ -33,6 +33,10 @@ Copyright (c) 2015 Daniel Eden
   color: #FFFFFF;
 }
 
+.btnClose{
+  color: #FF5555;
+}
+
 .pngGotaWelcome{
   display: block;
   margin: auto;
@@ -62,7 +66,7 @@ Copyright (c) 2015 Daniel Eden
   position:relative;
    margin:auto;
    width:100%;
-   left:35%;
+   text-align: center;
 }
 
 .my-class-form-control-group{

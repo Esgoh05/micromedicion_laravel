@@ -107,9 +107,9 @@
                   <table id="deviceDatatable" class="table">
                     <thead class=" text-primary">
                       <th>Id</th>  
-                      <th>Dirección Mac</th>
-                      <th>Modelo Sensor</th>
-                      <th>Factor K</th>
+                      <th>Mac Address</th>
+                      <th>Sensor Model</th>
+                      <th>K Factor</th>
                       <th>EDIT</th>
                       <th>DELETE</th>
                     </thead>

@@ -23,11 +23,11 @@
                 <div class="table-responsive">
                   <table class="table">
                     <thead class=" text-primary">
-                      <th>Id Dispositivo</th>
-                      <th>Diametro de tuberia</th>
+                      <th>Device Id</th>
+                      <th>Pipe Size</th>
                       <th>SSID</th>
-                      <th>Password de SSID</th>
-                      <th>Ubicacion de dispositivo</th>
+                      <th>WiFi Password</th>
+                      <th>Device Position</th>
                       <th>EDIT</th>
                     </thead>
                     <tbody>
@@ -39,7 +39,7 @@
                         <td>{{ $row->passwordSsid }}</td>
                         <td>{{ $row->ubicacionDispositivo }}</td>
                         <td>
-                            <a href="/role-edit/{{ $row->id }}" class="btn btn-success">EDIT</a>
+                            <a href="/edit-installation-user/{{ $row->id }}" class="btn btn-success">EDIT</a>
                         </td>
                       </tr>
                       @endforeach

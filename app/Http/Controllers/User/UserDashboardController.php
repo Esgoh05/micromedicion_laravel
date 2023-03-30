@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Device;
 use App\Models\Instalacion;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class UserDashboardController extends Controller
 {
@@ -21,6 +22,12 @@ class UserDashboardController extends Controller
         $user = Auth::user();
         $instalacion = Instalacion::all();
         return view('user.instalacionUser',compact('user')) ->with('instalacion', $instalacion);
+    }
+
+    public function viewinstallationedit(Request $request, $id){
+        $user = Auth::user();
+        $devices = Device::findOrFail($id);
+        return view('admin.register-edit', compact('user')) ->with('devices', $devices);
     }
 
 }
