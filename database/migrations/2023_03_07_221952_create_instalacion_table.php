@@ -13,13 +13,15 @@ return new class extends Migration
     {
         Schema::create('instalacion', function (Blueprint $table) {
             $table->id();
-            $table->string('idUsuario');
+            $table->foreignId('idUsuario')->constrained('users');
             $table->string('idDispositivo');
             $table->string('diametroTuberia');
             $table->string('ssid');
             $table->string('passwordSsid');
             $table->string('ubicacionDispositivo');
             $table->timestamps();
+
+            //$table->foreign('idUsuario')->references('id')->users();
         });
     }
 

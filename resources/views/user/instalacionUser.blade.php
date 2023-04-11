@@ -21,7 +21,7 @@
               </div>
               <div class="card-body">
                 <div class="table-responsive">
-                  <table class="table">
+                  <table id="installationDatatable" class="table">
                     <thead class=" text-primary">
                       <th>Device Id</th>
                       <th>Pipe Size</th>
@@ -56,5 +56,10 @@
 
 
 @section('scripts')
+  <script>
+    $(document).ready( function() {
+    $('#installationDatatable').DataTable();
+    });
+  </script>
 
 @endsection

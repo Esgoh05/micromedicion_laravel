@@ -1,0 +1,12 @@
+    .navbar{
+    background-image: linear-gradient(to right, #0c2646 0%, #204065 60%, #2a5788 100%);
+    }
+
+    .navbar-light .navbar-brand{
+    color: #FFFFFF;
+    }
+
+    .nav-link:hover  {
+    background-color: #e1e1e1;
+    border-radius: 5px;
+    }

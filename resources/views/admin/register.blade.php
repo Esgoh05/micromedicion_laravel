@@ -32,6 +32,14 @@
             <input type="text" name="phone" class="form-control" id="recipient-name">
           </div>
           <div class="form-group">
+            <label for="inputState">Give Role</label>
+            <select id="inputState" class="form-control" name="usertype">
+              <option value="" hidden selected>Select one</option>
+              <option value="admin">Admin</option>
+              <option value="user">User</option> 
+            </select>
+          </div>
+          <div class="form-group">
             <label for="recipient-name" class="col-form-label">Email:</label>
             <input type="text" name="email" class="form-control" id="recipient-name">
           </div>

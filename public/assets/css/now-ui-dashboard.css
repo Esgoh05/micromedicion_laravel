@@ -22,6 +22,120 @@ Licensed under the MIT license - http://opensource.org/licenses/MIT
 
 Copyright (c) 2015 Daniel Eden
 */
+
+.contenedor-header{
+  padding-top: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-bottom: 2rem;
+  background-color: white;
+  display: flex;
+  border-radius: 10%;
+}
+
+.contenedor_izquierda{
+  padding: 0;
+  border-radius: 50%;
+  width: 15rem;
+  height: 15rem;
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+  margin-right: 1.5rem;
+  background-color: rgb(148, 146, 146);
+}
+
+.card-img{
+  width: 15rem;
+  height: 15rem;
+  position: absolute;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.image-profile{
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.contenedor_btn_hover{
+    width: 15rem;
+    height: 15rem;   
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    flex-direction: column;
+    display: flex;
+    flex-wrap: wrap;
+    opacity: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: white;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 50%;
+}
+
+.contenedor_btn_hover:hover{
+  opacity: 1;
+}
+
+.btn_update_foto{
+  border: 0;
+  align-content: center;
+  display: flex;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  margin-top: 5rem;
+  margin-left: 5rem;
+  background-color: gray;
+}
+
+.bi-camera-fill{
+color: #2a5788;
+margin-left: 1.3rem;
+margin-top: 0.6rem;
+}
+
+.contenedor_medio{
+  flex-grow: 3;
+  width: 25rem;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  padding-left: 0.5rem;
+  padding-right: 2.5rem;
+  margin-right: 1.5rem;
+
+}
+
+
+.contenedor_title{
+  font-size: 20px;
+  font-family: 'Times New Roman', Times, serif;
+  /*color: linear-gradient(to right, #0c2646 0%, #204065 60%, #2a5788 100%);*/
+  text-align: left;
+  color: #0c2646; 
+}
+
+.datos{
+  color: #0c2646;
+}
+
+.bi-telephone{
+  color: #2a5788;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.bi-envelope{
+  color: #2a5788;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+
 .navbar-brand{
   color: linear-gradient(to right, #0c2646 0%, #204065 60%, #2a5788 100%);
 }
@@ -405,7 +519,8 @@ Copyright (c) 2015 Daniel Eden
   border-radius: 0.1875rem;
   padding: 11px 22px;
   cursor: pointer;
-  background-color: #888;
+  /*background-color: #888;*/
+  background-color: #FF3636;
   color: #FFFFFF;
 }
 
@@ -431,10 +546,15 @@ Copyright (c) 2015 Daniel Eden
 .show>.navbar .navbar-nav>a.btn.dropdown-toggle,
 .show>.navbar .navbar-nav>a.btn.dropdown-toggle:focus,
 .show>.navbar .navbar-nav>a.btn.dropdown-toggle:hover {
-  background-color: #979797;
+  /*background-color: #979797;
   color: #FFFFFF;
   box-shadow: none;
-  border-color: #979797;
+  border-color: #979797;*/
+
+  background-color: #ff5555;
+  color: #FFFFFF;
+  box-shadow: none;
+  border-color: #ff5555;
 }
 
 .btn:not([data-action]):not([class*="btn-outline-"]):hover,
@@ -679,7 +799,8 @@ fieldset[disabled] .btn-primary.active {
 }
 
 .btn-success {
-  background-color: #18ce0f;
+  /*background-color: #18ce0f;*/
+  background-color: #1E88E5;
   color: #FFFFFF;
 }
 
@@ -694,10 +815,14 @@ fieldset[disabled] .btn-primary.active {
 .show>.btn-success.dropdown-toggle,
 .show>.btn-success.dropdown-toggle:focus,
 .show>.btn-success.dropdown-toggle:hover {
-  background-color: #1beb11;
+  /*background-color: #1beb11;
   color: #FFFFFF;
   box-shadow: none;
-  border-color: #1beb11;
+  border-color: #1beb11; */
+  background-color: #42A5F5;
+  color: #FFFFFF;
+  box-shadow: none;
+  border-color: #42A5F5;
 }
 
 .btn-success:not([data-action]):not([class*="btn-outline-"]):hover {
@@ -2008,7 +2133,8 @@ p.description {
 .text-primary,
 a.text-primary:focus,
 a.text-primary:hover {
-  color: #f96332 !important;
+  /*color: #f96332 !important;*/
+  color: #0c2646 !important;
 }
 
 .text-info,
