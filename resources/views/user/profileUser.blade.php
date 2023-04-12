@@ -7,6 +7,53 @@
 
 
 @section('content')
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog p-5" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Your Profile</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <img src="../../assets/img/gota_welcome.png" alt="Gota Welcome" class="pngGotaWelcome">
+          <form action="/save-new-user" method="POST">
+          {{ csrf_field() }} 
+  
+  
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Name:</label>
+              <input type="text" name="name" class="form-control" id="recipient-name">
+            </div>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Phone:</label>
+              <input type="text" name="phone" class="form-control" id="recipient-name">
+            </div>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Email:</label>
+              <input type="text" name="email" class="form-control" id="recipient-name">
+            </div>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Password:</label>
+              <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" class="form-control" id="recipient-name">
+                  @error('password')
+                      <span class="invalid-feedback" role="alert">
+                          <strong>{{ $message }}</strong>
+                      </span>
+                  @enderror
+            </div>
+            </div>
+            <div class="modal-footer border-white">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
 <div class="row">
     <div class="col-md-12">
         <div class="card">
@@ -25,7 +72,7 @@
                         <h2> {{ Auth::user()->name }}</h2>
                         <p class="datos"><i class="bi bi-envelope"></i>{{ Auth::user()->email }}</p>
                         <p class="datos"><i class="bi bi-telephone"></i></i>{{ Auth::user()->phone }}</p>
-                        <button class="btn btn-success">Edit Profile</button>
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Edit Profile</button>
                     </div>
                 </div>
             </div>

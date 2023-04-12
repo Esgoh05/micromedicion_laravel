@@ -19,7 +19,7 @@ class UserDashboardController extends Controller
         return view('user.userDashboard',compact('user'))->with('users', $users);
     }
 
-    public function viewuserinstallation(){
+    public function viewuserinstallation(Request $request){
         $user = Auth::user();
         $userId = Auth::id();
 
@@ -27,7 +27,9 @@ class UserDashboardController extends Controller
 
         //$users = User::whereId($userId)->get();
 
-        $instalacion = Instalacion::where('idUsuario', $userId)->get();
+        $instalacion = Instalacion::where('idUsuario', $userId)
+        //->where('concepto','like',$request->filtro)
+        ->get();
   
         //echo ($instalacion);
         return view('user.instalacionUser',compact('user')) ->with('instalacion', $instalacion);
@@ -36,8 +38,8 @@ class UserDashboardController extends Controller
 
     public function viewinstallationedit(Request $request, $id){
         $user = Auth::user();
-        $devices = Device::findOrFail($id);
-        return view('admin.register-edit', compact('user')) ->with('devices', $devices);
+        $instalacion = Instalacion::findOrFail($id);
+        return view('user.instalacionEditUser', compact('user')) ->with('instalacion', $instalacion);
     }
 
     public function viewuserprofile(){

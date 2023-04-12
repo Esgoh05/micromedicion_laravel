@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Laravel\Ui\Presets\React;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,4 +17,20 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+
+//ip
+
+Route::post('save_data', function (Request $request){
+
+    /*
+
+    $nuevosDatos = new tablaNuevosDatos();
+    
+    $nuevosDatos->flujo = $request->dato_flujo;
+
+    $nuevosDatos->save();
+
+    */
 });
