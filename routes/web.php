@@ -75,7 +75,9 @@ Route::group(['middleware' => ['auth', 'user']], function(){
     Route::get('/user-dashboard', [UserDashboardController::class,'viewdashboard']);
     Route::get('/user-installation', [UserDashboardController::class,'viewuserinstallation']);
     Route::get('/edit-installation-user/{id}', [UserDashboardController::class,'viewinstallationedit']);
+    Route::put('/installation-update-user/{id}', [UserDashboardController::class,'installationupdateuser']);
     Route::get('/user-profile', [UserDashboardController::class,'viewuserprofile']);
+    Route::put('/user-profile/{id}', [UserDashboardController::class,'userprofileedit']);
     
     
 });

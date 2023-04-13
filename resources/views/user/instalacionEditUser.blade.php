@@ -17,7 +17,7 @@
                 <div class="card-body">
                     <div class="rowPrueba">
                         <div class="col-md-6">
-                            <form action="/installation-update/{{ $instalacion->id }}" method="POST">
+                            <form action="/installation-update-user/{{ $instalacion->id }}" method="POST">
                             {{ csrf_field() }}    
                             {{ method_field('PUT') }}
 

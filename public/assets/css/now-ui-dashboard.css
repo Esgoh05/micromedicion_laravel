@@ -23,6 +23,14 @@ Licensed under the MIT license - http://opensource.org/licenses/MIT
 Copyright (c) 2015 Daniel Eden
 */
 
+.bi-person{
+  color: #0c2646;
+}
+
+.bi-box-arrow-right{
+  color: #0c2646;
+}
+
 .contenedor-header{
   padding-top: 2rem;
   padding-left: 2rem;

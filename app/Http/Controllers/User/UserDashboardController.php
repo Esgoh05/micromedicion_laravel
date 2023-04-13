@@ -42,10 +42,34 @@ class UserDashboardController extends Controller
         return view('user.instalacionEditUser', compact('user')) ->with('instalacion', $instalacion);
     }
 
+    public function installationupdateuser(Request $request, $id){
+        $instalacion = Instalacion::find($id);
+        $instalacion->ssid = $request->input('ssid');
+        $instalacion->passwordSsid= $request->input('passwordSsid');
+        $instalacion->ubicacionDispositivo = $request->input('ubicacionDispositivo');
+        $instalacion->update();
+        //echo $instalacion;
+
+
+        return redirect('/user-installation') ->with('status','Your data is updated');
+    }
+
     public function viewuserprofile(){
         $user = Auth::user();
 
         return view('user.profileUser', compact('user'));
+    }
+
+    public function userprofileedit(Request $request, $id){
+        $user = User::find($id);
+        $user->name = $request->input('name');
+        $user->phone= $request->input('phone');
+        $user->email = $request->input('email');
+        $user->update();
+        //echo $user;
+
+
+        return redirect('/user-profile') ->with('status','Your data is updated');
     }
 
 }

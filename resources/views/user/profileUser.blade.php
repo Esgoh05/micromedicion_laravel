@@ -19,23 +19,24 @@
         </div>
         <div class="modal-body">
           <img src="../../assets/img/gota_welcome.png" alt="Gota Welcome" class="pngGotaWelcome">
-          <form action="/save-new-user" method="POST">
-          {{ csrf_field() }} 
+          <form action="/user-profile/{{ Auth::user()->id}}" method="POST">
+          {{ csrf_field() }}
+          {{ method_field('PUT') }}
   
   
             <div class="form-group">
               <label for="recipient-name" class="col-form-label">Name:</label>
-              <input type="text" name="name" class="form-control" id="recipient-name">
+              <input type="text" name="name" class="form-control" id="recipient-name" value={{ Auth::user()->name }}>
             </div>
             <div class="form-group">
               <label for="recipient-name" class="col-form-label">Phone:</label>
-              <input type="text" name="phone" class="form-control" id="recipient-name">
+              <input type="text" name="phone" class="form-control" id="recipient-name" value={{ Auth::user()->phone }}>
             </div>
             <div class="form-group">
               <label for="recipient-name" class="col-form-label">Email:</label>
-              <input type="text" name="email" class="form-control" id="recipient-name">
+              <input type="text" name="email" class="form-control" id="recipient-name" value={{ Auth::user()->email }}>
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
               <label for="recipient-name" class="col-form-label">Password:</label>
               <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" class="form-control" id="recipient-name">
                   @error('password')
@@ -43,7 +44,7 @@
                           <strong>{{ $message }}</strong>
                       </span>
                   @enderror
-            </div>
+            </div> -->
             </div>
             <div class="modal-footer border-white">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
