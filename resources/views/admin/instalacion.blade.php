@@ -106,10 +106,10 @@
 <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">
+                <h2 class="card-title">
                   <i class="bi bi-house-gear"></i>
                   Installation
-                </h3>
+                </h2>
                 <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
                   <i class="bi bi-plus"></i>
                   ADD NEW INSTALLATION
@@ -121,7 +121,7 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Registered Devices</h3>
+                <h2 class="card-title">Registered Devices</h2>
                 <!-- @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}

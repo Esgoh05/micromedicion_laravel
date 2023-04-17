@@ -101,10 +101,10 @@
 <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">
+                <h2 class="card-title">
                   <i class="bi bi-people-fill"></i>
                   Users
-                </h3>
+                </h2>
                 <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
                   <i class="bi bi-plus"></i>
                   ADD NEW USER
@@ -116,7 +116,7 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Registered Users</h3>
+                <h2 class="card-title">Registered Users</h2>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
