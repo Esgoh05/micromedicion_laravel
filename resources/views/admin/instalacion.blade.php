@@ -25,24 +25,26 @@
           <!--Select Id. Modelo:User -->
           <div class="form-group">
             <label for="inputState">Email</label>
-            <select id="inputState1" name='idUsuario' class="form-control">
+            <select id="inputState1" name='idUsuario' class="form-control" style="width: 100%">
             <option value="" hidden selected>Select a email</option>
               @foreach ($userId as $prueba)
               <option value="{{ $prueba->id}}">{{ $prueba->email}} </option> 
               @endforeach 
             </select>
           </div>
+          <!-- End Select Id. Modelo:User -->
 
           <!--Select Id - modelo dispositivo. Modelo:Device-->
           <div class="form-group">
             <label for="inputState">Id - modelo dispositivo</label>
-            <select id="inputState" class="form-control" name="idDispositivo">
+            <select id="inputState" class="form-control" name="idDispositivo" style="width: 100%">
               <option value="" hidden selected>Select...</option>
               @foreach ($deviceIds as $deviceId)
               <option value="{{ $deviceId->id}}"> {{ $deviceId->id}} -> {{ $deviceId->modeloSensor}}</option> 
               @endforeach
             </select>
           </div>
+          <!--End. Select Id - modelo dispositivo. Modelo:Device-->
 
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Diametro de tuberia:</label>
@@ -60,12 +62,6 @@
             <label for="recipient-name" class="col-form-label">Ubicacion de dispositivo:</label>
             <input type="text" name="ubicacionDispositivo" class="form-control" id="recipient-name" value="Default">
           </div>
-          
-          <!--<div class="form-group">
-            <label for="message-text" class="col-form-label">Message:</label>
-            <textarea class="form-control" id="message-text"></textarea>
-          </div> -->
-        
           </div>
           <div class="modal-footer border-white">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -82,7 +78,9 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete this installation?</h5>
-        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+        <!--Add data-ds-dismiss="modal". Version 5 de bootstrap.
+             And aria-hidden="true". -->
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" aria-hidden="true">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -94,7 +92,8 @@
         <img class="pngGotitaStop" src="../../assets/img/gotita_stop.jpg" alt="">
       </div>
       <div class="modal-footer border-white">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <!--Add data-ds-dismiss="modal". Version 5 de bootstrap -->
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary">Yes, delete it.</button>
       </div>
       </form>
@@ -123,11 +122,11 @@
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Registered Devices</h3>
-                @if (session('status'))
+                <!-- @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
-                    @endif
+                    @endif -->
               </div>
               <div class="card-body">
                 <div class="table-responsive">
@@ -178,6 +177,14 @@
 @section('scripts')
 
 <script>
+  $('#inputState').select2({
+    placeholder: 'Select an option' 
+  });
+
+  $('#inputState1').select2({
+    placeholder: 'Select a email' 
+  });
+
   $(document).ready( function() {
     $('#installationDatatable').DataTable();
   });

@@ -20,7 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-//ip
+//ipCompu:8000/api/save_data
 
 Route::post('save_data', function (Request $request){
 

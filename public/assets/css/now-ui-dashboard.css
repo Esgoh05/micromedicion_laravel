@@ -23,6 +23,28 @@ Licensed under the MIT license - http://opensource.org/licenses/MIT
 Copyright (c) 2015 Daniel Eden
 */
 
+.swal-title {
+  color: #0c2646;
+}
+
+.swal-text{
+  color: #204065;
+}
+
+.swal-button {
+  background-color: #1E88E5;
+  color: #FFFFFF;
+  border: 0;
+}
+
+.swal-button:not(:disabled),
+.swal-button:hover {
+  background-color: #1E88E5;
+  color: #FFFFFF;
+  box-shadow: none;
+  border-color: #1E88E5;
+}
+
 .bi-person{
   color: #0c2646;
 }
@@ -2217,7 +2239,7 @@ a.text-gray:hover {
 }
 
 body {
-  color: #2c2c2c;
+  color: #0c2646;
   font-size: 14px;
   font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif;
   -moz-osx-font-smoothing: grayscale;
@@ -4885,7 +4907,7 @@ Created using IcoMoon - icomoon.io
 .card label {
   font-size: 0.8571em;
   margin-bottom: 5px;
-  color: #9A9A9A;
+  color: #0c2646;
 }
 
 .card .card-footer {

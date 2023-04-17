@@ -20,12 +20,15 @@
   <link href="../assets/demo/demo.css" rel="stylesheet" />
 
   <link rel="stylesheet" href="../assets/css/dataTables.min.css">
-   <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">-->
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 
-      <!-- Scripts -->
-      @vite(['resources/js/app.js'])
+  <!-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/> -->
+  <link rel="stylesheet" href="../assets/css/select2.min.css">
+
+
+  <!-- Scripts -->
+  @vite(['resources/js/app.js'])
   
 </head>
 
@@ -143,7 +146,6 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <!-- <a class="navbar-brand" href="#pablo">Table List</a> -->
             <a class="navbar-brand">Hi, {{ Auth::user()->name }}.</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
@@ -290,15 +292,20 @@
   <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/now-ui-dashboard.min.js?v=1.5.0" type="text/javascript"></script><!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
   <script src="../assets/demo/demo.js"></script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
   <script src="../assets/sweetalert.js"></script>
+
+
   <script>
       @if (session('status'))
           //alert('{{ session('status') }}');
           swal({
             title: '{{ session('status') }}',
-            //text: "You clicked the button!",
-            icon: '{{ session('statuscode') }}',
+            text: "You clicked the button!",
+            //icon: '{{ session('statuscode') }}',
+            icon: "success",
             button: "OK",
           });
       @endif

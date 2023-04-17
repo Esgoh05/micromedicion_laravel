@@ -55,7 +55,9 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete this device?</h5>
-        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+        <!--Add data-ds-dismiss="modal". Version 5 de bootstrap.
+             And aria-hidden="true". -->
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" aria-hidden="true">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -67,7 +69,8 @@
         <img class="pngGotitaStop" src="../../assets/img/gotita_stop.jpg" alt="">
       </div>
       <div class="modal-footer border-white">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <!--Add data-ds-dismiss="modal". Version 5 de bootstrap -->
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary">Yes, delete it.</button>
       </div>
       </form>
@@ -96,11 +99,6 @@
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Registered Devices</h3>
-                @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
               </div>
               <div class="card-body">
                 <div class="table-responsive">

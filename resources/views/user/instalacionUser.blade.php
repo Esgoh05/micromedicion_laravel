@@ -12,12 +12,10 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title">Registered Devices</h4>
-                @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+                <h2 class="card-title">
+                  <i class="bi bi-house-check"></i>
+                  Registered Devices
+                </h2>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
@@ -39,7 +37,10 @@
                         <td>{{ $row->passwordSsid }}</td>
                         <td>{{ $row->ubicacionDispositivo }}</td>
                         <td>
-                            <a href="/edit-installation-user/{{ $row->id }}" class="btn btn-success">EDIT</a>
+                            <a href="/edit-installation-user/{{ $row->id }}" class="btn btn-success">
+                              <i class="bi bi-pencil"></i>
+                              EDIT
+                            </a>
                         </td>
                       </tr>
                       @endforeach
