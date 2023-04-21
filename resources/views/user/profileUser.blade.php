@@ -62,11 +62,25 @@
                 <!-- contenedor foto de perfil -->
                 <div class="contenedor_izquierda">
                     <div class="card-img">
-                    <img class="image-profile" src="{{ Auth::user()->foto_perfil }}" alt="myfoto">
+                    <img class="image-profile" src="{{ Auth::user()->foto_perfil }}" alt="mifoto">
                     </div>
                 </div>
                 <div class="contenedor_btn_hover">
-                    <a class="btn_update_foto" href="#"><i class="bi bi-camera-fill" style="font-size: 40px"></i></a>
+                    <!-- <a class="btn_update_foto" href="#"><i class="bi bi-camera-fill" style="font-size: 40px"></i></a> -->
+                    <a class="nav-link" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="bi bi-camera-fill" style="font-size: 40px"></i>
+                    </a>
+                      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/user-profile">
+                          <i class="bi bi-file-image"></i>
+                          Actualizar foto de perfil
+                        </a>
+                        <a class="dropdown-item" href="/user-profile">
+                          <i class="bi bi-trash3"></i>
+                          Eliminar
+                        </a>
+                      </div>
+                    </li> 
                 </div>
                 <div class="contenedor_medio">
                     <div class="contenedor_title">
