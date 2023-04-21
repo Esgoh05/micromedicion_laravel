@@ -29,6 +29,7 @@ class DashboardController extends Controller
         session_start();
         //$value = 'success';
 
+
         //Session::flash('statuscode', 'success');
         //$request->session()->flash('statuscode', $value);
         return view('admin.register', compact('user')) ->with('users', $users);
@@ -106,6 +107,16 @@ class DashboardController extends Controller
     public function savenewuser(Request $request){
         $data = new User;
 
+        //dd($request->hasFile('foto_perfil'));
+        if($request->hasFile('foto_perfil')){
+            $file = $request->file('foto_perfil');
+            $destinationPath = 'img/fotos/';
+            $filename = time() . '-' . $file->getClientOriginalName();
+            $uploadSucces = $request->file('foto_perfil')->move($destinationPath, $filename);
+            $data->foto_perfil = $destinationPath . $filename;
+
+        }
+
         $data->name = $request->input('name');
         $data->phone = $request->input('phone');
         $data->email = $request->input('email');
@@ -115,7 +126,7 @@ class DashboardController extends Controller
 
         $data->save();
         
-        return redirect('/role-register') ->with('status', 'New user was added');
+        return redirect('/role-register') ->with('status', 'Un nuevo usuario ha sido agregado.');
     }
 
     //cambios en la funcion

@@ -62,7 +62,7 @@
                 <!-- contenedor foto de perfil -->
                 <div class="contenedor_izquierda">
                     <div class="card-img">
-                    <img class="image-profile" src="../assets/img/fanny.jpg" alt="myfoto">
+                    <img class="image-profile" src="{{ Auth::user()->foto_perfil }}" alt="myfoto">
                     </div>
                 </div>
                 <div class="contenedor_btn_hover">
@@ -73,7 +73,10 @@
                         <h2> {{ Auth::user()->name }}</h2>
                         <p class="datos"><i class="bi bi-envelope"></i>{{ Auth::user()->email }}</p>
                         <p class="datos"><i class="bi bi-telephone"></i></i>{{ Auth::user()->phone }}</p>
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Editar perfil</button>
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                          <i class="bi bi-pencil"></i>
+                          Editar perfil
+                        </button>
                     </div>
                 </div>
             </div>
