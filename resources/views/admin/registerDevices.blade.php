@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Devices | Micromedicion
+    Dispositivos | Micromedición
 
 @endsection
 
@@ -12,7 +12,7 @@
   <div class="modal-dialog p-5" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add a new device</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Agregar un nuevo dispositivo</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -34,15 +34,10 @@
             <label for="recipient-name" class="col-form-label">Factor K:</label>
             <input type="text" name="factorK" class="form-control" id="recipient-name">
           </div>
-          <!--<div class="form-group">
-            <label for="message-text" class="col-form-label">Message:</label>
-            <textarea class="form-control" id="message-text"></textarea>
-          </div> -->
-        
           </div>
           <div class="modal-footer border-white">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-primary">Guardar</button>
           </div>
       </form>
     </div>
@@ -54,7 +49,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete this device?</h5>
+        <h5 class="modal-title" id="exampleModalLabel">¿Usted está seguro de querer eliminar este dispositivo?</h5>
         <!--Add data-ds-dismiss="modal". Version 5 de bootstrap.
              And aria-hidden="true". -->
         <button type="button" class="close" data-dismiss="modal" aria-label="Close" aria-hidden="true">
@@ -70,8 +65,8 @@
       </div>
       <div class="modal-footer border-white">
         <!--Add data-ds-dismiss="modal". Version 5 de bootstrap -->
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Yes, delete it.</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-primary">Si, eliminar.</button>
       </div>
       </form>
     </div>
@@ -85,11 +80,11 @@
               <div class="card-header">
                 <h2 class="card-title">
                   <i class="bi bi-cpu"></i>
-                  Devices 
+                  Dispositivos
                 </h2>
                 <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
                   <i class="bi bi-plus"></i>
-                  ADD NEW DEVICE
+                  Agregar nuevo dispositivo
                 </button>
               </div>  
             </div>
@@ -98,18 +93,18 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h2 class="card-title">Registered Devices</h2>
+                <h2 class="card-title">Dispositivos registrados</h2>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
                   <table id="deviceDatatable" class="table">
                     <thead class=" text-primary">
                       <th>Id</th>  
-                      <th>Mac Address</th>
-                      <th>Sensor Model</th>
-                      <th>K Factor</th>
-                      <th>EDIT</th>
-                      <th>DELETE</th>
+                      <th>Dirección Mac</th>
+                      <th>Modelo del sensor</th>
+                      <th>Factor K</th>
+                      <th>Editar</th>
+                      <th>Eliminar</th>
                     </thead>
                     <tbody>
                       @foreach($devices as $row)
@@ -121,13 +116,13 @@
                         <td>
                             <a href="/devices-edit/{{ $row->id }}" class="btn btn-success">
                               <i class="bi bi-pencil"></i>
-                              EDIT
+                              Editar
                             </a>
                         </td>
                         <td>
                             <a href="javascript:void(0)" class="btn btn-danger deletebtn">
                               <i class="bi bi-trash3"></i>
-                              DELETE
+                              Eliminar
                             </a>
                         </td>
                       </tr>
@@ -151,6 +146,29 @@
   $(document).ready( function() {
       $('#deviceDatatable').DataTable();
   });
+
+  var table = $('#deviceDatatable').DataTable({
+    language: {
+        "decimal": "",
+        "emptyTable": "No hay información",
+        "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+        "infoEmpty": "Mostrando 0 a 0 de 0 Entradas",
+        "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+        "infoPostFix": "",
+        "thousands": ",",
+        "lengthMenu": "Mostrar _MENU_ Entradas",
+        "loadingRecords": "Cargando...",
+        "processing": "Procesando...",
+        "search": "Buscar:",
+        "zeroRecords": "Sin resultados encontrados",
+        "paginate": {
+            "first": "Primero",
+            "last": "Ultimo",
+            "next": "Siguiente",
+            "previous": "Anterior"
+        }
+    },
+});
 
   $(document).ready( function(){
       $('#deviceDatatable').on('click','.deletebtn', function(){

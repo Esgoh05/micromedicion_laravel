@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Welcome to MicromedicionIoT')
+@section('title', 'Bienvenido a Micromedición IoT')
 
 @section('content')
 <div id="carouselExampleDark" class="carousel carousel-dark slide">
@@ -45,7 +45,7 @@
             </p>
             <div>
                 <a href="#" class="btn btn-slider">
-                    Get Now
+                    Ir Ahora
                 </a>
             </div>
         </div>
@@ -66,7 +66,7 @@
               </p>
               <div>
                   <a href="#" class="btn btn-slider">
-                      Get Now
+                      Ir Ahora
                   </a>
               </div>
           </div>
@@ -76,11 +76,11 @@
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
+    <span class="visually-hidden">Previo</span>
   </button>
   <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
+    <span class="visually-hidden">Siguiente</span>
   </button>
 </div>
 
@@ -93,7 +93,7 @@
         </li>
         <li>
           <a href="#">
-            About Us
+            Acerca de Nosotros
           </a>
         </li>
       </ul>
@@ -101,7 +101,7 @@
     <div class="copyright" id="copyright">
       &copy; <script>
         document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
-      </script>, Designed and Coded by Micromedición IoT
+      </script>, Diseñado y Programado por Micromedición IoT
     </div>
   </div>
 </footer>

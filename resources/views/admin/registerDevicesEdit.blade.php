@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-   Edit Device Registration | Micromedicion
+   Editar Registro de Dispositivos | Micromedición
 
 @endsection
 
@@ -12,7 +12,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="editRole">Edit Device Registration.</h4>
+                    <h4 class="editRole">Editar Registro de Dispositivos.</h4>
                 </div>
                 <div class="card-body">
                     <div class="rowPrueba">
@@ -27,17 +27,17 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Sensor Model</label>
+                                    <label>Modelo de sensor</label>
                                     <input type="text" name="modeloSensor" value="{{ $device->modeloSensor }}" class="form-control">
                                 </div>
 
                                 <div class="form-group">
-                                    <label>K factor</label>
+                                    <label>Factor K</label>
                                     <input type="text" name="factorK" value="{{ $device->factorK }}" class="form-control">
                                 </div>
 
-                                <button type="submit" class="btn btn-success">Update</button>
-                                <a href="/device-register" class="btn btn-danger">Cancel</a>
+                                <button type="submit" class="btn btn-success">Actualizar</button>
+                                <a href="/device-register" class="btn btn-danger">Cancelar</a>
                             </form>
                         </div>
 

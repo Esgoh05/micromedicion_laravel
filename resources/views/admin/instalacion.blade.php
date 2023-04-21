@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Devices | Micromedicion
+    Instalación | Micromedición
 
 @endsection
 
@@ -12,7 +12,7 @@
   <div class="modal-dialog p-5" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add a new installation</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Agregar nueva instalación</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -24,9 +24,9 @@
 
           <!--Select Id. Modelo:User -->
           <div class="form-group">
-            <label for="inputState">Email</label>
+            <label for="inputState">Correo electrónico</label>
             <select id="inputState1" name='idUsuario' class="form-control" style="width: 100%">
-            <option value="" hidden selected>Select a email</option>
+            <option value="" hidden selected>Selecciona un correo electrónico</option>
               @foreach ($userId as $prueba)
               <option value="{{ $prueba->id}}">{{ $prueba->email}} </option> 
               @endforeach 
@@ -36,9 +36,9 @@
 
           <!--Select Id - modelo dispositivo. Modelo:Device-->
           <div class="form-group">
-            <label for="inputState">Id - modelo dispositivo</label>
+            <label for="inputState">Id - Modelo de dispositivo</label>
             <select id="inputState" class="form-control" name="idDispositivo" style="width: 100%">
-              <option value="" hidden selected>Select...</option>
+              <option value="" hidden selected>Seleccionar...</option>
               @foreach ($deviceIds as $deviceId)
               <option value="{{ $deviceId->id}}"> {{ $deviceId->id}} -> {{ $deviceId->modeloSensor}}</option> 
               @endforeach
@@ -47,7 +47,7 @@
           <!--End. Select Id - modelo dispositivo. Modelo:Device-->
 
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Diametro de tuberia:</label>
+            <label for="recipient-name" class="col-form-label">Diámetro de tuberia:</label>
             <input type="text" name="diametroTuberia" class="form-control" id="recipient-name" value="1/2">
           </div>
           <div class="form-group">
@@ -59,13 +59,13 @@
             <input type="text" name="passwordSsid" class="form-control" id="recipient-name" value="12345678">
           </div>
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Ubicacion de dispositivo:</label>
+            <label for="recipient-name" class="col-form-label">Ubicación de dispositivo:</label>
             <input type="text" name="ubicacionDispositivo" class="form-control" id="recipient-name" value="Default">
           </div>
           </div>
           <div class="modal-footer border-white">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-primary">Guardar</button>
           </div>
       </form>
     </div>
@@ -77,10 +77,10 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete this installation?</h5>
+        <h5 class="modal-title" id="exampleModalLabel">¿Usted está seguro de querer eliminar esta instalación?</h5>
         <!--Add data-ds-dismiss="modal". Version 5 de bootstrap.
              And aria-hidden="true". -->
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close" aria-hidden="true">
+        <button type="button" class="close" data-ds-dismiss="modal" aria-label="Close" aria-hidden="true">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -93,8 +93,8 @@
       </div>
       <div class="modal-footer border-white">
         <!--Add data-ds-dismiss="modal". Version 5 de bootstrap -->
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Yes, delete it.</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-primary">Si, eliminar.</button>
       </div>
       </form>
     </div>
@@ -108,11 +108,11 @@
               <div class="card-header">
                 <h2 class="card-title">
                   <i class="bi bi-house-gear"></i>
-                  Installation
+                  Instalación
                 </h2>
                 <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
                   <i class="bi bi-plus"></i>
-                  ADD NEW INSTALLATION
+                  Agregar nueva instalación
                 </button>
               </div>  
             </div>
@@ -121,7 +121,7 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h2 class="card-title">Registered Devices</h2>
+                <h2 class="card-title">Instalaciones registradas</h2>
                 <!-- @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
@@ -133,12 +133,12 @@
                   <table id="installationDatatable" class="table">
                     <thead class=" text-primary">
                       <th>Id</th>  
-                      <th>User Id</th>
-                      <th>Device Id</th>
-                      <th>Pipe Size</th>
-                      <th>Device Position</th>
-                      <th>EDIT</th>
-                      <th>DELETE</th>
+                      <th>Id Usuario</th>
+                      <th>Id Dispositivo</th>
+                      <th>Diámetro de tubería</th>
+                      <th>Ubicación de dispositivo</th>
+                      <th>Editar</th>
+                      <th>Eliminar</th>
                     </thead>
                     <tbody>
                       @foreach($instalacion as $row)
@@ -151,13 +151,13 @@
                         <td>
                             <a href="/instalacion-edit/{{ $row->id }}" class="btn btn-success">
                               <i class="bi bi-pencil"></i>
-                              EDIT
+                              Editar
                             </a>
                         </td>
                         <td>
                           <a href="javascript:void(0)" class="btn btn-danger deletebtn">
                             <i class="bi bi-trash3"></i>
-                            DELETE
+                            Eliminar
                           </a>
                         </td>
                       </tr>
@@ -178,15 +178,38 @@
 
 <script>
   $('#inputState').select2({
-    placeholder: 'Select an option' 
+    placeholder: 'Seleccionar una opción' 
   });
 
   $('#inputState1').select2({
-    placeholder: 'Select a email' 
+    placeholder: 'Seleccionar correo electrónico' 
   });
 
   $(document).ready( function() {
     $('#installationDatatable').DataTable();
+  });
+
+  var table = $('#installationDatatable').DataTable({
+      language: {
+          "decimal": "",
+          "emptyTable": "No hay información",
+          "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+          "infoEmpty": "Mostrando 0 a 0 de 0 Entradas",
+          "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+          "infoPostFix": "",
+          "thousands": ",",
+          "lengthMenu": "Mostrar _MENU_ Entradas",
+          "loadingRecords": "Cargando...",
+          "processing": "Procesando...",
+          "search": "Buscar:",
+          "zeroRecords": "Sin resultados encontrados",
+          "paginate": {
+              "first": "Primero",
+              "last": "Ultimo",
+              "next": "Siguiente",
+              "previous": "Anterior"
+          }
+      },
   });
 
   $(document).ready( function(){

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Historial | Micromedicion
+    Historial | Micromedición
 
 @endsection
 
@@ -12,7 +12,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Abstract</h4>
+                <h4 class="card-title">Historial</h4>
                 @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
@@ -24,10 +24,10 @@
                         <table class="table">
                             <thead class=" text-primary">
                                 <th>Id</th>  
-                                <th>User Id</th>
-                                <th>Device Id</th>
-                                <th>Pipe Size</th>
-                                <th>Device Position</th>
+                                <th>Id Usuario</th>
+                                <th>Id Dispositivo</th>
+                                <th>Diámetro de tubería</th>
+                                <th>Ubicación de dispositivo</th>
                             </thead>
                         </table>
                     </div>

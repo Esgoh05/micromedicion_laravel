@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Registered roles | Micromedicion
+    Registro de Usuarios | Micromedición
 
 @endsection
 
@@ -12,39 +12,39 @@
   <div class="modal-dialog p-5" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add a new user</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Agregar un nuevo usuario</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <img src="../../assets/img/gota_welcome.png" alt="Gota Welcome" class="pngGotaWelcome">
-        <form action="/save-new-user" method="POST">
+        <form action="/save-new-user" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }} 
 
 
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Name:</label>
+            <label for="recipient-name" class="col-form-label">Nombre:</label>
             <input type="text" name="name" class="form-control" id="recipient-name">
           </div>
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Phone:</label>
+            <label for="recipient-name" class="col-form-label">Teléfono:</label>
             <input type="text" name="phone" class="form-control" id="recipient-name">
           </div>
           <div class="form-group">
-            <label for="inputState">Give Role</label>
+            <label for="inputState">Asignar tipo de usuario:</label>
             <select id="inputState" class="form-control" name="usertype">
-              <option value="" hidden selected>Select one</option>
+              <option value="" hidden selected>Selecciona uno</option>
               <option value="admin">Admin</option>
               <option value="user">User</option> 
             </select>
           </div>
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Email:</label>
+            <label for="recipient-name" class="col-form-label">Correo Electrónico:</label>
             <input type="text" name="email" class="form-control" id="recipient-name">
           </div>
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Password:</label>
+            <label for="recipient-name" class="col-form-label">Contraseña:</label>
             <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" class="form-control" id="recipient-name">
                 @error('password')
                     <span class="invalid-feedback" role="alert">
@@ -52,6 +52,12 @@
                     </span>
                 @enderror
           </div>
+
+          <div>
+            <label for="formFile" class="form-label">Foto de perfil:</label>
+            <input class="form-control" type="file" id="formFile" name="foto_perfil">
+          </div>
+
           <!--<div class="form-group">
             <label for="message-text" class="col-form-label">Message:</label>
             <textarea class="form-control" id="message-text"></textarea>
@@ -59,8 +65,8 @@
         
           </div>
           <div class="modal-footer border-white">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-primary">Guardar</button>
           </div>
       </form>
     </div>
@@ -72,7 +78,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete this user?</h5>
+        <h5 class="modal-title" id="exampleModalLabel">¿Usted está seguro de querer eliminar este usuario?</h5>
         <!--Add data-ds-dismiss="modal". Version 5 de bootstrap.
              And aria-hidden="true". -->
         <button type="button" class="close" data-dismiss="modal" aria-label="Close" aria-hidden="true">
@@ -88,8 +94,8 @@
       </div>
       <div class="modal-footer border-white">
         <!--Add data-ds-dismiss="modal". Version 5 de bootstrap -->
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary btn-prueba">Yes, delete it.</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-primary btn-prueba">Si, eliminar</button>
       </div>
       </form>
     </div>
@@ -103,11 +109,11 @@
               <div class="card-header">
                 <h2 class="card-title">
                   <i class="bi bi-people-fill"></i>
-                  Users
+                  Usuarios
                 </h2>
                 <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
                   <i class="bi bi-plus"></i>
-                  ADD NEW USER
+                  Agregar nuevo usuario
                 </button>
               </div>  
             </div>
@@ -116,19 +122,19 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h2 class="card-title">Registered Users</h2>
+                <h2 class="card-title">Usuarios registrados</h2>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
                   <table id="userDatatable" class="table">
                     <thead class=" text-primary">
                       <th>ID</th>  
-                      <th>Name</th>
-                      <th>Phone</th>
-                      <th>Usertype</th>
-                      <th>Email</th>
-                      <th>EDIT</th>
-                      <th>DELETE</th>
+                      <th>Nombre</th>
+                      <th>Teléfono</th>
+                      <th>Tipo de usuario</th>
+                      <th>Correo electrónico</th>
+                      <th>Editar</th>
+                      <th>Eliminar</th>
                     </thead>
                     <tbody>
                       @foreach($users as $row)
@@ -141,13 +147,13 @@
                         <td>
                             <a href="/role-edit/{{ $row->id }}" class="btn btn-success">
                               <i class="bi bi-pencil"></i>
-                              EDIT
+                              Editar
                             </a>
                         </td>
                         <td>
                           <a href="javascript:void(0)" class="btn btn-danger deletebtn">
                             <i class="bi bi-trash3"></i>
-                            DELETE
+                            Eliminar
                           </a>
                         </td>
                       </tr>
@@ -169,6 +175,29 @@
     <script>
       $(document).ready( function() {
           $('#userDatatable').DataTable();
+      });
+
+      var table = $('#userDatatable').DataTable({
+          language: {
+              "decimal": "",
+              "emptyTable": "No hay información",
+              "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+              "infoEmpty": "Mostrando 0 a 0 de 0 Entradas",
+              "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+              "infoPostFix": "",
+              "thousands": ",",
+              "lengthMenu": "Mostrar _MENU_ Entradas",
+              "loadingRecords": "Cargando...",
+              "processing": "Procesando...",
+              "search": "Buscar:",
+              "zeroRecords": "Sin resultados encontrados",
+              "paginate": {
+                  "first": "Primero",
+                  "last": "Ultimo",
+                  "next": "Siguiente",
+                  "previous": "Anterior"
+              }
+          },
       });
 
       $(document).ready( function(){

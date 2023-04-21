@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-   Edit User Registration| Micromedicion
+   Editar Registro de Usuarios| Micromedición
 
 @endsection
 
@@ -12,7 +12,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="editRole">Edit User Registration.</h4>
+                    <h4 class="editRole">Editar Registro de Usuarios.</h4>
                 </div>
                 <div class="card-body">
                     <div class="rowPrueba">
@@ -22,17 +22,17 @@
                             {{ method_field('PUT') }}
 
                                 <div class="form-group">
-                                        <label>Name</label>
+                                        <label>Nombre</label>
                                         <input type="text" name="name" value="{{ $users->name }}" class="form-control">
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Phone</label>
+                                    <label>Teléfono</label>
                                     <input type="text" name="phone" value="{{ $users->phone }}" class="form-control">
                                 </div>
 
                                 <div class="form-group">
-                                        <label>Give Role</label>
+                                        <label>Asignar tipo de usuario</label>
                                         <select name="usertype" class="form-control">
                                             <option value="admin">Admin</option>
                                             <option value="user">User</option>
@@ -40,12 +40,12 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Email</label>
+                                    <label>Correo electrónico</label>
                                     <input type="text" name="email" value="{{ $users->email }}" class="form-control">
                                 </div>
 
-                                <button type="submit" class="btn btn-success">Update</button>
-                                <a href="/role-register" class="btn btn-danger">Cancel</a>
+                                <button type="submit" class="btn btn-success">Actualizar</button>
+                                <a href="/role-register" class="btn btn-danger">Cancelar</a>
                             </form>
                         </div>
 

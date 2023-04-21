@@ -27,7 +27,6 @@ class DashboardController extends Controller
         $user = Auth::user();
         $users = User::all();
         session_start();
-        $_SESSION['msj']="Success";
         //$value = 'success';
 
         //Session::flash('statuscode', 'success');

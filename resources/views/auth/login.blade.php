@@ -9,23 +9,23 @@
                 <!--<div class="card-header">{{ __('Login') }}</div> -->
                 
                 <div class="card-header bg-transparent  border-white pb-0 text-start">
-                    <h4 class="font-weight-900">Sign In</h4>
+                    <h4 class="font-weight-900">Inicio de sesión</h4>
                     <!--<p class="mb-0">Enter your email and password to sign in</p>-->
                 </div>
 
                     <div class="card-body">
                     <form role="form" method="POST" action="/login">
                         <div class="flex flex-col mb-3">
-                            <label for="email">{{ __('Email') }}</label>
+                            <label for="email">{{ __('Correo electrónico') }}</label>
                         </div>
                         @csrf
                         @method('post')
                         <div class="flex flex-col mb-3">
-                            <input type="email" name="email" class="form-control form-control-lg" value="{{ old('email') ?? 'admin@argon.com' }}" aria-label="Email">
+                            <input type="email" name="email" class="form-control form-control-lg" aria-label="Email">
                             @error('email') <p class="text-danger text-xs pt-1"> {{$message}} </p>@enderror
                         </div>
                         <div class="flex flex-col mb-3">
-                            <label for="password">{{ __('Password') }}</label>
+                            <label for="password">{{ __('Contraseña') }}</label>
                         </div>
                         <div class="flex flex-col mb-3">
                             <input type="password" name="password" class="form-control form-control-lg" aria-label="Password" value="secret" >
@@ -34,15 +34,15 @@
 
                         <div class="form-check form-switch">
                             <input class="form-check-input" name="remember" type="checkbox" id="rememberMe">
-                            <label class="form-check-label" for="rememberMe">Remember me</label>
+                            <label class="form-check-label" for="rememberMe">Recordarme</label>
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0" style="color:##0D47A1">Sign in</button>
+                            <button type="submit" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0" style="color:##0D47A1">Iniciar sesión</button>
                         </div>
                         </div>
                         <div class="card-footer text-center bg-transparent border-white pt-0 px-lg-2 px-1">
                             <p class="mb-1 text-sm mx-auto">
-                                <a href="{{ route('password.request') }}" class="text-gradient font-weight-bold" style="color:#FFA726">Forgot you password?</a>
+                                <a href="{{ route('password.request') }}" class="text-gradient font-weight-bold" style="color:#FFA726">¿Olvidaste tu contraseña?</a>
                             </p>
                         </div>
                         <!--<div class="card-footer text-center bg-transparent border-white pt-0 px-lg-2 px-1">
@@ -82,7 +82,7 @@
       <div class="copyright" id="copyright">
         &copy; <script>
           document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
-        </script>, Designed and Coded by Micromedición IoT
+        </script>, Diseñado y Programado por Micromedición IoT
       </div>
     </div>
   </footer>

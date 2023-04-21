@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-   Edit Installation's Registry | Micromedicion
+   Editar Registro de Instalación | Micromedición
 
 @endsection
 
@@ -12,7 +12,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="editRole">Edit Installation's Registry.</h4>
+                    <h4 class="editRole">Editar Registro de Instalación.</h4>
                 </div>
                 <div class="card-body">
                     <div class="rowPrueba">
@@ -22,22 +22,22 @@
                             {{ method_field('PUT') }}
 
                                 <div class="form-group">
-                                        <label>User Id</label>
+                                        <label>Id Usuario</label>
                                         <input type="text" name="idUsuario" value="{{ $instalacion->idUsuario }}" class="form-control">
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Device Id</label>
+                                    <label>Id Dispositivo</label>
                                     <input type="text" name="idDispositivo" value="{{ $instalacion->idDispositivo }}" class="form-control">
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Pipe Size</label>
+                                    <label>Diámetro de tubería</label>
                                     <input type="text" name="diametroTuberia" value="{{ $instalacion->diametroTuberia }}" class="form-control">
                                 </div>
 
-                                <button type="submit" class="btn btn-success">Update</button>
-                                <a href="/instalacion-register" class="btn btn-danger">Cancel</a>
+                                <button type="submit" class="btn btn-success">Actualizar</button>
+                                <a href="/instalacion-register" class="btn btn-danger">Cancelar</a>
                             </form>
                         </div>
 

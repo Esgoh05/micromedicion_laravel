@@ -12,7 +12,7 @@
     <div class="modal-dialog p-5" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Edit Your Profile</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Edita tu perfil</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -25,15 +25,15 @@
   
   
             <div class="form-group">
-              <label for="recipient-name" class="col-form-label">Name:</label>
-              <input type="text" name="name" class="form-control" id="recipient-name" value={{ Auth::user()->name }}>
+              <label for="recipient-name" class="col-form-label">Nombre:</label>
+              <input type="text" name="name" class="form-control" id="recipient-name" value="{{ Auth::user()->name }}">
             </div>
             <div class="form-group">
-              <label for="recipient-name" class="col-form-label">Phone:</label>
+              <label for="recipient-name" class="col-form-label">Teléfono:</label>
               <input type="text" name="phone" class="form-control" id="recipient-name" value={{ Auth::user()->phone }}>
             </div>
             <div class="form-group">
-              <label for="recipient-name" class="col-form-label">Email:</label>
+              <label for="recipient-name" class="col-form-label">Correo electrónico:</label>
               <input type="text" name="email" class="form-control" id="recipient-name" value={{ Auth::user()->email }}>
             </div>
             <!-- <div class="form-group">
@@ -47,8 +47,8 @@
             </div> -->
             </div>
             <div class="modal-footer border-white">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Save</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              <button type="submit" class="btn btn-primary">Guardar</button>
             </div>
         </form>
       </div>
@@ -73,7 +73,7 @@
                         <h2> {{ Auth::user()->name }}</h2>
                         <p class="datos"><i class="bi bi-envelope"></i>{{ Auth::user()->email }}</p>
                         <p class="datos"><i class="bi bi-telephone"></i></i>{{ Auth::user()->phone }}</p>
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Edit Profile</button>
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Editar perfil</button>
                     </div>
                 </div>
             </div>

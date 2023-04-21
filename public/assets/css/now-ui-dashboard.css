@@ -22,6 +22,9 @@ Licensed under the MIT license - http://opensource.org/licenses/MIT
 
 Copyright (c) 2015 Daniel Eden
 */
+#imagen{
+  border-color: #16c00e;
+}
 
 .swal-title {
   color: #0c2646;

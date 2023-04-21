@@ -80,7 +80,7 @@
               <li class="{{ 'role-register' == request()->path() ? 'active' : '' }}">
                 <a href="/role-register">
                   <i class="bi bi-people-fill"></i>
-                  <p>Users</p>
+                  <p>Usuarios</p>
                 </a>
               </li>
             @endif
@@ -91,7 +91,7 @@
               <li class="{{ 'device-register' == request()->path() ? 'active' : '' }}">
                 <a href="/device-register">
                   <i class="bi bi-cpu"></i>
-                  <p>Devices</p>
+                  <p>Dispositivos</p>
                 </a>
               </li>
             @endif
@@ -102,7 +102,7 @@
               <li class="{{ 'instalacion-register' == request()->path() ? 'active' : '' }}">
                 <a href="/instalacion-register">
                   <i class="bi bi-house-gear"></i>
-                  <p>Installation</p>
+                  <p>Instalación</p>
                 </a>
               </li>
             @endif
@@ -114,7 +114,7 @@
               <li class="{{ 'user-dashboard' == request()->path() ? 'active' : '' }}">
                 <a href="/user-dashboard">
                   <i class="bi bi-clipboard2-data"></i>
-                  <p>Abstract</p>
+                  <p>Historial</p>
                 </a>
               </li>
             @endif
@@ -125,7 +125,7 @@
               <li class="{{ 'user-installation' == request()->path() ? 'active' : '' }}"> 
                 <a href="/user-installation">
                   <i class="bi bi-house-check"></i>
-                  <p>Installation</p>
+                  <p>Instalación</p>
                 </a>
               </li>
             @endif
@@ -146,7 +146,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand">Hi, {{ Auth::user()->name }}.</a>
+            <a class="navbar-brand">Hola, {{ Auth::user()->name }}.</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -204,14 +204,14 @@
                   @if($user->usertype == "user")
                   <a class="dropdown-item" href="/user-profile">
                     <i class="bi bi-person"></i>
-                    Profile
+                    Perfil
                   </a>
                   @endif
                   @endisset
                   <a class="dropdown-item" href="{{ route('logout') }}"onclick="event.preventDefault();
                      document.getElementById('logout-form').submit();">
                     <i class="bi bi-box-arrow-right"></i>
-                    {{ __('Logout') }}   
+                    {{ __('Salir') }}   
                   </a>
                   <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">           
                     @csrf        
@@ -254,7 +254,7 @@
               </li>
               <li>
                 <a href="http://presentation.creative-tim.com">
-                  About Us
+                  Acerca de nosotros
                 </a>
               </li>
               <!--<li>
@@ -267,7 +267,7 @@
           <div class="copyright" id="copyright">
             &copy; <script>
               document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
-            </script>, Designed by <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+            </script>, Diseñado por<a href="https://www.invisionapp.com" target="_blank">Invision</a>. Programado por <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
           </div>
         </div>
       </footer>
