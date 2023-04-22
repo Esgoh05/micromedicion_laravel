@@ -113,27 +113,15 @@ Copyright (c) 2015 Daniel Eden
   opacity: 1;
 }
 
-.btn_update_foto{
-  border: 0;
-  align-content: center;
-  display: flex;
-  width: 5rem;
-  height: 5rem;
-  border-radius: 50%;
-  margin-top: 5rem;
-  margin-left: 5rem;
-  background-color: gray;
+#navbarDropdownMenuLinkPhoto{
+  margin-top: 35%;
+  margin-inline-start: 35%;
+  padding-bottom: 0;
 }
 
 .bi-camera-fill{
 color: #2a5788;
-margin-left: 1.3rem;
-margin-top: 0.6rem;
 }
-
-
-
-
 
 .contenedor_medio{
   flex-grow: 3;
@@ -144,7 +132,6 @@ margin-top: 0.6rem;
   padding-left: 0.5rem;
   padding-right: 2.5rem;
   margin-right: 1.5rem;
-
 }
 
 
@@ -2870,7 +2857,7 @@ a[data-toggle="collapse"][aria-expanded="true"] .caret,
 .dropdown-menu {
   border: 0;
   box-shadow: 0px 10px 50px 0px rgba(0, 0, 0, 0.2);
-  border-radius: 0.125rem;
+  border-radius: 0.5rem;
   -webkit-transition: all 150ms linear;
   -moz-transition: all 150ms linear;
   -o-transition: all 150ms linear;
