@@ -73,6 +73,7 @@ class DashboardController extends Controller
         $device->direccionMac = $request->input('direccionMac');
         $device->modeloSensor = $request->input('modeloSensor');
         $device->factorK = $request->input('factorK');
+        $device->status_dispositivo = $request->input('status_dispositivo');
 
         $device->save();
         
@@ -119,6 +120,7 @@ class DashboardController extends Controller
 
         $data->name = $request->input('name');
         $data->phone = $request->input('phone');
+        $data->usertype = $request->input('usertype');
         $data->email = $request->input('email');
         $data->password = Hash::make($request->input('password'));
         

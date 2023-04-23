@@ -34,6 +34,14 @@
             <label for="recipient-name" class="col-form-label">Factor K:</label>
             <input type="text" name="factorK" class="form-control" id="recipient-name">
           </div>
+          <div class="form-group">
+            <label>Estado del dispositivo:</label>
+            <select name="status_dispositivo" class="form-control">
+                <option value="activo">Activo</option>
+                <option value="instalado">Instalado</option>
+                <option value="baja">Baja</option>
+            </select>
+          </div>
           </div>
           <div class="modal-footer border-white">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -103,6 +111,7 @@
                       <th>Dirección Mac</th>
                       <th>Modelo del sensor</th>
                       <th>Factor K</th>
+                      <th>Estado de dispositivo</th>
                       <th>Editar</th>
                       <th>Eliminar</th>
                     </thead>
@@ -113,6 +122,10 @@
                         <td>{{ $row->direccionMac }}</td>
                         <td>{{ $row->modeloSensor }}</td>
                         <td>{{ $row->factorK }}</td>
+                        <td>
+                          {{ $row->status_dispositivo }}
+                          <i class="bi bi-toggle-on"></i>
+                        </td>
                         <td>
                             <a href="/devices-edit/{{ $row->id }}" class="btn btn-success">
                               <i class="bi bi-pencil"></i>
