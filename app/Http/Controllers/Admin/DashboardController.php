@@ -50,7 +50,7 @@ class DashboardController extends Controller
         $users->update();
 
 
-        return redirect('/role-register') ->with('status','Your data is updated');
+        return redirect('/role-register') ->with('status','Tu información ha sido actualizada');
     }
 
     public function registerdelete(Request $request, $id){
@@ -58,7 +58,7 @@ class DashboardController extends Controller
         $users->delete();
 
 
-        return redirect('/role-register') ->with('status','Your data is deleted');
+        return redirect('/role-register') ->with('status','Tu infromación ha sido eliminada');
     }
 
     public function deviceregister(){
@@ -76,7 +76,7 @@ class DashboardController extends Controller
 
         $device->save();
         
-        return redirect('/device-register') ->with('status', 'New device was added');
+        return redirect('/device-register') ->with('status', 'Un nuevo dispositivo ha sigo agregado');
     }
 
     public function registerdeviceedit(Request $request, $id){
@@ -93,7 +93,7 @@ class DashboardController extends Controller
         $device->update();
 
 
-        return redirect('/device-register') ->with('status','Your data is updated');
+        return redirect('/device-register') ->with('status','Tu información ha sido actualizada');
     }
 
     public function devicedelete(Request $request, $id){
@@ -101,7 +101,7 @@ class DashboardController extends Controller
         $device->delete();
 
 
-        return redirect('/device-register') ->with('status','Your data is deleted');
+        return redirect('/device-register') ->with('status','Tu infromación ha sido eliminada');
     }
 
     public function savenewuser(Request $request){
@@ -155,7 +155,7 @@ class DashboardController extends Controller
        echo $request->input('diametroTuberia');
         $instalacion->save();
         
-        return redirect('/instalacion-register') ->with('status', 'New user was added');
+        return redirect('/instalacion-register') ->with('status', 'Una nueva instalación ha sido agregada');
     }
 
     public function instalacionedit(Request $request, $id){
@@ -172,7 +172,7 @@ class DashboardController extends Controller
         $instalacion->update();
 
 
-        return redirect('/instalacion-register') ->with('status','Your data is updated');
+        return redirect('/instalacion-register') ->with('status','Tu información ha sido actualizada');
     }
 
     public function installationdelete(Request $request, $id){
@@ -180,7 +180,7 @@ class DashboardController extends Controller
         $instalacion->delete();
 
 
-        return redirect('/instalacion-register') ->with('status','Your data is deleted');
+        return redirect('/instalacion-register') ->with('status','Tu infromación ha sido eliminada');
     }
     
 }

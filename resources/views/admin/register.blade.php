@@ -57,11 +57,6 @@
             <label for="formFile" class="form-label">Foto de perfil:</label>
             <input class="form-control" type="file" id="formFile" name="foto_perfil">
           </div>
-
-          <!--<div class="form-group">
-            <label for="message-text" class="col-form-label">Message:</label>
-            <textarea class="form-control" id="message-text"></textarea>
-          </div> -->
         
           </div>
           <div class="modal-footer border-white">

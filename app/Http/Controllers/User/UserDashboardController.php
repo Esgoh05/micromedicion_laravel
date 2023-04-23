@@ -72,4 +72,23 @@ class UserDashboardController extends Controller
         return redirect('/user-profile') ->with('status','Your data is updated');
     }
 
+    public function fotoperfiledit(Request $request, $id){
+        $user = User::find($id);
+
+        if($request->hasFile('foto_perfil')){
+            $file = $request->file('foto_perfil');
+            $destinationPath = 'img/fotos/';
+            $filename = time() . '-' . $file->getClientOriginalName();
+            $uploadSucces = $request->file('foto_perfil')->move($destinationPath, $filename);
+            $user->foto_perfil = $destinationPath . $filename;
+
+        }
+    
+        $user->update();
+        //echo $user;
+
+
+        return redirect('/user-profile') ->with('status','Your data is updated');
+    }
+
 }

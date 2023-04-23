@@ -76,6 +76,7 @@ Route::group(['middleware' => ['auth', 'user']], function(){
     Route::put('/installation-update-user/{id}', [UserDashboardController::class,'installationupdateuser']);
     Route::get('/user-profile', [UserDashboardController::class,'viewuserprofile']);
     Route::put('/user-profile/{id}', [UserDashboardController::class,'userprofileedit']);
+    Route::put('/foto-perfil/{id}', [UserDashboardController::class,'fotoperfiledit']);
     
     
 });

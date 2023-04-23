@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('direccionMac');
             $table->string('modeloSensor');
             $table->string('factorK');
+            $table->string('status_dispositivo')->nullable();
             $table->timestamps();
         });
     }
