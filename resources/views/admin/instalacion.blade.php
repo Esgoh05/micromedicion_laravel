@@ -39,9 +39,13 @@
             <label for="inputState">Id - Modelo de dispositivo</label>
             <select id="inputState" class="form-control" name="idDispositivo" style="width: 100%">
               <option value="" hidden selected>Seleccionar...</option>
+              
               @foreach ($deviceIds as $deviceId)
+              @if($deviceId->status_dispositivo == 1) 
               <option value="{{ $deviceId->id}}"> {{ $deviceId->id}} -> {{ $deviceId->modeloSensor}}</option> 
+              @endif
               @endforeach
+              
             </select>
           </div>
           <!--End. Select Id - modelo dispositivo. Modelo:Device-->

@@ -22,6 +22,16 @@ Licensed under the MIT license - http://opensource.org/licenses/MIT
 
 Copyright (c) 2015 Daniel Eden
 */
+.biHose{
+  color: #1E88E5;
+  font-size: 16px;
+}
+
+.bi-circle-fill{
+  color: #1beb11;
+  font-size: 16px;
+}
+
 #imagen{
   border-color: #16c00e;
 }

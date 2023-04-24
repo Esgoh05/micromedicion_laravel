@@ -135,7 +135,7 @@ class DashboardController extends Controller
     public function instalacion(){
         $user = Auth::user();
         $userId = User::select('id','email')->get(); 
-        $deviceIds = Device::select('id','modeloSensor')->get(); 
+        $deviceIds = Device::select('id','modeloSensor', 'status_dispositivo')->get(); 
         $instalacion = Instalacion::all();
         return view('admin.instalacion', compact('user','userId', 'deviceIds')) ->with('instalacion', $instalacion);
     }

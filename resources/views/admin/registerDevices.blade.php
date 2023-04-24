@@ -96,6 +96,8 @@
                 </button>
               </div>  
             </div>
+          </div>
+        </div>
 
 <div class="row">
           <div class="col-md-12">
@@ -111,7 +113,7 @@
                       <th>Dirección Mac</th>
                       <th>Modelo del sensor</th>
                       <th>Factor K</th>
-                      <th>Estado de dispositivo</th>
+                      <th>Estado del dispositivo</th>
                       <th>Editar</th>
                       <th>Eliminar</th>
                     </thead>
@@ -122,10 +124,21 @@
                         <td>{{ $row->direccionMac }}</td>
                         <td>{{ $row->modeloSensor }}</td>
                         <td>{{ $row->factorK }}</td>
-                        <td>
-                          {{ $row->status_dispositivo }}
-                          <i class="bi bi-toggle-on"></i>
-                        </td>
+                        @switch(true)
+                            @case($row->status_dispositivo == 1)
+                            <td>
+                              Activo
+                              <i class="bi bi-circle-fill"></i>
+                            </td>
+                            @break
+
+                            @case($row->status_dispositivo == 2)
+                            <td>
+                              Instalado
+                              <i class="biHose bi-house-check-fill"></i>
+                            </td>
+                                @break
+                        @endswitch
                         <td>
                             <a href="/devices-edit/{{ $row->id }}" class="btn btn-success">
                               <i class="bi bi-pencil"></i>

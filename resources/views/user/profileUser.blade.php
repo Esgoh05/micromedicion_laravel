@@ -125,7 +125,7 @@
             <div class="contenedor-header">
                 <!-- contenedor foto de perfil -->
                 <div class="contenedor_izquierda">
-                    <div class="card-img">
+                    <div class="card-img img-fluids">
                     <img class="image-profile" src="{{ Auth::user()->foto_perfil }}" alt="mifoto">
                     </div>
                 </div>
