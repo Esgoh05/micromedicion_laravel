@@ -141,23 +141,43 @@ class DashboardController extends Controller
     }
 
     public function savenewinstalacion(Request $request){
-        $instalacion = new Instalacion;
+        $deviceStatusActivo = 1;
+        $deviceStatusInstalado = 2;
+        $deviceIdRequest = $request->input('idDispositivo');
+        
 
-        $instalacion->idUsuario = $request->input('idUsuario');
-        $instalacion->idDispositivo = $request->input('idDispositivo');
-        $instalacion->diametroTuberia = $request->input('diametroTuberia');
-        $instalacion->ssid = $request->input('ssid');
-        $instalacion->passwordSsid = $request->input('passwordSsid');
-        $instalacion->ubicacionDispositivo = $request->input('ubicacionDispositivo');
+        $device = Device::where('id', $deviceIdRequest)
+        ->pluck('status_dispositivo')->first();
+
+        //echo($deviceStatusActivo);
+        //echo($device);
+        if($device == $deviceStatusActivo){ 
+            //$d = "Activo";
+            //echo($d);
+            $dispositivo = Device::find($deviceIdRequest);
+            $dispositivo->status_dispositivo = $deviceStatusInstalado;
+            $dispositivo->update();
+            //echo($dispositivo);
+            $instalacion = new Instalacion;
+
+            $instalacion->idUsuario = $request->input('idUsuario');
+            $instalacion->idDispositivo = $request->input('idDispositivo');
+            $instalacion->diametroTuberia = $request->input('diametroTuberia');
+            $instalacion->ssid = $request->input('ssid');
+            $instalacion->passwordSsid = $request->input('passwordSsid');
+            $instalacion->ubicacionDispositivo = $request->input('ubicacionDispositivo');
+                
+            //echo $request->input('idUsuario');
+            //echo $request->input('idDispositivo');
+            //echo $request->input('diametroTuberia');
+            $instalacion->save();
+            return redirect('/instalacion-register') ->with('status', 'Una nueva instalación ha sido agregada');
+        }
+        elseif ($device == $deviceStatusInstalado){
+            return redirect('/instalacion-register') ->with('status', 'Este dispositivo ya se encuentra instalado');
+        };
+ 
         
-        
-       // input('password');
-       echo $request->input('idUsuario');
-       echo $request->input('idDispositivo');
-       echo $request->input('diametroTuberia');
-        $instalacion->save();
-        
-        return redirect('/instalacion-register') ->with('status', 'Una nueva instalación ha sido agregada');
     }
 
     public function instalacionedit(Request $request, $id){

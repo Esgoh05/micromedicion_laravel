@@ -37,9 +37,9 @@
           <div class="form-group">
             <label>Estado del dispositivo:</label>
             <select name="status_dispositivo" class="form-control">
-                <option value="activo">Activo</option>
-                <option value="instalado">Instalado</option>
-                <option value="baja">Baja</option>
+                <option value="1">Activo</option>
+                <option value="2">Instalado</option>
+                <option value="3">Baja</option>
             </select>
           </div>
           </div>
