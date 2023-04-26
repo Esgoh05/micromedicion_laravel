@@ -27,6 +27,7 @@ class DashboardController extends Controller
         $user = Auth::user();
         $users = User::all();
         session_start();
+        
         //$value = 'success';
 
 
@@ -68,12 +69,14 @@ class DashboardController extends Controller
     }
 
     public function savenewdevice(Request $request){
+        $deviceStatusActivo = 1;
         $device = new Device;
 
         $device->direccionMac = $request->input('direccionMac');
         $device->modeloSensor = $request->input('modeloSensor');
         $device->factorK = $request->input('factorK');
-        $device->status_dispositivo = $request->input('status_dispositivo');
+        //$device->status_dispositivo = $request->input('status_dispositivo');
+        $device->status_dispositivo = $deviceStatusActivo;
 
         $device->save();
         
@@ -198,11 +201,33 @@ class DashboardController extends Controller
     }
 
     public function installationdelete(Request $request, $id){
-        $instalacion = Instalacion::findOrFail($id);
-        $instalacion->delete();
+        
 
+        $deviceStatusInstalado = 2;
+        $deviceStatusBaja = 3;
+        //$dispositivo = Device::find($deviceIdRequest);
+        //$dispositivo->status_dispositivo = $deviceStatusInstalado;
+        
+        
+        //echo($id);
+        $installation = Instalacion::where('id', $id)->pluck('idDispositivo')->first();
+        //echo($installation);
+        $deviceStatus = Device::where('id', $installation)->pluck('status_dispositivo')->first();
+        //echo($deviceStatus);
 
-        return redirect('/instalacion-register') ->with('status','Tu infromación ha sido eliminada');
+        if($deviceStatus == $deviceStatusInstalado){ 
+            $estadoBaja = Device::find($installation);
+            $estadoBaja->status_dispositivo = $deviceStatusBaja;
+            //echo($estadoBaja);
+            //echo($deviceStatusBaja);
+            $estadoBaja->update();
+
+            $instalacion = Instalacion::findOrFail($id);
+            $instalacion->delete();
+            return redirect('/instalacion-register') ->with('status','Tu infromación ha sido eliminada');
+        }
+        
+        //return redirect('/instalacion-register') ->with('status','Tu infromación ha sido eliminada');
     }
     
 }

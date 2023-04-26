@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('idUsuario')->constrained('users');
             $table->string('idDispositivo');
-            $table->string('diametroTuberia');
-            $table->string('ssid');
-            $table->string('passwordSsid');
-            $table->string('ubicacionDispositivo');
+            $table->string('diametroTuberia', 5);
+            $table->string('ssid', 50);
+            $table->string('passwordSsid', 50);
+            $table->string('ubicacionDispositivo', 30);
             $table->timestamps();
 
             //$table->foreign('idUsuario')->references('id')->users();

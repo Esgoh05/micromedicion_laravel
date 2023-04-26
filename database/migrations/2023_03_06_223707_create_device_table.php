@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('device', function (Blueprint $table) {
             $table->id();
-            $table->string('direccionMac');
-            $table->string('modeloSensor');
-            $table->string('factorK');
+            $table->string('direccionMac', 17);
+            $table->string('modeloSensor', 10);
+            $table->float('factorK', 4,2);
             $table->integer('status_dispositivo')->nullable();
             $table->timestamps();
         });

@@ -22,12 +22,24 @@ Licensed under the MIT license - http://opensource.org/licenses/MIT
 
 Copyright (c) 2015 Daniel Eden
 */
+.biBaja{
+  color: #f4a020;
+  font-size: 16px;
+}
+
+.deletebtndisable:not([data-action]):not([class*="btn-outline-"]):hover {
+  pointer-events: none; 
+  cursor: default; 
+  background-color: rgba(148, 146, 146, 0.5);
+  box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.17);
+}
+
 .biHose{
   color: #1E88E5;
   font-size: 16px;
 }
 
-.bi-circle-fill{
+.biActivo{
   color: #1beb11;
   font-size: 16px;
 }

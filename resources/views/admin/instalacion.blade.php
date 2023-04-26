@@ -41,9 +41,9 @@
               <option value="" hidden selected>Seleccionar...</option>
               
               @foreach ($deviceIds as $deviceId)
-              @if($deviceId->status_dispositivo == 1) 
-              <option value="{{ $deviceId->id}}"> {{ $deviceId->id}} -> {{ $deviceId->modeloSensor}}</option> 
-              @endif
+                @if($deviceId->status_dispositivo == 1) 
+                  <option value="{{ $deviceId->id}}"> {{ $deviceId->id}} -> {{ $deviceId->modeloSensor}}</option> 
+                @endif
               @endforeach
               
             </select>

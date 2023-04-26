@@ -56,7 +56,7 @@
             <li class="{{ 'dashboard' == request()->path() ? 'active' : '' }}">
               <a href="/dashboard">
                 <i class="bi bi-clipboard2-data"></i>
-                <p>Dashboard</p>
+                <p>Panel de resumen</p>
               </a>
             </li>
             @endif

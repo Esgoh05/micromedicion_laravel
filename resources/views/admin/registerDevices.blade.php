@@ -34,14 +34,7 @@
             <label for="recipient-name" class="col-form-label">Factor K:</label>
             <input type="text" name="factorK" class="form-control" id="recipient-name">
           </div>
-          <div class="form-group">
-            <label>Estado del dispositivo:</label>
-            <select name="status_dispositivo" class="form-control">
-                <option value="1">Activo</option>
-                <option value="2">Instalado</option>
-                <option value="3">Baja</option>
-            </select>
-          </div>
+
           </div>
           <div class="modal-footer border-white">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -128,7 +121,7 @@
                             @case($row->status_dispositivo == 1)
                             <td>
                               Activo
-                              <i class="bi bi-circle-fill"></i>
+                              <i class="biActivo bi-circle-fill"></i>
                             </td>
                             @break
 
@@ -136,6 +129,12 @@
                             <td>
                               Instalado
                               <i class="biHose bi-house-check-fill"></i>
+                            </td>
+                                @break
+                                @case($row->status_dispositivo == 3)
+                            <td>
+                              Baja
+                              <i class="biBaja bi-circle-fill"></i>
                             </td>
                                 @break
                         @endswitch
@@ -146,10 +145,19 @@
                             </a>
                         </td>
                         <td>
-                            <a href="javascript:void(0)" class="btn btn-danger deletebtn">
-                              <i class="bi bi-trash3"></i>
-                              Eliminar
-                            </a>
+                          @if($row->status_dispositivo == 2) 
+                          <a href="#" class="btn deletebtndisable" disabled>
+                          
+                            <i class="bi bi-trash3"></i>
+                            Eliminar
+                          </a>
+                          @else
+                          <a href="javascript:void(0)" class="btn btn-danger deletebtn">
+                            <i class="bi bi-trash3"></i>
+                            Eliminar
+                          </a>                             
+                          @endif
+                            
                         </td>
                       </tr>
                       @endforeach
