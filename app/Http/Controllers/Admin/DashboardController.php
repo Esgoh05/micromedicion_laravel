@@ -229,5 +229,11 @@ class DashboardController extends Controller
         
         //return redirect('/instalacion-register') ->with('status','Tu infromación ha sido eliminada');
     }
+
+    public function viewpanelconsumo(){
+        $user = Auth::user();
+
+        return view('admin.panel-consumo',compact('user'));
+    }
     
 }

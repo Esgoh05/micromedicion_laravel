@@ -22,6 +22,13 @@ Licensed under the MIT license - http://opensource.org/licenses/MIT
 
 Copyright (c) 2015 Daniel Eden
 */
+
+canvas{
+  padding:0;
+  font-size: 16rem;
+  font-style: italic;
+}
+
 .biBaja{
   color: #f4a020;
   font-size: 16px;

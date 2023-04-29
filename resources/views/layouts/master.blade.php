@@ -108,6 +108,17 @@
             @endif
           @endisset
 
+          @isset($user)
+            @if($user->usertype == "admin")  
+              <li class="{{ 'panel-consumo' == request()->path() ? 'active' : '' }}">
+                <a href="/panel-consumo">
+                  <i class="bi bi-graph-up"></i>
+                  <p>Panel de consumo</p>
+                </a>
+              </li>
+            @endif
+          @endisset
+
 
           @isset($user)
             @if($user->usertype == "user") 

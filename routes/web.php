@@ -65,6 +65,8 @@ Route::group(['middleware' => ['auth', 'admin']], function(){
     Route::put('/installation-update/{id}', [DashboardController::class,'installationupdate']);
 
     Route::delete('/installation-delete/{id}', [DashboardController::class,'installationdelete']);
+
+    Route::get('/panel-consumo', [DashboardController::class,'viewpanelconsumo']);
     
 });
 
