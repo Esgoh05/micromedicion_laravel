@@ -7,5 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class MedicionContinua extends Model
 {
-    use HasFactory;
+    protected $table = 'medicion_continuas';
+
+    protected $fillable = [
+        'caudalPromedio',
+        'tiempo',
+        'volumen',
+    ];
 }

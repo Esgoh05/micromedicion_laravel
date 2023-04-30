@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('medicion_continuas', function (Blueprint $table) {
             $table->id();
-            $table->timestamps('inicio');
+            $table->timestamps();
             $table->double('caudalPromedio');
-            $table->time('time');
+            $table->time('tiempo');
             $table->double('volumen');
-            $table->timestamps('fin');
+            $table->dateTimeTz('fin');
+            
         });
     }
 
