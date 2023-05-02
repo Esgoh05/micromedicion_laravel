@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Device;
 use App\Models\Instalacion;
 use App\Http\Controllers\Controller;
+use App\Models\MedicionContinua;
 //use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -232,8 +233,23 @@ class DashboardController extends Controller
 
     public function viewpanelconsumo(){
         $user = Auth::user();
+        $caudalPromedioGeneral = MedicionContinua::select('caudalPromedio')->pluck('caudalPromedio');
+        $tiempoGeneral = MedicionContinua::select('tiempo')->pluck('tiempo');
+        $medicionesContinuas = MedicionContinua::all();
 
-        return view('admin.panel-consumo',compact('user'));
+        $data=[];
+
+        //echo($caudalPromedioGeneral);
+        //echo($tiempoGeneral);
+        //echo($medicionesContinuas);
+
+        foreach($medicionesContinuas as $medicionContinua){
+            $data['label'][] = $medicionContinua->caudalPromedio;
+            $data['data'][] = $medicionContinua->tiempo;
+        }
+
+        $data['data'] = json_encode($data); 
+        return view('admin.panel-consumo', $data, compact('user', 'caudalPromedioGeneral'));
     }
     
 }

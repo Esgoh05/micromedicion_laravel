@@ -112,7 +112,9 @@
 
 <script>
   var ctx= document.getElementById("bigDashboardChart").getContext("2d");
-  const caudalPromedio = [179, 179, 238, 218, 348, 398, 407, 417, 407, 437, 467, 457, 447, 447, 437, 447, 447, 437, 447,]
+  const cData = JSON.parse('<?php echo $data; ?>');
+  console.log(cData);
+  //const caudalPromedio = [179, 179, 238, 218, 348, 398, 407, 417, 407, 437, 467, 457, 447, 447, 437, 447, 447, 437, 447,]
   const tiempo = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
 
   /*var bigDashboardChart = new Chart(ctx, {
@@ -143,10 +145,16 @@
   var bigDashboardChart = new Chart(ctx, {
     type: "line",
     data:{
-      labels: tiempo,
+      //labels: tiempo,
+      labels: cData.data,
       datasets:[{
         label:'Caudal',
-        data: caudalPromedio,
+        //data: caudalPromedio,
+        data: cData.label,
+        fill: false,
+        borderColor:[
+          '#0c2646',
+        ]
         }]
 
     },
