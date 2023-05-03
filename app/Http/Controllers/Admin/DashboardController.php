@@ -233,8 +233,6 @@ class DashboardController extends Controller
 
     public function viewpanelconsumo(){
         $user = Auth::user();
-        $caudalPromedioGeneral = MedicionContinua::select('caudalPromedio')->pluck('caudalPromedio');
-        $tiempoGeneral = MedicionContinua::select('tiempo')->pluck('tiempo');
         $medicionesContinuas = MedicionContinua::all();
 
         $data=[];
@@ -249,7 +247,7 @@ class DashboardController extends Controller
         }
 
         $data['data'] = json_encode($data); 
-        return view('admin.panel-consumo', $data, compact('user', 'caudalPromedioGeneral'));
+        return view('admin.panel-consumo', $data, compact('user'));
     }
     
 }

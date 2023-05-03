@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('instalacion', function (Blueprint $table) {
             $table->id();
             $table->foreignId('idUsuario')->constrained('users');
-            $table->string('idDispositivo');
+            $table->foreignId('idDispositivo')->constrained('device');
+            //$table->string('idDispositivo');
             $table->string('diametroTuberia', 5);
             $table->string('ssid', 50);
             $table->string('passwordSsid', 50);

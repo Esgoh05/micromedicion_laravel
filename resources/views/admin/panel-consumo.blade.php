@@ -8,11 +8,84 @@
 
 @section('content')
 
-<div class="card">
+<!--<div class="card">
   <div class="card-header">
+    <h5 class="card-category">Medición total.</h5>  
+    <h2 class="titulo">Gráfico caudal-tiempo.</h2>
     <canvas id="bigDashboardChart"></canvas>
   </div>  
+</div> -->
+
+
+<div class="row">
+  <div class="col-12">
+      <div class="card card-chart">
+          <div class="card-header ">
+              <div class="row">
+                  <div class="col-sm-6 text-left">
+                      <h2 class="card-title" style="margin-left: 4rem">Gráfico caudal-tiempo.</h2>
+                  </div>
+                  <div class="col-sm-6">
+                      <!--<div class="btn-group btn-group-toggle float-right" data-toggle="buttons" style="margin-right: 1.5rem">
+                      <label class="btn btn-sm btn-primary btn-simple active" id="0">
+                          <input type="radio" name="options" checked>
+                          <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Medición total</span>
+                          <span class="d-block d-sm-none">
+                              <i class="tim-icons icon-single-02"></i>
+                          </span>
+                      </label>
+                      <label class="btn btn-sm btn-primary btn-simple" id="1">
+                          <input type="radio" class="d-none d-sm-none" name="options">
+                          <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Dispositivos instalados                          
+                          </span>                         
+                          <span class="d-block d-sm-none">
+                              <i class="tim-icons icon-gift-2"></i>
+                          </span>
+                      </label>
+                      </div> -->
+
+                      <div class="btn-group btn-group-toggle float-right" role="group"  data-toggle="buttons" aria-label="Button group with nested dropdown" style="margin-right: 1.5rem">
+                      <button type="button" class="btn btn-sm btn-primary active">Medición total</button>
+                    
+                      <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                          Dispositivos instalados
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+                          <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+                        </ul>
+                      </div>
+                      </div>
+
+                  </div>
+              </div>
+          </div>
+          <div class="card-body">
+              <div>
+                <canvas id="bigDashboardChart"></canvas>
+              </div>
+          </div>
+      </div>
+  </div>
 </div>
+
+  
+
+<div class="row">
+  <div class="col-lg-4">
+      <div class="card card-chart">
+          <div class="card-header">
+              <h5 class="card-category">Total Shipments</h5>
+              <h3 class="card-title"><i class="tim-icons icon-bell-55 text-primary"></i> 763,215</h3>
+          </div>
+          <div class="card-body">
+              <div class="chart-area">
+                  <canvas id="chartLinePurple"></canvas>
+              </div>
+          </div>
+      </div>
+  </div>
 
 
 
@@ -152,8 +225,12 @@
         //data: caudalPromedio,
         data: cData.label,
         fill: false,
-        borderColor:[
+        backgroundColor:[
           '#0c2646',
+        ],
+        borderColor:[
+          //'#0c2646',
+          'rgb(12, 38, 70, 0.8)'
         ]
         }]
 
@@ -164,7 +241,7 @@
       scaleLabel: {
         display: true,
         labelString: "Tiempo (s).",
-        fontColor: "red",
+        fontColor: "rgb(12, 38, 70, 0.8)",
         fontSize: 15,
       }
     }],
@@ -172,20 +249,22 @@
           scaleLabel: {
         display: true,
         labelString: "Caudal (L/h).",
-        fontColor: "green",
+        fontColor: "rgb(12, 38, 70, 0.8)",
         fontSize: 15,
       }
         }]
       },
     legend: {
-        position: 'bottom'
+        position: 'bottom',
+        fontColor: "rgb(12, 38, 70, 0.8)",
     },
-    title: {
+    /*title: {
         display: true,
         text: 'Gráfica caudal-tiempo',
         position: 'top',
         fontSize: 20,
-      }
+        fontColor: "rgb(12, 38, 70, 0.8)",
+      }*/
 
     }
 
