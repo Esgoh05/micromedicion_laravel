@@ -16,8 +16,9 @@ return new class extends Migration
             //$table->timestamps();
             $table->double('caudalPromedio');
             $table->time('tiempo', $precision = 0);
-            //$table->double('volumen');
+            $table->double('volumen');
             //$table->dateTimeTz('fin');
+            $table->foreignId('idDispositivo')->constrained('device');
             
         });
     }

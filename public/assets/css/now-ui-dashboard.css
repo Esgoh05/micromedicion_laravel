@@ -22,7 +22,13 @@ Licensed under the MIT license - http://opensource.org/licenses/MIT
 
 Copyright (c) 2015 Daniel Eden
 */
-#titulo{
+#ddd_dispositivosInstalados{
+  border-color: #0c2646;
+  margin-top: 24px;
+  appearance:none;
+}
+
+.titulo{
   margin-bottom: 40px;
 }
 

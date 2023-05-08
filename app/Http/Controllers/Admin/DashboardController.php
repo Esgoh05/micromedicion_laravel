@@ -231,23 +231,50 @@ class DashboardController extends Controller
         //return redirect('/instalacion-register') ->with('status','Tu infromación ha sido eliminada');
     }
 
-    public function viewpanelconsumo(){
+    public function viewpanelconsumo(Request $request){
         $user = Auth::user();
+        $deviceIds = Device::select('id','modeloSensor')->get();
+        
         $medicionesContinuas = MedicionContinua::all();
 
         $data=[];
 
+        echo($deviceIds);
+
+        
         //echo($caudalPromedioGeneral);
         //echo($tiempoGeneral);
         //echo($medicionesContinuas);
 
         foreach($medicionesContinuas as $medicionContinua){
             $data['label'][] = $medicionContinua->caudalPromedio;
+            $data['volumen'][] = $medicionContinua->volumen;
             $data['data'][] = $medicionContinua->tiempo;
         }
 
+
         $data['data'] = json_encode($data); 
-        return view('admin.panel-consumo', $data, compact('user'));
+
+        return view('admin.panel-consumo', $data, compact('user', 'deviceIds'));    
+    }
+
+
+    public function btnmediciontotal(Request $request){
+        $user = Auth::user();
+        $deviceIds = Device::select('id','modeloSensor')->get();
+        //$btnActive = $request->get('changeStatus');
+
+        //$btnRadio = $request->input('options');
+        //$btnRadio = $request->radio('options', 'opcionuno');
+        echo $alasan = $request->gender;
+        
+        dd($alasan);
+        dd($request);
+
+        $this->validate($request,[
+            'options' => 'required'
+        ]);
+     
     }
     
 }
