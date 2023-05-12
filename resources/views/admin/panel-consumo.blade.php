@@ -8,15 +8,6 @@
 
 @section('content')
 
-<!--<div class="card">
-  <div class="card-header">
-    <h5 class="card-category">Medición total.</h5>  
-    <h2 class="titulo">Gráfico caudal-tiempo.</h2>
-    <canvas id="bigDashboardChart"></canvas>
-  </div>  
-</div> -->
-
-
 <div class="row">
   <div class="col-12">
       <div class="card card-chart">
@@ -25,17 +16,19 @@
                   <div class="col-sm-6 text-left">
                       <h3 class="card-title" style="margin-left: 3.5rem; margin-top:24px;">Gráfico caudal-tiempo.</h3>
                   </div>
+                  
                   <div class="col-sm-6">
-                    <div class="btn-group btn-group-toggle float-right" role="group"  data-toggle="buttons" aria-label="Button group with nested dropdown" style="margin-right: 0.5rem">
+                    <form action="/panel-consumo" method="POST">
+                      {{  csrf_field()  }}
+                    <div class="btn-group btn-group-toggle float-right" role="group"  data-toggle="buttons" aria-label="Button group with nested dropdown" style="margin-right: 2rem">
                       
 
-                      <a href="" class="btn btn-sm btn-primary" style="height: 36px; margin-top:26px; border-radius:1.5rem; padding-top: 8px;">
+                      <!--<a href="" class="btn btn-sm btn-primary" style="height: 36px; margin-top:26px; border-radius:1.5rem; padding-top: 8px;">
                         Medición total
-                      </a>
-                    
+                      </a> -->
                     
                       <div class="form-group">
-                        <select id="ddd_dispositivosInstalados" class="form-control" style="width: 100%;">
+                        <select id="ddd_dispositivosInstalados" name="valor" class="form-control" style="width: 100%;">
                           <option value="" hidden selected>Dispositivos instalados</option>
                           
                           @foreach ($deviceIds as $deviceId)
@@ -43,9 +36,15 @@
                           @endforeach
                           
                         </select>
+                        
                       </div>
 
+                        <button type="submit" class="btn btn-primary btnGraficar" style="margin-top: 24px;">
+                          <i class="bi bi-graph-up"></i>
+                        </button>
+
                     </div>
+                  </form>
 
                   </div>
               </div>
@@ -68,22 +67,27 @@
                       <h3 class="card-title" style="margin-left: 3.5rem; margin-top:24px;">Gráfico volumen de agua-tiempo.</h3>
                   </div>
                   <div class="col-sm-6">
-                    <div class="btn-group btn-group-toggle float-right" role="group"  data-toggle="buttons" aria-label="Button group with nested dropdown" style="margin-right: 0.5rem">
-                      
-
-                      <a href="" class="btn btn-sm btn-primary" style="height: 36px; margin-top:26px; border-radius:1.5rem; padding-top: 8px;">
-                        Medición total
-                      </a>
-                    
+                    <form action="/medicion-volumen" method="POST">
+                      @csrf 
+                    <div class="btn-group btn-group-toggle float-right" role="group"  data-toggle="buttons" aria-label="Button group with nested dropdown" style="margin-right: 2rem">
                     
                       <div class="form-group">
-                        <select id="ddd_dispositivosInstalados" class="form-control" style="width: 100%;">
+                        <select id="ddd_dispositivosInstalados" name="valorVolumen" class="form-control" style="width: 100%;">
                           <option value="" hidden selected>Dispositivos instalados</option>
+
+                          @foreach ($deviceIds as $deviceId)
+                              <option value="{{ $deviceId->id}}"> {{ $deviceId->id}} -> {{ $deviceId->modeloSensor}}</option> 
+                          @endforeach
                           
                         </select>
                       </div>
 
+                      <button type="submit" class="btn btn-primary btnGraficar" style="margin-top: 24px;">
+                        <i class="bi bi-graph-up"></i>
+                      </button>
+
                     </div>
+                  </form>
 
                   </div>
               </div>
@@ -199,6 +203,7 @@
                 </div>
               </div>
             </div> -->
+            
 
           
 </div>
@@ -348,11 +353,9 @@
 
 
   });
-
-   
-  
-
   
 </script>
+
+
 
 @endsection

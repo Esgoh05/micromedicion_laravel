@@ -68,7 +68,9 @@ Route::group(['middleware' => ['auth', 'admin']], function(){
 
     Route::get('/panel-consumo', [DashboardController::class,'viewpanelconsumo']);
 
-    Route::post('/medicion', [DashboardController::class,'btnmediciontotal']);
+    Route::post('/panel-consumo', [DashboardController::class,'btnmediciontotal']);
+
+    Route::post('/medicion-volumen', [DashboardController::class,'btnmedicionvolumen']);
     
 });
 

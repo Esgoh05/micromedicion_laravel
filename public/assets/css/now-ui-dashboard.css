@@ -22,10 +22,21 @@ Licensed under the MIT license - http://opensource.org/licenses/MIT
 
 Copyright (c) 2015 Daniel Eden
 */
+.btnGraficar{
+ background-color: #1E88E5;
+ color: #FFFFFF;
+ height: 37px;
+ width: 3rem;
+ margin-top: 24px;
+ border-radius: 0px 30px 30px 0px;
+ border: 0;
+}
+
 #ddd_dispositivosInstalados{
   border-color: #0c2646;
   margin-top: 24px;
   appearance:none;
+  border-radius: 0px 0px 0px 0px;
 }
 
 .titulo{

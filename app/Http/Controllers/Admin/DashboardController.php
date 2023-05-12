@@ -234,12 +234,19 @@ class DashboardController extends Controller
     public function viewpanelconsumo(Request $request){
         $user = Auth::user();
         $deviceIds = Device::select('id','modeloSensor')->get();
-        
-        $medicionesContinuas = MedicionContinua::all();
 
+        $getDeviceSelected = $request->get('valor');
+
+        
+        //$medicionesContinuas = MedicionContinua::all();
+
+        $medicionesContinuas = MedicionContinua::select('idDispositivo', DB::raw('SUM(volumen) as volumen'))->groupBy('idDispositivo')->get();
+        
+        echo($medicionesContinuas);
         $data=[];
 
-        echo($deviceIds);
+        //echo($deviceIds);
+        //echo($getDeviceSelected);
 
         
         //echo($caudalPromedioGeneral);
@@ -247,7 +254,7 @@ class DashboardController extends Controller
         //echo($medicionesContinuas);
 
         foreach($medicionesContinuas as $medicionContinua){
-            $data['label'][] = $medicionContinua->caudalPromedio;
+            $data['label'][] = $medicionContinua->caudalpromedio;
             $data['volumen'][] = $medicionContinua->volumen;
             $data['data'][] = $medicionContinua->tiempo;
         }
@@ -262,19 +269,59 @@ class DashboardController extends Controller
     public function btnmediciontotal(Request $request){
         $user = Auth::user();
         $deviceIds = Device::select('id','modeloSensor')->get();
-        //$btnActive = $request->get('changeStatus');
 
-        //$btnRadio = $request->input('options');
-        //$btnRadio = $request->radio('options', 'opcionuno');
-        echo $alasan = $request->gender;
-        
-        dd($alasan);
-        dd($request);
+        $getDeviceValue = $request->get('valor');
 
-        $this->validate($request,[
-            'options' => 'required'
-        ]);
-     
+
+        //raw sirve para que interprete como comando sql
+        $getDeviceSelected = MedicionContinua::whereIn('idDispositivo', [$getDeviceValue])->groupBy(DB::raw('fin::date'))->select(DB::raw('fin::date'), DB::raw('sum(caudalpromedio) as suma'))->get();
+
+        //$data = $getDeviceSelected;
+        //echo($deviceIds);
+        //echo($getDeviceValue);
+        //echo($getDeviceSelected);
+
+        $data=[];
+
+        foreach($getDeviceSelected as $medicionContinua){
+            $data['label'][] = $medicionContinua->suma;
+            $data['data'][] = $medicionContinua->fin;
+        };
+
+        $data['data'] = json_encode($data); 
+
+         
+        return view('admin.panel-consumo', $data, compact('user', 'deviceIds'));    
+    
+    }
+
+    public function btnmedicionvolumen(Request $request){
+        $user = Auth::user();
+        $deviceIds = Device::select('id','modeloSensor')->get();
+
+        $getValue = $request->get('valorVolumen');
+
+
+        //raw sirve para que interprete como comando sql
+        $getSelected = MedicionContinua::whereIn('idDispositivo', [$getValue])->groupBy(DB::raw('fin::date'))->select(DB::raw('fin::date'), DB::raw('sum(volumen) as suma'))->get();
+
+        //$data = $getDeviceSelected;
+        //echo($deviceIds);
+        //echo($getValue);
+        //echo($getSelected);
+
+        $data=[];
+
+        foreach($getSelected as $medicionContinua){
+            $data['volumen'][] = $medicionContinua->suma;
+            $data['data'][] = $medicionContinua->fin;
+        };
+
+        $data['data'] = json_encode($data); 
+
+         
+        return view('admin.panel-consumo', $data, compact('user', 'deviceIds'));   
+    
     }
     
 }
