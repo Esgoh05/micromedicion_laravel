@@ -273,7 +273,7 @@
         xAxes: [{
       scaleLabel: {
         display: true,
-        labelString: "Tiempo (s).",
+        labelString: "Tiempo.",
         fontColor: "rgb(12, 38, 70, 0.8)",
         fontSize: 15,
       }

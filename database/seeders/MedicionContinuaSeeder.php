@@ -36,14 +36,35 @@ class MedicionContinuaSeeder extends Seeder
                 array('caudalPromedio'=>447, 'tiempo'=>'00:00:18', 'volumen'=>2.01, 'fin'=>'2023-05-9 22:25:23', 'idDispositivo'=>1),
                 array('caudalPromedio'=>437, 'tiempo'=>'00:00:19', 'volumen'=>2.13, 'fin'=>'2023-05-9 22:25:24', 'idDispositivo'=>1),*/
 
-                array('caudalPromedio'=>179, 'tiempo'=>'00:00:02', 'volumen'=>0.1, 'fin'=>'2023-05-10 22:25:06', 'idDispositivo'=>1),
+                /*array('caudalPromedio'=>179, 'tiempo'=>'00:00:02', 'volumen'=>0.1, 'fin'=>'2023-05-10 22:25:06', 'idDispositivo'=>1),
                 array('caudalPromedio'=>238, 'tiempo'=>'00:00:03', 'volumen'=>0.17, 'fin'=>'2023-05-10 22:25:07', 'idDispositivo'=>1),
                 array('caudalPromedio'=>218, 'tiempo'=>'00:00:04', 'volumen'=>0.23, 'fin'=>'2023-05-10 22:25:08', 'idDispositivo'=>1),
                 array('caudalPromedio'=>348, 'tiempo'=>'00:00:05', 'volumen'=>0.32, 'fin'=>'2023-05-10 22:25:09', 'idDispositivo'=>1),
                 array('caudalPromedio'=>398, 'tiempo'=>'00:00:06', 'volumen'=>0.43, 'fin'=>'2023-05-10 22:25:10', 'idDispositivo'=>1),
                 array('caudalPromedio'=>407, 'tiempo'=>'00:00:07', 'volumen'=>0.55, 'fin'=>'2023-05-10 22:25:11', 'idDispositivo'=>1),
                 array('caudalPromedio'=>417, 'tiempo'=>'00:00:08', 'volumen'=>0.66, 'fin'=>'2023-05-10 22:25:12', 'idDispositivo'=>1),
-                array('caudalPromedio'=>407, 'tiempo'=>'00:00:09', 'volumen'=>0.78, 'fin'=>'2023-05-10 22:25:13', 'idDispositivo'=>1),
+                array('caudalPromedio'=>407, 'tiempo'=>'00:00:09', 'volumen'=>0.78, 'fin'=>'2023-05-10 22:25:13', 'idDispositivo'=>1),*/
+
+                /*array('caudalpromedio'=>179, 'tiempo'=>'00:00:02', 'volumen'=>0.1, 'fin'=>'2023-05-10 22:25:06', 'idDispositivo'=>2),
+                array('caudalpromedio'=>238, 'tiempo'=>'00:00:03', 'volumen'=>0.17, 'fin'=>'2023-05-10 22:25:07', 'idDispositivo'=>2),
+                array('caudalpromedio'=>218, 'tiempo'=>'00:00:04', 'volumen'=>0.23, 'fin'=>'2023-05-10 22:25:08', 'idDispositivo'=>2),
+                array('caudalpromedio'=>348, 'tiempo'=>'00:00:05', 'volumen'=>0.32, 'fin'=>'2023-05-10 22:25:09', 'idDispositivo'=>2),
+                array('caudalpromedio'=>398, 'tiempo'=>'00:00:06', 'volumen'=>0.43, 'fin'=>'2023-05-10 22:25:10', 'idDispositivo'=>2),
+                array('caudalpromedio'=>407, 'tiempo'=>'00:00:07', 'volumen'=>0.55, 'fin'=>'2023-05-10 22:25:11', 'idDispositivo'=>2),
+                array('caudalpromedio'=>417, 'tiempo'=>'00:00:08', 'volumen'=>0.66, 'fin'=>'2023-05-10 22:25:12', 'idDispositivo'=>2),
+                array('caudalpromedio'=>407, 'tiempo'=>'00:00:09', 'volumen'=>0.78, 'fin'=>'2023-05-10 22:25:13', 'idDispositivo'=>2),*/
+
+                array('caudalpromedio'=>179, 'tiempo'=>'00:00:02', 'volumen'=>0.1, 'fin'=>'2023-05-11 22:25:06', 'idDispositivo'=>3),
+                array('caudalpromedio'=>238, 'tiempo'=>'00:00:03', 'volumen'=>0.17, 'fin'=>'2023-05-11 22:25:07', 'idDispositivo'=>3),
+                array('caudalpromedio'=>218, 'tiempo'=>'00:00:04', 'volumen'=>0.23, 'fin'=>'2023-05-11 22:25:08', 'idDispositivo'=>3),
+                array('caudalpromedio'=>348, 'tiempo'=>'00:00:05', 'volumen'=>0.32, 'fin'=>'2023-05-11 22:25:09', 'idDispositivo'=>3),
+                array('caudalpromedio'=>398, 'tiempo'=>'00:00:06', 'volumen'=>0.43, 'fin'=>'2023-05-11 22:25:10', 'idDispositivo'=>3),
+                array('caudalpromedio'=>407, 'tiempo'=>'00:00:07', 'volumen'=>0.55, 'fin'=>'2023-05-11 22:25:11', 'idDispositivo'=>3),
+                array('caudalpromedio'=>417, 'tiempo'=>'00:00:08', 'volumen'=>0.66, 'fin'=>'2023-05-11 22:25:12', 'idDispositivo'=>3),
+                array('caudalpromedio'=>407, 'tiempo'=>'00:00:09', 'volumen'=>0.78, 'fin'=>'2023-05-11 22:25:13', 'idDispositivo'=>3),
+
+
+
 
         ]);
     }

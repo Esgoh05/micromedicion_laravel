@@ -239,8 +239,10 @@ class DashboardController extends Controller
 
         
         //$medicionesContinuas = MedicionContinua::all();
+        //$medicionesContinuas = MedicionContinua::selectRaw('SUM(caudalpromedio) as caudalpromedio, SUM(volumen) as volumen')->get();
+        $medicionesContinuas = MedicionContinua::groupBy(DB::raw('fin::date'))->select(DB::raw('fin::date'), DB::raw('sum(caudalpromedio) as caudalpromedio'), DB::raw('sum(volumen) as volumen'))->get();
 
-        $medicionesContinuas = MedicionContinua::select('idDispositivo', DB::raw('SUM(volumen) as volumen'))->groupBy('idDispositivo')->get();
+        //$medicionesContinuas = MedicionContinua::select('idDispositivo', DB::raw('SUM(volumen) as volumen'))->groupBy('idDispositivo')->get();
         
         echo($medicionesContinuas);
         $data=[];
@@ -256,13 +258,13 @@ class DashboardController extends Controller
         foreach($medicionesContinuas as $medicionContinua){
             $data['label'][] = $medicionContinua->caudalpromedio;
             $data['volumen'][] = $medicionContinua->volumen;
-            $data['data'][] = $medicionContinua->tiempo;
+            $data['data'][] = $medicionContinua->fin;
         }
 
 
         $data['data'] = json_encode($data); 
 
-        return view('admin.panel-consumo', $data, compact('user', 'deviceIds'));    
+        return view('admin.panel-consumo', $data, compact('user', 'deviceIds'));   
     }
 
 
