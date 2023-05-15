@@ -52,7 +52,7 @@ class MedicionContinuaSeeder extends Seeder
                 array('caudalpromedio'=>398, 'tiempo'=>'00:00:06', 'volumen'=>0.43, 'fin'=>'2023-05-10 22:25:10', 'idDispositivo'=>2),
                 array('caudalpromedio'=>407, 'tiempo'=>'00:00:07', 'volumen'=>0.55, 'fin'=>'2023-05-10 22:25:11', 'idDispositivo'=>2),
                 array('caudalpromedio'=>417, 'tiempo'=>'00:00:08', 'volumen'=>0.66, 'fin'=>'2023-05-10 22:25:12', 'idDispositivo'=>2),
-                array('caudalpromedio'=>407, 'tiempo'=>'00:00:09', 'volumen'=>0.78, 'fin'=>'2023-05-10 22:25:13', 'idDispositivo'=>2),*/
+                array('caudalpromedio'=>407, 'tiempo'=>'00:00:09', 'volumen'=>0.78, 'fin'=>'2023-05-10 22:25:13', 'idDispositivo'=>2),
 
                 array('caudalpromedio'=>179, 'tiempo'=>'00:00:02', 'volumen'=>0.1, 'fin'=>'2023-05-11 22:25:06', 'idDispositivo'=>3),
                 array('caudalpromedio'=>238, 'tiempo'=>'00:00:03', 'volumen'=>0.17, 'fin'=>'2023-05-11 22:25:07', 'idDispositivo'=>3),
@@ -61,7 +61,9 @@ class MedicionContinuaSeeder extends Seeder
                 array('caudalpromedio'=>398, 'tiempo'=>'00:00:06', 'volumen'=>0.43, 'fin'=>'2023-05-11 22:25:10', 'idDispositivo'=>3),
                 array('caudalpromedio'=>407, 'tiempo'=>'00:00:07', 'volumen'=>0.55, 'fin'=>'2023-05-11 22:25:11', 'idDispositivo'=>3),
                 array('caudalpromedio'=>417, 'tiempo'=>'00:00:08', 'volumen'=>0.66, 'fin'=>'2023-05-11 22:25:12', 'idDispositivo'=>3),
-                array('caudalpromedio'=>407, 'tiempo'=>'00:00:09', 'volumen'=>0.78, 'fin'=>'2023-05-11 22:25:13', 'idDispositivo'=>3),
+                array('caudalpromedio'=>407, 'tiempo'=>'00:00:09', 'volumen'=>0.78, 'fin'=>'2023-05-11 22:25:13', 'idDispositivo'=>3),*/
+
+                array('created_at'=>'2023-06-11 22:25:06', 'caudalpromedio'=>179, 'tiempo'=>'00:00:02', 'volumen'=>0.1, 'fin'=>'2023-06-11 22:25:06', 'idDispositivo'=>1),
 
 
 

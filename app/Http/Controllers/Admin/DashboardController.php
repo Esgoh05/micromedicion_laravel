@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\RedirectResponse;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
@@ -237,15 +238,21 @@ class DashboardController extends Controller
 
         $getDeviceSelected = $request->get('valor');
 
+        $inicioMes = Carbon::now()->startOfMonth();
+
+        $medicionesContinuas = MedicionContinua::whereMonth('fin', now()->month(5))->select(DB::raw('sum(caudalpromedio) as caudalpromedio'), DB::raw('sum(volumen) as volumen'))->get();
+
         
         //$medicionesContinuas = MedicionContinua::all();
         //$medicionesContinuas = MedicionContinua::selectRaw('SUM(caudalpromedio) as caudalpromedio, SUM(volumen) as volumen')->get();
-        $medicionesContinuas = MedicionContinua::groupBy(DB::raw('fin::date'))->select(DB::raw('fin::date'), DB::raw('sum(caudalpromedio) as caudalpromedio'), DB::raw('sum(volumen) as volumen'))->get();
+        //Filtrar por dia
+        //$medicionesContinuas = MedicionContinua::groupBy(DB::raw('fin::date'))->select(DB::raw('fin::date'), DB::raw('sum(caudalpromedio) as caudalpromedio'), DB::raw('sum(volumen) as volumen'))->get();
 
         //$medicionesContinuas = MedicionContinua::select('idDispositivo', DB::raw('SUM(volumen) as volumen'))->groupBy('idDispositivo')->get();
         
         echo($medicionesContinuas);
         $data=[];
+        
 
         //echo($deviceIds);
         //echo($getDeviceSelected);
@@ -264,7 +271,9 @@ class DashboardController extends Controller
 
         $data['data'] = json_encode($data); 
 
-        return view('admin.panel-consumo', $data, compact('user', 'deviceIds'));   
+
+        return view('admin.panel-consumo', $data, compact('user', 'deviceIds'));  
+        
     }
 
 
@@ -293,7 +302,7 @@ class DashboardController extends Controller
         $data['data'] = json_encode($data); 
 
          
-        return view('admin.panel-consumo', $data, compact('user', 'deviceIds'));    
+        return view('admin.panel-consumo', $data, compact('user', 'deviceIds'));   
     
     }
 

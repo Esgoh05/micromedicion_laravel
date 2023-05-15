@@ -101,26 +101,6 @@
   </div>
 </div>
 
-  
-
-<div class="row">
-  <div class="col-lg-4">
-      <div class="card card-chart">
-          <div class="card-header">
-              <h5 class="card-category">Total Shipments</h5>
-              <h3 class="card-title"><i class="tim-icons icon-bell-55 text-primary"></i> 763,215</h3>
-          </div>
-          <div class="card-body">
-              <div class="chart-area">
-                  <canvas id="chartLinePurple"></canvas>
-              </div>
-          </div>
-      </div>
-  </div>
-
-
-
-
   <!--<div class="panel-header panel-header-lg">
     <canvas id="bigDashboardChart"></canvas>
   </div>        
@@ -220,6 +200,7 @@
   var ctxBar= document.getElementById("barChart").getContext("2d");
   const cData = JSON.parse('<?php echo $data; ?>');
   console.log(cData);
+
   //const caudalPromedio = [179, 179, 238, 218, 348, 398, 407, 417, 407, 437, 467, 457, 447, 447, 437, 447, 447, 437, 447,]
   //const tiempo = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
 
@@ -330,7 +311,7 @@
         xAxes: [{
       scaleLabel: {
         display: true,
-        labelString: "Tiempo (s).",
+        labelString: "Tiempo.",
         fontColor: "rgb(12, 38, 70, 0.8)",
         fontSize: 15,
       }

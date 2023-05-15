@@ -19,33 +19,42 @@
       </div>
       <div class="modal-body">
         <img src="../../assets/img/gota_welcome.png" alt="Gota Welcome" class="pngGotaWelcome">
-        <form action="/save-new-user" method="POST" enctype="multipart/form-data">
+        <form action="/save-new-user" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
         {{ csrf_field() }} 
 
 
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Nombre:</label>
-            <input type="text" name="name" class="form-control" id="recipient-name">
+            <input type="text" name="name" class="form-control" id="recipient-name" required>
+            <label class="invalid-feedback">
+              Por favor, completa este campo.
+            </label>
           </div>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Teléfono:</label>
-            <input type="text" name="phone" class="form-control" id="recipient-name">
+            <input type="text" name="phone" class="form-control" id="recipient-name" required>
+            <label class="invalid-feedback">
+              Por favor, completa este campo.
+            </label>
           </div>
           <div class="form-group">
             <label for="inputState">Asignar tipo de usuario:</label>
-            <select id="inputState" class="form-control" name="usertype">
+            <select id="inputState" class="form-control" name="usertype" required>
               <option value="" hidden selected>Selecciona uno</option>
               <option value="admin">Admin</option>
               <option value="user">User</option> 
             </select>
+            <div id="validationServer04Feedback" class="invalid-feedback">
+              Por favor, selecciona un campo.
+            </div>
           </div>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Correo Electrónico:</label>
-            <input type="text" name="email" class="form-control" id="recipient-name">
+            <input type="text" name="email" class="form-control" id="recipient-name" required>
           </div>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Contraseña:</label>
-            <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" class="form-control" id="recipient-name">
+            <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" class="form-control" id="recipient-name" required>
                 @error('password')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -55,7 +64,7 @@
 
           <div>
             <label for="formFile" class="form-label">Foto de perfil:</label>
-            <input class="form-control" type="file" id="formFile" name="foto_perfil">
+            <input class="form-control" type="file" id="formFile" name="foto_perfil" required>
           </div>
         
           </div>
@@ -167,7 +176,7 @@
 
 @section('scripts')
 
-    <script>
+  <script>
       $(document).ready( function() {
           $('#userDatatable').DataTable();
       });
@@ -207,6 +216,27 @@
             $('#deletemodalpop').modal('show');
           });
       });
-    </script>
+
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (() => {
+      'use strict'
+    
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      const forms = document.querySelectorAll('.needs-validation')
+    
+      // Loop over them and prevent submission
+      Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+    
+          form.classList.add('was-validated')
+        }, false)
+      })
+    })()
+
+  </script>
 
 @endsection

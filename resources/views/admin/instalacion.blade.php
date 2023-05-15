@@ -19,25 +19,28 @@
       </div>
       <div class="modal-body">
         <img src="../../assets/img/gota_welcome.png" alt="Gota Welcome" class="pngGotaWelcome">
-        <form action="/save-new-instalacion" method="POST">
+        <form action="/save-new-instalacion" method="POST"  class="needs-validation" novalidate>
         {{ csrf_field() }} 
 
           <!--Select Id. Modelo:User -->
           <div class="form-group">
             <label for="inputState">Correo electrónico</label>
-            <select id="inputState1" name='idUsuario' class="form-control" style="width: 100%">
+            <select id="inputState1" name='idUsuario' class="form-control" style="width: 100%" required>
             <option value="" hidden selected>Selecciona un correo electrónico</option>
               @foreach ($userId as $prueba)
               <option value="{{ $prueba->id}}">{{ $prueba->email}} </option> 
               @endforeach 
             </select>
+            <div id="validationServer04Feedback" class="invalid-feedback">
+              Por favor, selecciona un campo.
+            </div>
           </div>
           <!-- End Select Id. Modelo:User -->
 
           <!--Select Id - modelo dispositivo. Modelo:Device-->
           <div class="form-group">
             <label for="inputState">Id - Modelo de dispositivo</label>
-            <select id="inputState" class="form-control" name="idDispositivo" style="width: 100%">
+            <select id="inputState" class="form-control" name="idDispositivo" style="width: 100%" required>
               <option value="" hidden selected>Seleccionar...</option>
               
               @foreach ($deviceIds as $deviceId)
@@ -47,24 +50,39 @@
               @endforeach
               
             </select>
+            <div id="validationServer04Feedback" class="invalid-feedback">
+              Por favor, selecciona un campo.
+            </div>
           </div>
           <!--End. Select Id - modelo dispositivo. Modelo:Device-->
 
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Diámetro de tuberia:</label>
-            <input type="text" name="diametroTuberia" class="form-control" id="recipient-name" value="1/2">
+            <input type="text" name="diametroTuberia" class="form-control" id="recipient-name" value="1/2" required>
+            <label class="invalid-feedback">
+              Por favor, completa este campo.
+            </label>
           </div>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">SSID:</label>
-            <input type="text" name="ssid" class="form-control" id="recipient-name" value="Default">
+            <input type="text" name="ssid" class="form-control" id="recipient-name" value="Default" required>
+            <label class="invalid-feedback">
+              Por favor, completa este campo.
+            </label>
           </div>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Password SSID:</label>
-            <input type="text" name="passwordSsid" class="form-control" id="recipient-name" value="12345678">
+            <input type="text" name="passwordSsid" class="form-control" id="recipient-name" value="12345678" required>
+            <label class="invalid-feedback">
+              Por favor, completa este campo.
+            </label>
           </div>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Ubicación de dispositivo:</label>
-            <input type="text" name="ubicacionDispositivo" class="form-control" id="recipient-name" value="Default">
+            <input type="text" name="ubicacionDispositivo" class="form-control" id="recipient-name" value="Default" required>
+            <label class="invalid-feedback">
+              Por favor, completa este campo.
+            </label>
           </div>
           </div>
           <div class="modal-footer border-white">
@@ -229,6 +247,26 @@
 
       });
   });
+
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+  (() => {
+    'use strict'
+  
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll('.needs-validation')
+  
+    // Loop over them and prevent submission
+    Array.from(forms).forEach(form => {
+      form.addEventListener('submit', event => {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+  
+        form.classList.add('was-validated')
+      }, false)
+    })
+  })()
 </script>
 
 @endsection
