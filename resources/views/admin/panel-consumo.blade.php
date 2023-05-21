@@ -18,14 +18,21 @@
                   </div>
                   
                   <div class="col-sm-6">
-                    <form action="/panel-consumo" method="POST">
+                    <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal" style="margin-right: 1.5rem; margin-top:24px;">
+                      Graficar
+                    </button>
+                    <!--<form action="/panel-consumo" method="POST">
                       {{  csrf_field()  }}
                     <div class="btn-group btn-group-toggle float-right" role="group"  data-toggle="buttons" aria-label="Button group with nested dropdown" style="margin-right: 2rem">
                       
 
-                      <!--<a href="" class="btn btn-sm btn-primary" style="height: 36px; margin-top:26px; border-radius:1.5rem; padding-top: 8px;">
+                      <a href="" class="btn btn-sm btn-primary" style="height: 36px; margin-top:26px; border-radius:1.5rem; padding-top: 8px;">
                         Medición total
-                      </a> -->
+                      </a> 
+                      <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
+                        Graficar
+                      </button>
+
                     
                       <div class="form-group">
                         <select id="ddd_dispositivosInstalados" name="valor" class="form-control" style="width: 100%;">
@@ -44,7 +51,8 @@
                         </button>
 
                     </div>
-                  </form>
+                    
+                  </form>-->
 
                   </div>
               </div>
@@ -100,6 +108,107 @@
       </div>
   </div>
 </div>
+
+<!--Modal filtro-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog p-5" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Graficar filtrando por:</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+        <!--<form action="/save-new-user" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+        {{ csrf_field() }} -->
+          
+          <div class="form-group">
+            <h5>Dispositivo.</h5>
+            <form action="/panel-consumo" method="POST">
+              {{  csrf_field()  }}
+            <div class="hstack gap-2 form-group">
+              <select id="dd_dispositivosInstalados" name="valor" class="form-control me-auto" >
+                <option value="" hidden selected>Dispositivos instalados</option>
+                
+                @foreach ($deviceIds as $deviceId)
+                    <option value="{{ $deviceId->id}}"> {{ $deviceId->id}} -> {{ $deviceId->modeloSensor}}</option> 
+                @endforeach
+                
+              </select>
+              
+              <button type="submit" class="btn btn-primary">
+                Graficar
+              </button>
+            </div>
+            </form>
+          </div>
+
+          <hr>
+          
+          <div class="form-group">
+            <h5>Mes.</h5>
+            <div class="hstack gap-2 form-group">
+              <select id="dd_dispositivosInstalados" name="valorMesSeleccionado" class="form-control me-auto" >
+                <option value="" hidden selected>Seleccionar mes</option>
+                
+                <option value="1">Enero</option>
+                <option value="2">Febrero</option>
+                <option value="3">Marzo</option>
+                <option value="4">Abril</option>
+                <option value="5">Mayo</option>
+                <option value="6">Junio</option>
+                <option value="7">Julio</option>
+                <option value="8">Agosto</option>
+                <option value="9">Septiembre</option>
+                <option value="10">Octubre</option>
+                <option value="11">Noviembre</option>
+                <option value="12">Diciembre</option>
+                
+              </select>
+              
+              <button type="submit" class="btn btn-primary">
+                Graficar
+              </button>
+            </div>
+          </div>
+          <hr>
+          <div class="form-group">
+            <h5>Periodo.</h5>
+            <div class="hstack gap-2 form-group">
+              <select id="dd_dispositivosInstalados" name="valor" class="form-control me-auto" >
+                <option value="" hidden selected>Dispositivos instalados</option>
+                
+                <option value="1">Enero</option>
+                <option value="2">Febrero</option>
+                <option value="3">Marzo</option>
+                <option value="4">Abril</option>
+                <option value="5">Mayo</option>
+                <option value="6">Junio</option>
+                <option value="7">Julio</option>
+                <option value="8">Agosto</option>
+                <option value="9">Septiembre</option>
+                <option value="10">Octubre</option>
+                <option value="11">Noviembre</option>
+                <option value="12">Diciembre</option>
+                
+              </select>
+              
+              <button type="submit" class="btn btn-primary">
+                Graficar
+              </button>
+            </div>
+          </div>
+
+        
+          </div>
+
+    </div>
+    </div>
+  </div>
+</div>
+<!--End modal filtro-->
 
   <!--<div class="panel-header panel-header-lg">
     <canvas id="bigDashboardChart"></canvas>
@@ -201,6 +310,7 @@
   const cData = JSON.parse('<?php echo $data; ?>');
   console.log(cData);
 
+
   //const caudalPromedio = [179, 179, 238, 218, 348, 398, 407, 417, 407, 437, 467, 457, 447, 447, 437, 447, 447, 437, 447,]
   //const tiempo = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
 
@@ -240,7 +350,7 @@
         data: cData.label,
         fill: false,
         backgroundColor:[
-          '#0c2646',
+          '#0c2646'
         ],
         borderColor:[
           //'#0c2646',
@@ -296,13 +406,17 @@
         //data: caudalPromedio,
         data: cData.volumen,
         fill: false,
-        backgroundColor:[
+        backgroundColor: this.generaArregloColores(cData.volumen.length) //cData.backgroundColor
+
+        /*[
           '#0c2646',
-        ],
-        borderColor:[
+        ]*/,
+        //this.generaArregloColores(cData.volumen.length()) //cData.backgroundColor
+        borderColor: [
           //'#0c2646',
           'rgb(12, 38, 70, 0.8)'
-        ]
+        ],
+        //cData.borderColor
         }]
 
     },
@@ -334,6 +448,34 @@
 
 
   });
+
+ function generaArregloColores(tam){
+	let arrayColors = [];
+
+  console.log(tam);
+	
+	for(var i = 0; i < tam; i++){
+    console.log("entre al for");
+	 arrayColors.push(this.colorRamdom());
+   console.log(i);
+	}
+
+	return arrayColors;
+}
+
+ function colorRamdom(){
+    let min = Math.ceil(0);
+    let max = Math.floor(255);
+    let color = 'rgba('+
+      Math.floor(Math.random() * (max - min) + min) +',' +
+      Math.floor(Math.random() * (max - min) + min) +',' +
+      Math.floor(Math.random() * (max - min) + min) +',' +
+      '0.8)';
+    return color;
+  }
+
+
+
   
 </script>
 
