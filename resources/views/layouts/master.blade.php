@@ -27,8 +27,10 @@
   <link rel="stylesheet" href="../assets/css/select2.min.css">
 
 
+
   <!-- Scripts -->
-  @vite(['resources/js/app.js'])
+  <script src="/assets-old/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+ 
   
 </head>
 
@@ -294,8 +296,6 @@
   <script src="../assets/dataTables.min.js"></script>
   <!--<script> src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"</script>-->
 
-  <!--  Google Maps Plugin    -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
   <!-- Chart JS -->
   <script src="../assets/js/plugins/chartjs.min.js"></script>
   <!--  Notifications Plugin    -->

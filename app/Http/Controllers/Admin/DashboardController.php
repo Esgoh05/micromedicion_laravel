@@ -266,7 +266,7 @@ class DashboardController extends Controller
           
 
         foreach($medicionesContinuas as $medicionContinua){
-            $data['label'][] = $medicionContinua->caudalpromedio;
+            $data['caudalpromedio'][] = $medicionContinua->caudalpromedio;
             $data['volumen'][] = $medicionContinua->volumen;
             $data['data'][] = $medicionContinua->fin;
         }
@@ -288,9 +288,15 @@ class DashboardController extends Controller
 
         $getDeviceValue = $request->get('valor');
 
+        $getDevices = $request->input('valor');
+        dd($getDeviceValue);
 
+
+
+        //echo($getDevices);
+        
         //raw sirve para que interprete como comando sql
-        $getDeviceSelected = MedicionContinua::whereIn('idDispositivo', [$getDeviceValue])->groupBy(DB::raw('fin::date'))->select(DB::raw('fin::date'), DB::raw('sum(caudalpromedio) as suma'))->get();
+        /*$getDeviceSelected = MedicionContinua::whereIn('idDispositivo', [$getDeviceValue])->groupBy(DB::raw('fin::date'))->select(DB::raw('fin::date'), DB::raw('sum(caudalpromedio) as suma'))->get();
 
         //$data = $getDeviceSelected;
         //echo($deviceIds);
@@ -300,14 +306,14 @@ class DashboardController extends Controller
         $data=[];
 
         foreach($getDeviceSelected as $medicionContinua){
-            $data['label'][] = $medicionContinua->suma;
+            $data['caudalpromedio'][] = $medicionContinua->suma;
             $data['data'][] = $medicionContinua->fin;
         };
 
         $data['data'] = json_encode($data); 
 
          
-        return view('admin.panel-consumo', $data, compact('user', 'deviceIds'));   
+        return view('admin.panel-consumo', $data, compact('user', 'deviceIds'));   */
     
     }
 
@@ -339,5 +345,82 @@ class DashboardController extends Controller
         return view('admin.panel-consumo', $data, compact('user', 'deviceIds'));   
     
     }
+
+    public function btncaudalpormes(Request $request){
+        $user = Auth::user();
+        $deviceIds = Device::select('id','modeloSensor')->get();
+
+        $getDeviceSelected = $request->get('valor');
+        $mesSeleccionado = $request->input('valorMesSeleccionado');
+
+        //$inicioMes = Carbon::now()->startOfMonth();
+
+        //dd($getDeviceSelected);
+        //echo($mesSeleccionado);
+        //Filtrado por mes y suma de valores de caudal promedio/volumen de agua.
+        //$medicionesContinuas = MedicionContinua::whereMonth('fin', now()->month($mesSeleccionado))->select(DB::raw('sum(caudalpromedio) as caudalpromedio'), DB::raw('sum(volumen) as volumen'))->get();
+        
+        $medicionesContinuas = MedicionContinua::groupBy(DB::raw('fin::date'))->select(DB::raw('fin::date'), DB::raw('sum(caudalpromedio) as caudalpromedio'), DB::raw('sum(volumen) as volumen'))->whereMonth('fin', now()->month($mesSeleccionado))->get();
+        $medicionesContinuasVolumen = MedicionContinua::whereMonth('fin', now()->month($mesSeleccionado))->select(DB::raw('sum(volumen) as volumen'))->get();
+
+        switch ($mesSeleccionado) {
+            case 1:
+                $mesSeleccionado = 'Enero';
+                break;
+            case 2:
+                $mesSeleccionado = 'Febrero';
+                break;
+            case 3:
+                $mesSeleccionado = 'Marzo';
+                break;
+            case 4:
+                $mesSeleccionado = 'Abril';
+                break;
+            case 5:
+                $mesSeleccionado = 'Mayo';
+                break;
+            case 6:
+                $mesSeleccionado = 'Junio';
+                break;
+            case 7:
+                $mesSeleccionado = 'Julio';
+                break;
+            case 8:
+                $mesSeleccionado = 'Agosto';
+                break;
+            case 9:
+                $mesSeleccionado = 'Septiembre';
+                break;
+            case 10:
+                $mesSeleccionado = 'Octubre';
+                break;
+            case 11:
+                $mesSeleccionado = 'Noviembre';
+                break;
+            case 12:
+                $mesSeleccionado = 'Diciembre';
+                break;
+        }
+        
+        //echo($medicionesContinuas);
+        $data=[];
+          
+
+        foreach($medicionesContinuas as $medicionContinua){
+            $data['caudalpromedio'][] = $medicionContinua->caudalpromedio;
+            $data['volumen'][] = $medicionContinua->volumen;
+            $data['data'][] = $medicionContinua->fin;
+            //$data['data'][] = $mesSeleccionado;
+        }
+
+        //echo($mesSeleccionado);
+
+
+        $data['data'] = json_encode($data); 
+
+        return view('admin.panel-consumo', $data, compact('user', 'deviceIds'));  
+    
+    }
+
     
 }

@@ -21,39 +21,6 @@
                     <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal" style="margin-right: 1.5rem; margin-top:24px;">
                       Graficar
                     </button>
-                    <!--<form action="/panel-consumo" method="POST">
-                      {{  csrf_field()  }}
-                    <div class="btn-group btn-group-toggle float-right" role="group"  data-toggle="buttons" aria-label="Button group with nested dropdown" style="margin-right: 2rem">
-                      
-
-                      <a href="" class="btn btn-sm btn-primary" style="height: 36px; margin-top:26px; border-radius:1.5rem; padding-top: 8px;">
-                        Medición total
-                      </a> 
-                      <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
-                        Graficar
-                      </button>
-
-                    
-                      <div class="form-group">
-                        <select id="ddd_dispositivosInstalados" name="valor" class="form-control" style="width: 100%;">
-                          <option value="" hidden selected>Dispositivos instalados</option>
-                          
-                          @foreach ($deviceIds as $deviceId)
-                              <option value="{{ $deviceId->id}}"> {{ $deviceId->id}} -> {{ $deviceId->modeloSensor}}</option> 
-                          @endforeach
-                          
-                        </select>
-                        
-                      </div>
-
-                        <button type="submit" class="btn btn-primary btnGraficar" style="margin-top: 24px;">
-                          <i class="bi bi-graph-up"></i>
-                        </button>
-
-                    </div>
-                    
-                  </form>-->
-
                   </div>
               </div>
           </div>
@@ -126,11 +93,11 @@
           
           <div class="form-group">
             <h5>Dispositivo.</h5>
-            <form action="/panel-consumo" method="POST">
+            <form action="/panel" method="POST">
               {{  csrf_field()  }}
-            <div class="hstack gap-2 form-group">
-              <select id="dd_dispositivosInstalados" name="valor" class="form-control me-auto" >
-                <option value="" hidden selected>Dispositivos instalados</option>
+            <div class="vstack gap-2 form-group">
+              <select id="dd_dispositivosInstalados" name="valor[]" class="form-control me-auto myselect" multiple="multiple">
+                <!--<option value="" hidden selected>Dispositivos instalados</option>-->
                 
                 @foreach ($deviceIds as $deviceId)
                     <option value="{{ $deviceId->id}}"> {{ $deviceId->id}} -> {{ $deviceId->modeloSensor}}</option> 
@@ -149,8 +116,10 @@
           
           <div class="form-group">
             <h5>Mes.</h5>
+            <form action="/panel-consumo" method="POST">
+              {{  csrf_field()  }}
             <div class="hstack gap-2 form-group">
-              <select id="dd_dispositivosInstalados" name="valorMesSeleccionado" class="form-control me-auto" >
+              <select id="dd_dispositivosInstalados" name="valorMesSeleccionado" class="form-control me-auto">
                 <option value="" hidden selected>Seleccionar mes</option>
                 
                 <option value="1">Enero</option>
@@ -165,134 +134,51 @@
                 <option value="10">Octubre</option>
                 <option value="11">Noviembre</option>
                 <option value="12">Diciembre</option>
-                
-              </select>
-              
-              <button type="submit" class="btn btn-primary">
+              </select>              
+              <button type="submit" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Botón graficar">
                 Graficar
               </button>
             </div>
+          </form>
           </div>
+
           <hr>
+
           <div class="form-group">
             <h5>Periodo.</h5>
-            <div class="hstack gap-2 form-group">
-              <select id="dd_dispositivosInstalados" name="valor" class="form-control me-auto" >
-                <option value="" hidden selected>Dispositivos instalados</option>
-                
-                <option value="1">Enero</option>
-                <option value="2">Febrero</option>
-                <option value="3">Marzo</option>
-                <option value="4">Abril</option>
-                <option value="5">Mayo</option>
-                <option value="6">Junio</option>
-                <option value="7">Julio</option>
-                <option value="8">Agosto</option>
-                <option value="9">Septiembre</option>
-                <option value="10">Octubre</option>
-                <option value="11">Noviembre</option>
-                <option value="12">Diciembre</option>
-                
-              </select>
-              
-              <button type="submit" class="btn btn-primary">
-                Graficar
-              </button>
-            </div>
+            <form action="/panel-consumo-datepicker" method="POST">
+              {{  csrf_field()  }}
+            <div class="input-daterange datepicker row align-items-center" date-date-format="yyyy-mm-dd">
+              <div class="col">
+                  <div class="form-group">
+                      <div class="input-group">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="bi bi-calendar3"></i></span>
+                          </div>
+                          <input class="form-control" placeholder="Start date" type="text" value="06/18/2020">
+                      </div>
+                  </div>
+              </div>
+              <div class="col">
+                  <div class="form-group">
+                      <div class="input-group">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="bi bi-calendar3"></i></span>
+                          </div>
+                          <input class="form-control" placeholder="End date" type="text" value="06/22/2020">
+                      </div>
+                  </div>
+              </div>
           </div>
-
-        
-          </div>
-
-    </div>
+          <button type="submit" class="btn btn-primary">Graficar</button>
+          </form>
+         </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 <!--End modal filtro-->
-
-  <!--<div class="panel-header panel-header-lg">
-    <canvas id="bigDashboardChart"></canvas>
-  </div>        
-          <div class="content">
-            <div class="row">
-              <div class="col-lg-4">
-                <div class="card card-chart">
-                  <div class="card-header">
-                    <h5 class="card-category">Global Sales</h5>
-                    <h4 class="card-title">Shipped Products</h4>
-                    <div class="dropdown">
-                      <button type="button" class="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
-                        <i class="now-ui-icons loader_gear"></i>
-                      </button>
-                      <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                        <a class="dropdown-item text-danger" href="#">Remove Data</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-body">
-                    <div class="chart-area">
-                      <canvas id="lineChartExample"></canvas>
-                    </div>
-                  </div>
-                  <div class="card-footer">
-                    <div class="stats">
-                      <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="card card-chart">
-                  <div class="card-header">
-                    <h5 class="card-category">2018 Sales</h5>
-                    <h4 class="card-title">All products</h4>
-                    <div class="dropdown">
-                      <button type="button" class="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
-                        <i class="now-ui-icons loader_gear"></i>
-                      </button>
-                      <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                        <a class="dropdown-item text-danger" href="#">Remove Data</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-body">
-                    <div class="chart-area">
-                      <canvas id="lineChartExampleWithNumbersAndGrid"></canvas>
-                    </div>
-                  </div>
-                  <div class="card-footer">
-                    <div class="stats">
-                      <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="card card-chart">
-                  <div class="card-header">
-                    <h5 class="card-category">Email Statistics</h5>
-                    <h4 class="card-title">24 Hours Performance</h4>
-                  </div>
-                  <div class="card-body">
-                    <div class="chart-area">
-                      <canvas id="barChartSimpleGradientsNumbers"></canvas>
-                    </div>
-                  </div>
-                  <div class="card-footer">
-                    <div class="stats">
-                      <i class="now-ui-icons ui-2_time-alarm"></i> Last 7 days
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> -->
-            
 
           
 </div>
@@ -347,7 +233,7 @@
       datasets:[{
         label:'Caudal',
         //data: caudalPromedio,
-        data: cData.label,
+        data: cData.caudalpromedio,
         fill: false,
         backgroundColor:[
           '#0c2646'
@@ -474,7 +360,11 @@
     return color;
   }
 
-
+  $(".myselect").select2({
+    placeholder: 'Dispositivos instalados' ,
+    tags: true,
+    tokenSeparators: [',', ' ']
+  });
 
   
 </script>
