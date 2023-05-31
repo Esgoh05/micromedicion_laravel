@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('medicion_continuas', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->double('caudalPromedio');
+            $table->double('caudalpromedio');
             $table->time('tiempo', $precision = 0);
             $table->double('volumen');
             $table->dateTimeTz('fin');
-            $table->foreignId('idDispositivo')->constrained('device');
+            $table->foreignId('iddispositivo')->constrained('device');
             
         });
     }

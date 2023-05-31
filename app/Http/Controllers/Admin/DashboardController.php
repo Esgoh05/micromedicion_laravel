@@ -288,6 +288,9 @@ class DashboardController extends Controller
 
     public function btnmediciontotal(Request $request){
         $user = Auth::user();
+        $now = Carbon::now();
+        $end = $now->format('Y-m-d');
+        $start = $now->subDay()->format('Y-m-d');
         $deviceIds = Device::select('id','modeloSensor')->get();
 
         $getDeviceValue = $request->get('valor');
@@ -300,14 +303,14 @@ class DashboardController extends Controller
         //echo($getDevices);
         
         //raw sirve para que interprete como comando sql
-        $getDeviceSelected = MedicionContinua::whereIn('idDispositivo', $getDeviceValue)->groupBy(DB::raw('fin::date'))->select(DB::raw('fin::date'), DB::raw('sum(caudalpromedio) as suma'))->get();
+        $getDeviceSelected = MedicionContinua::whereIn('iddispositivo', $getDeviceValue)->groupBy(DB::raw('iddispositivo::int'), DB::raw('fin::date'))->select(DB::raw('iddispositivo::int'), DB::raw('fin::date'), DB::raw('sum(caudalpromedio) as suma'))->get();
 
         //$data = $getDeviceSelected;
         //echo($deviceIds);
         //echo($getDeviceValue);
         echo($getDeviceSelected);
 
-        /*
+        
         $data=[];
 
         foreach($getDeviceSelected as $medicionContinua){
@@ -318,7 +321,7 @@ class DashboardController extends Controller
         $data['data'] = json_encode($data); 
 
          
-        return view('admin.panel-consumo', $data, compact('user', 'deviceIds'));   */
+        return view('admin.panel-consumo', $data, compact('user', 'deviceIds', 'end', 'start'));   
     
     }
 

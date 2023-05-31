@@ -359,7 +359,7 @@
   $(".myselect").select2({
     placeholder: 'Dispositivos instalados' ,
     tags: true,
-    tokenSeparators: [' ', ' ']
+    tokenSeparators: [',', ',']
   });
 
 
