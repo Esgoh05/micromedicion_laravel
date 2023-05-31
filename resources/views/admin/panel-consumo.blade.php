@@ -148,24 +148,21 @@
             <h5>Periodo.</h5>
             <form action="/panel-consumo-datepicker" method="POST">
               {{  csrf_field()  }}
-            <div class="input-daterange datepicker row align-items-center" date-date-format="yyyy-mm-dd">
+            <div class="input-daterange datepicker row align-items-center" id="datetimepicker" date-date-format="yyyy-mm-dd">
               <div class="col">
                   <div class="form-group">
                       <div class="input-group">
-                          <div class="input-group-prepend">
-                              <span class="input-group-text"><i class="bi bi-calendar3"></i></span>
-                          </div>
-                          <input class="form-control" placeholder="Start date" type="text" value="06/18/2020">
+                          <input class="form-control" placeholder="Fecha inicio" name="fechaInicioCaudal" type="Date" value="{{ $start }}">
                       </div>
                   </div>
               </div>
               <div class="col">
                   <div class="form-group">
                       <div class="input-group">
-                          <div class="input-group-prepend">
+                          <!--<div class="input-group-prepend">
                               <span class="input-group-text"><i class="bi bi-calendar3"></i></span>
-                          </div>
-                          <input class="form-control" placeholder="End date" type="text" value="06/22/2020">
+                          </div>-->
+                          <input class="form-control datepicker" placeholder="Fecha fin" name="fechaFinCaudal" type="date" value="{{ $end }}">
                       </div>
                   </div>
               </div>
@@ -187,8 +184,7 @@
 
 
 @section('scripts')
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.1/chart.min.js"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.1/chart.min.js"></script>-->
 
 <script>
   var ctx= document.getElementById("bigDashboardChart").getContext("2d");
@@ -363,8 +359,9 @@
   $(".myselect").select2({
     placeholder: 'Dispositivos instalados' ,
     tags: true,
-    tokenSeparators: [',', ' ']
+    tokenSeparators: [' ', ' ']
   });
+
 
   
 </script>

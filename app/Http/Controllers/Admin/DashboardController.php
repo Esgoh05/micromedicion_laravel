@@ -242,6 +242,10 @@ class DashboardController extends Controller
 
         $inicioMes = Carbon::now()->startOfMonth();
 
+        $now = Carbon::now();
+        $end = $now->format('Y-m-d');
+        $start = $now->subDays()->format('Y-m-d');
+
         //$medicionesContinuas = MedicionContinua::whereMonth('fin', now()->month(5))->select(DB::raw('sum(caudalpromedio) as caudalpromedio'), DB::raw('sum(volumen) as volumen'))->get();
 
         
@@ -277,7 +281,7 @@ class DashboardController extends Controller
 
         //dd($data);
 
-        return view('admin.panel-consumo', $data, compact('user', 'deviceIds'));  
+        return view('admin.panel-consumo', $data, compact('user', 'deviceIds', 'end', 'start'));  
         
     }
 
@@ -289,20 +293,21 @@ class DashboardController extends Controller
         $getDeviceValue = $request->get('valor');
 
         $getDevices = $request->input('valor');
-        dd($getDeviceValue);
+        //dd($getDeviceValue);
 
 
 
         //echo($getDevices);
         
         //raw sirve para que interprete como comando sql
-        /*$getDeviceSelected = MedicionContinua::whereIn('idDispositivo', [$getDeviceValue])->groupBy(DB::raw('fin::date'))->select(DB::raw('fin::date'), DB::raw('sum(caudalpromedio) as suma'))->get();
+        $getDeviceSelected = MedicionContinua::whereIn('idDispositivo', $getDeviceValue)->groupBy(DB::raw('fin::date'))->select(DB::raw('fin::date'), DB::raw('sum(caudalpromedio) as suma'))->get();
 
         //$data = $getDeviceSelected;
         //echo($deviceIds);
         //echo($getDeviceValue);
-        //echo($getDeviceSelected);
+        echo($getDeviceSelected);
 
+        /*
         $data=[];
 
         foreach($getDeviceSelected as $medicionContinua){
@@ -342,12 +347,15 @@ class DashboardController extends Controller
         $data['data'] = json_encode($data); 
 
          
-        return view('admin.panel-consumo', $data, compact('user', 'deviceIds'));   
+        return view('admin.panel-consumo', $data, compact('user', 'deviceIds','end', 'start'));   
     
     }
 
     public function btncaudalpormes(Request $request){
         $user = Auth::user();
+        $now = Carbon::now();
+        $end = $now->format('Y-m-d');
+        $start = $now->subDay()->format('Y-m-d');
         $deviceIds = Device::select('id','modeloSensor')->get();
 
         $getDeviceSelected = $request->get('valor');
@@ -418,8 +426,46 @@ class DashboardController extends Controller
 
         $data['data'] = json_encode($data); 
 
-        return view('admin.panel-consumo', $data, compact('user', 'deviceIds'));  
+        return view('admin.panel-consumo', $data, compact('user', 'deviceIds', 'end', 'start'));  
     
+    }
+
+    
+    public function btncaudaldatepicker(Request $request){
+        $user = Auth::user();
+        $deviceIds = Device::select('id','modeloSensor')->get();
+        $now = Carbon::now();
+        $end = $now->format('Y-m-d');
+        $start = $now->subDay()->format('Y-m-d');
+
+        $fechaInicioCaudal = $request->get('fechaInicioCaudal');
+        $fechaFinCaudal = $request->get('fechaFinCaudal');
+
+        echo($fechaInicioCaudal);
+        echo($fechaFinCaudal);
+
+        $medicionContinuaFiltroFechas = MedicionContinua::whereBetween('fin', [$fechaInicioCaudal.' 00:00:00', $fechaFinCaudal. ' 23:59:59'])->groupBy(DB::raw('fin::date'))->select(DB::raw('sum(caudalpromedio) as caudalpromedio'), DB::raw('sum(volumen) as volumen'), DB::raw('fin::date'))->get();;
+
+        echo($medicionContinuaFiltroFechas);
+
+        $data=[];
+          
+
+        foreach($medicionContinuaFiltroFechas as $medicionContinua){
+            $data['caudalpromedio'][] = $medicionContinua->caudalpromedio;
+            $data['volumen'][] = $medicionContinua->volumen;
+            $data['data'][] = $medicionContinua->fin;
+            //$data['data'][] = $mesSeleccionado;
+        }
+
+        //echo($mesSeleccionado);
+
+
+        $data['data'] = json_encode($data); 
+
+        return view('admin.panel-consumo', $data, compact('user', 'deviceIds', 'end', 'start'));
+
+
     }
 
     
