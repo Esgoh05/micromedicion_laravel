@@ -8,7 +8,7 @@
 
 @section('content')
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<section class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog p-5" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -17,68 +17,89 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <img src="../../assets/img/gota_welcome.png" alt="Gota Welcome" class="pngGotaWelcome">
-        <form action="/save-new-user" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+      <form action="/save-new-user" method="POST" enctype="multipart/form-data" class="needs-validation"  id="crearUsuariosForm" novalidate>
         {{ csrf_field() }} 
+          <div class="modal-body">
+            <img src="../../assets/img/gota_welcome.png" alt="Gota Welcome" class="pngGotaWelcome">
+            
 
+              <!--INICIO. Input modal: nombre de usuario-->
+              <div class="form-group">
+                <label for="name" class="col-form-label">Nombre:</label>
+                <input type="text" name="name" id="name" class="form-control" autocomplete="off" required>
+                <label class="invalid-feedback" for="name">
+                  Por favor, completa este campo.
+                </label>
+              </div>
+              <!--FIN. Input modal: nombre de usuario-->
+              
+              <!--INICIO. Input modal: telefono de usuario-->
+              <div class="form-group">
+                <label for="phone" class="col-form-label">Teléfono:</label>
+                <input type="tel" name="phone" id="phone" class="form-control" autocomplete="on" required>
+                <label class="invalid-feedback" for="phone">
+                  Por favor, completa este campo.
+                </label>
+              </div>
+              <!--FIN. Input modal: telefono de usuario-->
+              
+              <!--INICIO. Select modal: tipo de usuario-->
+              <div class="form-group">
+                <label for="inputState">Asignar tipo de usuario:</label>
+                <select id="inputState" class="form-control" name="usertype" required>
+                  <option value="" hidden selected>Selecciona uno</option>
+                  <option value="admin">Admin</option>
+                  <option value="user">User</option> 
+                </select>
+                <div id="validationServer04Feedback" class="invalid-feedback">
+                  Por favor, selecciona un campo.
+                </div>
+              </div>
+              <!--FIN. Select modal: tipo de usuario-->
+              
+              <!--INICIO. Input modal: correo electrónico de usuario-->
+              <div class="form-group">
+                <label for="email" class="col-form-label">Correo electrónico:</label>
+                <input type="email" name="email" id="email" class="form-control" autocomplete="off" required>
+              </div>
+              <!--FIN. Input modal: correo electrónico de usuario-->
+              
+              <!--INICIO. Input modal: contraseña de correo electrónico-->
+              <div class="form-group">
+                <label for="password" class="col-form-label">Contraseña:</label>
+                <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" class="form-control" required>
+                    @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+              </div>
+              <!--FIN. Input modal: contraseña de correo electrónico-->
 
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Nombre:</label>
-            <input type="text" name="name" class="form-control" id="recipient-name" required>
-            <label class="invalid-feedback">
-              Por favor, completa este campo.
-            </label>
-          </div>
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Teléfono:</label>
-            <input type="text" name="phone" class="form-control" id="recipient-name" required>
-            <label class="invalid-feedback">
-              Por favor, completa este campo.
-            </label>
-          </div>
-          <div class="form-group">
-            <label for="inputState">Asignar tipo de usuario:</label>
-            <select id="inputState" class="form-control" name="usertype" required>
-              <option value="" hidden selected>Selecciona uno</option>
-              <option value="admin">Admin</option>
-              <option value="user">User</option> 
-            </select>
-            <div id="validationServer04Feedback" class="invalid-feedback">
-              Por favor, selecciona un campo.
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Correo Electrónico:</label>
-            <input type="text" name="email" class="form-control" id="recipient-name" required>
-          </div>
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Contraseña:</label>
-            <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" class="form-control" id="recipient-name" required>
-                @error('password')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+              <!--INICIO. Input modal: foto de perfil-->
+              <div>
+                <label for="formFile" class="form-label">Foto de perfil:</label>
+                <input class="form-control" type="file" id="formFile" name="foto_perfil" required>
+              </div>
+              <!--FIN. Input modal: foto de perfil-->
+              
           </div>
 
-          <div>
-            <label for="formFile" class="form-label">Foto de perfil:</label>
-            <input class="form-control" type="file" id="formFile" name="foto_perfil" required>
-          </div>
-        
-          </div>
+          <!--INICIO. Modal footer-->
           <div class="modal-footer border-white">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="submit" class="btn btn-primary" form="crearUsuariosForm">Guardar</button>
           </div>
+          <!--FIN. Modal footer-->
+
       </form>
+        
     </div>
   </div>
-</div>
+</section>
 
 <!-- Modal Delete-->
-<div class="modal fade" id="deletemodalpop" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<section class="modal fade" id="deletemodalpop" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -104,7 +125,7 @@
       </form>
     </div>
   </div>
-</div>
+</section>
 <!-- End Modal Delete -->
 
 <div class="row">
@@ -122,54 +143,53 @@
               </div>  
             </div>
 
-<div class="row">
-          <div class="col-md-12">
-            <div class="card">
-              <div class="card-header">
-                <h2 class="card-title">Usuarios registrados</h2>
-              </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table id="userDatatable" class="table">
-                    <thead class=" text-primary">
-                      <th>ID</th>  
-                      <th>Nombre</th>
-                      <th>Teléfono</th>
-                      <th>Tipo de usuario</th>
-                      <th>Correo electrónico</th>
-                      <th>Editar</th>
-                      <th>Eliminar</th>
-                    </thead>
-                    <tbody>
-                      @foreach($users as $row)
-                      <tr>
-                        <td>{{ $row->id }}</td>  
-                        <td>{{ $row->name }}</td>
-                        <td>{{ $row->phone }}</td>
-                        <td>{{ $row->usertype }}</td>
-                        <td>{{ $row->email }}</td>
-                        <td>
-                            <a href="/role-edit/{{ $row->id }}" class="btn btn-success">
-                              <i class="bi bi-pencil"></i>
-                              Editar
-                            </a>
-                        </td>
-                        <td>
-                          <a href="javascript:void(0)" class="btn btn-danger deletebtn">
-                            <i class="bi bi-trash3"></i>
-                            Eliminar
-                          </a>
-                        </td>
-                      </tr>
-                      @endforeach
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-</div>
+<section class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">Usuarios registrados</h2>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table id="userDatatable" class="table">
+            <thead class=" text-primary">
+              <th>ID</th>  
+              <th>Nombre</th>
+              <th>Teléfono</th>
+              <th>Tipo de usuario</th>
+              <th>Correo electrónico</th>
+              <th>Editar</th>
+              <th>Eliminar</th>
+            </thead>
+            <tbody>
+              @foreach($users as $row)
+              <tr>
+                <td>{{ $row->id }}</td>  
+                <td>{{ $row->name }}</td>
+                <td>{{ $row->phone }}</td>
+                <td>{{ $row->usertype }}</td>
+                <td>{{ $row->email }}</td>
+                <td>
+                    <a href="/role-edit/{{ $row->id }}" class="btn btn-success">
+                      <i class="bi bi-pencil"></i>
+                      Editar
+                    </a>
+                </td>
+                <td>
+                  <a href="javascript:void(0)" class="btn btn-danger deletebtn">
+                    <i class="bi bi-trash3"></i>
+                    Eliminar
+                  </a>
+                </td>
+              </tr>
+              @endforeach
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>    
+</section>
 
 @endsection
 

@@ -258,6 +258,8 @@ class DashboardController extends Controller
         
         echo($medicionesContinuas);
         $data=[];
+
+        $iddispositivo = 'Todos los dispositivos';
         
 
         //echo($deviceIds);
@@ -273,6 +275,7 @@ class DashboardController extends Controller
             $data['caudalpromedio'][] = $medicionContinua->caudalpromedio;
             $data['volumen'][] = $medicionContinua->volumen;
             $data['data'][] = $medicionContinua->fin;
+            $data['iddispositivo'] = $iddispositivo;
         }
 
 
@@ -303,25 +306,67 @@ class DashboardController extends Controller
         //echo($getDevices);
         
         //raw sirve para que interprete como comando sql
-        $getDeviceSelected = MedicionContinua::whereIn('iddispositivo', $getDeviceValue)->groupBy(DB::raw('iddispositivo::int'), DB::raw('fin::date'))->select(DB::raw('iddispositivo::int'), DB::raw('fin::date'), DB::raw('sum(caudalpromedio) as suma'))->get();
+        $getDeviceSelected = MedicionContinua::whereIn('iddispositivo', $getDeviceValue)->groupBy(DB::raw('iddispositivo::int'), DB::raw('fin::date'))->select(DB::raw('iddispositivo::int'), DB::raw('fin::date'), DB::raw('sum(caudalpromedio) as caudalpromedio'), DB::raw('sum(volumen) as volumen'))->get();
 
         //$data = $getDeviceSelected;
         //echo($deviceIds);
         //echo($getDeviceValue);
         echo($getDeviceSelected);
 
+        $numero = $getDeviceSelected->toArray();
+        //dd($numero);
+        $datos = json_decode($getDeviceSelected);
+        //$ids = array_column($datos, 'iddispositivo');
+        //dd($ids);
+
+        //dd($datos);
+
+        foreach($datos as $fila) {
+            echo $fila->iddispositivo;
+            $id[] = $fila->iddispositivo;
+            echo $fila->fin;
+            $fin[] =  [$fila->iddispositivo, $fila->caudalpromedio, $fila->volumen];
+            echo $fila->caudalpromedio;
+            echo $fila->volumen;
+
+        }
+        //dd($fin);
+        //$uniques = array_unique($id);
+        //$valores = array_count_values($id);
+        //dd($id);
+        //dd($valores);
+        //dd($fin);
+
         
         $data=[];
 
-        foreach($getDeviceSelected as $medicionContinua){
-            $data['caudalpromedio'][] = $medicionContinua->suma;
+
+        foreach($numero as $medicionContinua){
+            
+            //dd($numero);
+            $numero1 = $medicionContinua;
+
+            //dd(json_decode($numero, true));
+
+
+            //$valores = array_count_values();
+            //dd($valores);
+            
+           //$data = [$medicionContinua->iddispositivo, $medicionContinua->caudalpromedio];
+            //dd($data);
+
+            /*$data['caudalpromedio'][] = $medicionContinua->caudalpromedio;
+            $data['volumen'][] = $medicionContinua->volumen;
             $data['data'][] = $medicionContinua->fin;
+            $data['iddispositivo'][] = $medicionContinua->iddispositivo;*/  
+            
+            
         };
 
-        $data['data'] = json_encode($data); 
+        /*$data['data'] = json_encode($data); 
 
          
-        return view('admin.panel-consumo', $data, compact('user', 'deviceIds', 'end', 'start'));   
+        return view('admin.panel-consumo', $data, compact('user', 'deviceIds', 'end', 'start'));*/   
     
     }
 
@@ -364,14 +409,16 @@ class DashboardController extends Controller
         $getDeviceSelected = $request->get('valor');
         $mesSeleccionado = $request->input('valorMesSeleccionado');
 
-        //$inicioMes = Carbon::now()->startOfMonth();
+        $getMonth = $request->input('datosMeses');
 
-        //dd($getDeviceSelected);
-        //echo($mesSeleccionado);
+        $fecha = Carbon::parse($getMonth);
+        $afecha = $fecha->year;
+        $mfecha = $fecha->month;
+
         //Filtrado por mes y suma de valores de caudal promedio/volumen de agua.
         //$medicionesContinuas = MedicionContinua::whereMonth('fin', now()->month($mesSeleccionado))->select(DB::raw('sum(caudalpromedio) as caudalpromedio'), DB::raw('sum(volumen) as volumen'))->get();
         
-        $medicionesContinuas = MedicionContinua::groupBy(DB::raw('fin::date'))->select(DB::raw('fin::date'), DB::raw('sum(caudalpromedio) as caudalpromedio'), DB::raw('sum(volumen) as volumen'))->whereMonth('fin', now()->month($mesSeleccionado))->get();
+        $medicionesContinuas = MedicionContinua::groupBy(DB::raw('fin::date'))->select(DB::raw('fin::date'), DB::raw('sum(caudalpromedio) as caudalpromedio'), DB::raw('sum(volumen) as volumen'))->whereYear('fin', '=', $afecha)->whereMonth('fin', now()->month($mfecha))->get();
         $medicionesContinuasVolumen = MedicionContinua::whereMonth('fin', now()->month($mesSeleccionado))->select(DB::raw('sum(volumen) as volumen'))->get();
 
         switch ($mesSeleccionado) {
@@ -413,7 +460,7 @@ class DashboardController extends Controller
                 break;
         }
         
-        //echo($medicionesContinuas);
+        echo($medicionesContinuas);
         $data=[];
           
 

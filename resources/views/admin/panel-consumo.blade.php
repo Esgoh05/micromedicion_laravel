@@ -41,7 +41,7 @@
                   <div class="col-sm-6 text-left">
                       <h3 class="card-title" style="margin-left: 3.5rem; margin-top:24px;">Gráfico volumen de agua-tiempo.</h3>
                   </div>
-                  <div class="col-sm-6">
+                  <!--<div class="col-sm-6">
                     <form action="/medicion-volumen" method="POST">
                       @csrf 
                     <div class="btn-group btn-group-toggle float-right" role="group"  data-toggle="buttons" aria-label="Button group with nested dropdown" style="margin-right: 2rem">
@@ -64,7 +64,7 @@
                     </div>
                   </form>
 
-                  </div>
+                  </div> -->
               </div>
           </div>
           <div class="card-body">
@@ -75,6 +75,7 @@
       </div>
   </div>
 </div>
+
 
 <!--Modal filtro-->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -119,7 +120,8 @@
             <form action="/panel-consumo" method="POST">
               {{  csrf_field()  }}
             <div class="hstack gap-2 form-group">
-              <select id="dd_dispositivosInstalados" name="valorMesSeleccionado" class="form-control me-auto">
+              <input class="form-control" name="datosMeses" type="Month">
+              <!--<select id="dd_dispositivosInstalados" name="valorMesSeleccionado" class="form-control me-auto">
                 <option value="" hidden selected>Seleccionar mes</option>
                 
                 <option value="1">Enero</option>
@@ -134,7 +136,7 @@
                 <option value="10">Octubre</option>
                 <option value="11">Noviembre</option>
                 <option value="12">Diciembre</option>
-              </select>              
+              </select> -->             
               <button type="submit" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Botón graficar">
                 Graficar
               </button>
@@ -159,9 +161,6 @@
               <div class="col">
                   <div class="form-group">
                       <div class="input-group">
-                          <!--<div class="input-group-prepend">
-                              <span class="input-group-text"><i class="bi bi-calendar3"></i></span>
-                          </div>-->
                           <input class="form-control datepicker" placeholder="Fecha fin" name="fechaFinCaudal" type="date" value="{{ $end }}">
                       </div>
                   </div>
@@ -184,13 +183,20 @@
 
 
 @section('scripts')
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.1/chart.min.js"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.1/chart.min.js"></script> -->
 
 <script>
   var ctx= document.getElementById("bigDashboardChart").getContext("2d");
   var ctxBar= document.getElementById("barChart").getContext("2d");
   const cData = JSON.parse('<?php echo $data; ?>');
   console.log(cData);
+
+  /*const recorrerArreglo = cData.iddispositivo.filter((item,index)=>{
+    return cData.iddispositivo.indexOf(item) === index;
+  });
+
+  console.log(recorrerArreglo); */
+
 
 
   //const caudalPromedio = [179, 179, 238, 218, 348, 398, 407, 417, 407, 437, 467, 457, 447, 447, 437, 447, 447, 437, 447,]
@@ -246,7 +252,7 @@
         xAxes: [{
       scaleLabel: {
         display: true,
-        labelString: "Tiempo.",
+        labelString: cData.iddispositivo, //recorrerArreglo,
         fontColor: "rgb(12, 38, 70, 0.8)",
         fontSize: 15,
       }
@@ -328,7 +334,6 @@
 
     }
 
-
   });
 
  function generaArregloColores(tam){
@@ -359,8 +364,12 @@
   $(".myselect").select2({
     placeholder: 'Dispositivos instalados' ,
     tags: true,
-    tokenSeparators: [',', ',']
+    tokenSeparators: ['', '']
   });
+
+
+
+
 
 
   

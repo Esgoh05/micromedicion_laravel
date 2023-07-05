@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\MedicionContinuaController;
+use App\Models\MedicionContinua;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Laravel\Ui\Presets\React;
@@ -22,15 +24,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 //ipCompu:8000/api/save_data
 
-Route::post('save_data', function (Request $request){
-
-    /*
-
-    $nuevosDatos = new tablaNuevosDatos();
-    
-    $nuevosDatos->flujo = $request->dato_flujo;
-
-    $nuevosDatos->save();
-
-    */
-});
+Route::post('save_data', [MedicionContinuaController::class,'saveData']); 
+Route::get('save_data', [MedicionContinuaController::class,'saveData']); 
