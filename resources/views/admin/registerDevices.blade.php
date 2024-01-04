@@ -8,7 +8,7 @@
 
 @section('content')
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<section class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog p-5" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -52,9 +52,9 @@
       </form>
     </div>
   </div>
-</div>
+</section>
 
-<!-- Modal Delete-->
+<!-- INICIO. Modal eliminar -->
 <div class="modal fade" id="deletemodalpop" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -82,102 +82,114 @@
     </div>
   </div>
 </div>
-<!-- End Modal Delete -->
+<!-- FIN. Modal eliminar -->
 
-<div class="row">
-<div class="col-md-12">
-            <div class="card">
-              <div class="card-header">
-                <h2 class="card-title">
-                  <i class="bi bi-cpu"></i>
-                  Dispositivos
-                </h2>
-                <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
-                  <i class="bi bi-plus"></i>
-                  Agregar nuevo dispositivo
-                </button>
-              </div>  
-            </div>
-          </div>
+<!-- INICIO. Sección agregar nuevo dispositivo -->
+<section class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">
+          <i class="bi bi-cpu"></i>
+          Dispositivos
+        </h2>
+        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
+          <i class="bi bi-plus"></i>
+          Agregar nuevo dispositivo
+        </button>
+      </div>  
+    </div>
+  </div>
+</section>
+<!-- FIN. Sección agregar nuevo dispositivo -->
+
+<!-- INICIO. Sección tabla registro de dispositivos registrados -->
+<section class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <!-- INICIO. Encabeza de tarjeta -->
+      <div class="card-header">
+        <h2 class="card-title">Dispositivos registrados</h2>
+      </div>
+      <!-- FIN. Encabeza de tarjeta -->
+
+      <!-- INICIO. Cuerpo de tarjeta -->
+      <div class="card-body">
+        <div class="table-responsive">
+          <!-- INICIO. Tabla dispositivos registrados -->
+          <table id="deviceDatatable" class="table">
+            <thead class=" text-primary">
+              <th>Id</th>  
+              <th>Dirección Mac</th>
+              <th>Modelo del sensor</th>
+              <th>Factor K</th>
+              <th>Estado del dispositivo</th>
+              <th>Editar</th>
+              <th>Eliminar</th>
+            </thead>
+            <!-- INICIO. Contenido tabla dispositivos registrados -->
+            <tbody>
+              @foreach($devices as $row)
+              <tr>
+                <td>{{ $row->id }}</td>  
+                <td>{{ $row->direccionMac }}</td>
+                <td>{{ $row->modeloSensor }}</td>
+                <td>{{ $row->factorK }}</td>
+                @switch(true)
+                    @case($row->status_dispositivo == 1)
+                    <td>
+                      Activo
+                      <i class="biActivo bi-circle-fill"></i>
+                    </td>
+                    @break
+
+                    @case($row->status_dispositivo == 2)
+                    <td>
+                      Instalado
+                      <i class="biHose bi-house-check-fill"></i>
+                    </td>
+                        @break
+                        @case($row->status_dispositivo == 3)
+                    <td>
+                      Baja
+                      <i class="biBaja bi-circle-fill"></i>
+                    </td>
+                        @break
+                @endswitch
+                <td>
+                    <a href="/devices-edit/{{ $row->id }}" class="btn btn-success">
+                      <i class="bi bi-pencil"></i>
+                      Editar
+                    </a>
+                </td>
+                <td>
+                  @if($row->status_dispositivo == 2) 
+                  <a href="#" class="btn deletebtndisable" disabled>
+                  
+                    <i class="bi bi-trash3"></i>
+                    Eliminar
+                  </a>
+                  @else
+                  <a href="javascript:void(0)" class="btn btn-danger deletebtn">
+                    <i class="bi bi-trash3"></i>
+                    Eliminar
+                  </a>                             
+                  @endif
+                    
+                </td>
+              </tr>
+              @endforeach
+            </tbody>
+            <!-- FIN. Contenido tabla dispositivos registrados -->
+          </table>
+          <!-- FIN. Tabla dispositivos registrados -->
         </div>
-
-<div class="row">
-          <div class="col-md-12">
-            <div class="card">
-              <div class="card-header">
-                <h2 class="card-title">Dispositivos registrados</h2>
-              </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table id="deviceDatatable" class="table">
-                    <thead class=" text-primary">
-                      <th>Id</th>  
-                      <th>Dirección Mac</th>
-                      <th>Modelo del sensor</th>
-                      <th>Factor K</th>
-                      <th>Estado del dispositivo</th>
-                      <th>Editar</th>
-                      <th>Eliminar</th>
-                    </thead>
-                    <tbody>
-                      @foreach($devices as $row)
-                      <tr>
-                        <td>{{ $row->id }}</td>  
-                        <td>{{ $row->direccionMac }}</td>
-                        <td>{{ $row->modeloSensor }}</td>
-                        <td>{{ $row->factorK }}</td>
-                        @switch(true)
-                            @case($row->status_dispositivo == 1)
-                            <td>
-                              Activo
-                              <i class="biActivo bi-circle-fill"></i>
-                            </td>
-                            @break
-
-                            @case($row->status_dispositivo == 2)
-                            <td>
-                              Instalado
-                              <i class="biHose bi-house-check-fill"></i>
-                            </td>
-                                @break
-                                @case($row->status_dispositivo == 3)
-                            <td>
-                              Baja
-                              <i class="biBaja bi-circle-fill"></i>
-                            </td>
-                                @break
-                        @endswitch
-                        <td>
-                            <a href="/devices-edit/{{ $row->id }}" class="btn btn-success">
-                              <i class="bi bi-pencil"></i>
-                              Editar
-                            </a>
-                        </td>
-                        <td>
-                          @if($row->status_dispositivo == 2) 
-                          <a href="#" class="btn deletebtndisable" disabled>
-                          
-                            <i class="bi bi-trash3"></i>
-                            Eliminar
-                          </a>
-                          @else
-                          <a href="javascript:void(0)" class="btn btn-danger deletebtn">
-                            <i class="bi bi-trash3"></i>
-                            Eliminar
-                          </a>                             
-                          @endif
-                            
-                        </td>
-                      </tr>
-                      @endforeach
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-</div>
+      </div>
+      <!-- FIN. Cuerpo de tarjeta -->
+    </div>
+  </div>
+</section>
+<!-- FIN. Sección tabla registro de dispositivos registrados -->
 
 @endsection
 

@@ -9,48 +9,47 @@
 @section('content')
 
 <div class="row">
-          <div class="col-md-12">
-            <div class="card">
-              <div class="card-header">
-                <h2 class="card-title">
-                  <i class="bi bi-house-check"></i>
-                  Dispositivos registrados
-                </h2>
-              </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table id="installationDatatable" class="table">
-                    <thead class=" text-primary">
-                      <th>Id Dispositivo</th>
-                      <th>Diámetro de tubería</th>
-                      <th>SSID</th>
-                      <th>Contraseña WiFi</th>
-                      <th>Ubicación de dispositivo</th>
-                      <th>Editar</th>
-                    </thead>
-                    <tbody>
-                      @foreach($instalacion as $row)
-                      <tr>
-                        <td>{{ $row->idDispositivo }}</td>
-                        <td>{{ $row->diametroTuberia }}</td>
-                        <td>{{ $row->ssid }}</td>
-                        <td>{{ $row->passwordSsid }}</td>
-                        <td>{{ $row->ubicacionDispositivo }}</td>
-                        <td>
-                            <a href="/edit-installation-user/{{ $row->id }}" class="btn btn-success">
-                              <i class="bi bi-pencil"></i>
-                              Editar
-                            </a>
-                        </td>
-                      </tr>
-                      @endforeach
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">
+            <i class="bi bi-house-check"></i>
+            Dispositivos registrados
+          </h2>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table id="installationDatatable" class="table">
+              <thead class=" text-primary">
+                <th>Id Dispositivo</th>
+                <th>Diámetro de tubería</th>
+                <th>SSID</th>
+                <th>Contraseña WiFi</th>
+                <th>Ubicación de dispositivo</th>
+                <th>Editar</th>
+              </thead>
+              <tbody>
+                @foreach($instalacion as $row)
+                <tr>
+                  <td>{{ $row->idDispositivo }}</td>
+                  <td>{{ $row->diametroTuberia }}</td>
+                  <td>{{ $row->ssid }}</td>
+                  <td>{{ $row->passwordSsid }}</td>
+                  <td>{{ $row->ubicacionDispositivo }}</td>
+                  <td>
+                      <a href="/edit-installation-user/{{ $row->id }}" class="btn btn-success">
+                        <i class="bi bi-pencil"></i>
+                        Editar
+                      </a>
+                  </td>
+                </tr>
+                @endforeach
+              </tbody>
+            </table>
           </div>
-          
+        </div>
+      </div>
+    </div>     
 </div>
 
 @endsection

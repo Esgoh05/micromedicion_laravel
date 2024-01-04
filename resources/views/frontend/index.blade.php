@@ -15,16 +15,16 @@
       <div class="carousel-caption d-none d-md-block">
         <div class="custom-carousel-content">
             <h1>
-                <span>MicromediciónIoT </span>
-                to Boost your Brand Name &amp; Sales
+                <span>MicromediciónIoT: </span>
+                Transformando Datos en Conciencia.
             </h1>
             <p>
-                We offer an industry-driven and successful digital marketing strategy that helps our clients
-                in achieving a strong online presence and maximum company profit.
+                En MicromediciónIoT, creemos en la revolución de la micromedición para impulsar una gestión
+                sostenible del agua. Al medir con precisión el consumo...  
             </p>
             <div>
                 <a href="#" class="btn btn-slider">
-                    Get Now
+                    Ir Ahora
                 </a>
             </div>
         </div>
@@ -36,8 +36,8 @@
       <div class="carousel-caption d-none d-md-block">
         <div class="custom-carousel-content">
             <h1>
-                <span>Best Ecommerce Solutions 2 </span>
-                to Boost your Brand Name &amp; Sales
+                <span>MicromedicionIoT: </span>
+                Cuidar el agua es ahora imperativo.
             </h1>
             <p>
                 We offer an industry-driven and successful digital marketing strategy that helps our clients
@@ -57,12 +57,12 @@
       <div class="carousel-caption d-none d-md-block">
           <div class="custom-carousel-content">
               <h1>
-                  <span>Best Ecommerce Solutions 2 </span>
-                  to Boost your Brand Name &amp; Sales
+                  <span>MicromedicionIoT: </span>
+                  Cuidar el agua es ahora imperativo.
               </h1>
               <p>
-                  We offer an industry-driven and successful digital marketing strategy that helps our clients
-                  in achieving a strong online presence and maximum company profit.
+                  El aumento exponencial del consumo de agua  nos enfrenta a una encrucijada crítica.
+                  En MicromedicionIoT, abrazamos la verdad cruda...
               </p>
               <div>
                   <a href="#" class="btn btn-slider">
@@ -90,11 +90,6 @@
       <ul>
         <li>
           <p>Micromedición IoT</p>
-        </li>
-        <li>
-          <a href="#">
-            Acerca de Nosotros
-          </a>
         </li>
       </ul>
     </nav>

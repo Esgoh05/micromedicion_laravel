@@ -12,7 +12,10 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Historial</h4>
+                <h2 class="card-title">
+                    <i class="bi bi-clipboard2-data"></i>
+                    Historial
+                </h2>
                 @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}

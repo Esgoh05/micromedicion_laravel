@@ -8,6 +8,7 @@
 
 @section('content')
 
+<!--INICIO Sección. Modal registro de usuario-->
 <section class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog p-5" role="document">
     <div class="modal-content">
@@ -17,7 +18,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="/save-new-user" method="POST" enctype="multipart/form-data" class="needs-validation"  id="crearUsuariosForm" novalidate>
+      <form action="/save-new-user" method="POST" enctype="multipart/form-data" class="needs-validation" id="crearUsuariosForm" novalidate>
         {{ csrf_field() }} 
           <div class="modal-body">
             <img src="../../assets/img/gota_welcome.png" alt="Gota Welcome" class="pngGotaWelcome">
@@ -77,10 +78,10 @@
               <!--FIN. Input modal: contraseña de correo electrónico-->
 
               <!--INICIO. Input modal: foto de perfil-->
-              <div>
+              <!-- <div>
                 <label for="formFile" class="form-label">Foto de perfil:</label>
                 <input class="form-control" type="file" id="formFile" name="foto_perfil" required>
-              </div>
+              </div> -->
               <!--FIN. Input modal: foto de perfil-->
               
           </div>
@@ -97,8 +98,9 @@
     </div>
   </div>
 </section>
+<!--FIN Sección. Modal registro de usuario-->
 
-<!-- Modal Delete-->
+<!-- INICIO. Modal eliminar-->
 <section class="modal fade" id="deletemodalpop" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -126,23 +128,28 @@
     </div>
   </div>
 </section>
-<!-- End Modal Delete -->
+<!-- FIN. Modal eliminar -->
 
-<div class="row">
-<div class="col-md-12">
-            <div class="card">
-              <div class="card-header">
-                <h2 class="card-title">
-                  <i class="bi bi-people-fill"></i>
-                  Usuarios
-                </h2>
-                <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
-                  <i class="bi bi-plus"></i>
-                  Agregar nuevo usuario
-                </button>
-              </div>  
-            </div>
+<!-- INICIO. Sección agregar nuevo usuario -->
+<section class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">
+          <i class="bi bi-people-fill"></i>
+          Usuarios
+        </h2>
+        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
+          <i class="bi bi-plus"></i>
+          Agregar nuevo usuario
+        </button>
+      </div>  
+    </div>       
+  </div>  
+</section>
+<!-- FIN. Sección agregar nuevo usuario -->
 
+<!-- INICIO. Sección tabla registro de usuarios registrados -->
 <section class="row">
   <div class="col-md-12">
     <div class="card">
@@ -152,7 +159,7 @@
       <div class="card-body">
         <div class="table-responsive">
           <table id="userDatatable" class="table">
-            <thead class=" text-primary">
+            <thead class="text-primary">
               <th>ID</th>  
               <th>Nombre</th>
               <th>Teléfono</th>
@@ -190,6 +197,7 @@
     </div>
   </div>    
 </section>
+<!-- FIN. Sección tabla registro de usuarios registrados -->
 
 @endsection
 

@@ -126,7 +126,8 @@
                 <!-- contenedor foto de perfil -->
                 <div class="contenedor_izquierda">
                     <div class="card-img img-fluids">
-                    <img class="image-profile" src="{{ Auth::user()->foto_perfil }}" alt="mifoto">
+                     <img class="image-profile" src="{{ Auth::user()->foto_perfil }}" alt="mifoto"> 
+                    <!--<img class="image-profile" src="{{ Auth::user()->foto_perfil !== 'img/avatar.png' ? asset(Auth::user()->foto_perfil) : asset('img/avatar.png') }}" alt="Avatar"> -->
                     </div>
                 </div>
                 <div class="contenedor_btn_hover">

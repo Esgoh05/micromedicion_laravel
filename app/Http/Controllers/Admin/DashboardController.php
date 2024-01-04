@@ -123,6 +123,9 @@ class DashboardController extends Controller
             $uploadSucces = $request->file('foto_perfil')->move($destinationPath, $filename);
             $data->foto_perfil = $destinationPath . $filename;
 
+        } else {
+            // Puedes asignar un valor por defecto o dejarlo vacío, dependiendo de tus necesidades
+            $data->foto_perfil = 'img/avatar.png'; // Cambia 'default.jpg' por el nombre de tu imagen por defecto
         }
 
         $data->name = $request->input('name');
@@ -256,7 +259,7 @@ class DashboardController extends Controller
 
         //$medicionesContinuas = MedicionContinua::select('idDispositivo', DB::raw('SUM(volumen) as volumen'))->groupBy('idDispositivo')->get();
         
-        echo($medicionesContinuas);
+        //echo($medicionesContinuas);
         $data=[];
 
         $iddispositivo = 'Todos los dispositivos';
