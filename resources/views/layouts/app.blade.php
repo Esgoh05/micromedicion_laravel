@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="../assets/css/footer.css">
     <link rel="stylesheet" href="../assets/css/navbarPrincipal.css">
     <link rel="icon" type="image/png" href="../assets/img/gotita_emergiendo.png">
+    <link rel="stylesheet" href="../assets/css/acercaDe.css">
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])

@@ -1,0 +1,34 @@
+.vstack {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    align-self: stretch;
+  }
+
+  .contenedorAcercaDe{
+    border: 0;
+    border-radius: 0.1875rem;
+    display: flex;
+    align-content: center;
+    position: relative;
+    width: 80%;
+    box-shadow: 0 1px 15px 1px rgba(39, 39, 39, 0.1);
+    top: -80px;
+    background-color: #ffffff;
+    left: 10%;
+    right: 10%;
+}
+
+.contenedorDerecha{
+    background-color: #D90D43;
+    border-left: 2px solid #BF0628;
+    width: 50%;
+}
+
+.contenedorIzquierda{
+    background-color: #D90D43;
+    border-right: 2px solid #BF0628;
+    width: 50%;
+}
+
+
