@@ -31,16 +31,18 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <!-- <ul class="navbar-nav me-auto">
+                     <ul class="navbar-nav me-auto">
 
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
-                       <!--  @guest
+                        @guest
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -66,7 +68,7 @@
                             </li>
                         @endguest
                     </ul>
-                </div> -->
+                </div> 
             </div>
         </nav>
 

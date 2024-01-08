@@ -14,11 +14,11 @@
       <img src="../assets/img/gotita_running.png" class="d-block w-100" alt="slider1">
       <div class="carousel-caption d-none d-md-block">
         <div class="custom-carousel-content">
-            <h1>
+            <h1 class="tituloSlider1">
                 <span>MicromediciónIoT: </span>
                 Transformando Datos en Conciencia.
             </h1>
-            <p>
+            <p class="parrafoSlider1">
                 En MicromediciónIoT, creemos en la revolución de la micromedición para impulsar una gestión
                 sostenible del agua. Al medir con precisión el consumo...  
             </p>
@@ -35,11 +35,11 @@
       <img src="../assets/img/slider1.png" class="d-block w-100" alt="slider2">
       <div class="carousel-caption d-none d-md-block">
         <div class="custom-carousel-content">
-            <h1>
+            <h1 class="tituloSlider2">
                 <span>MicromedicionIoT: </span>
                 Cuidar el agua es ahora imperativo.
             </h1>
-            <p>
+            <p class="parrafoSlider2">
                 We offer an industry-driven and successful digital marketing strategy that helps our clients
                 in achieving a strong online presence and maximum company profit.
             </p>
@@ -85,48 +85,24 @@
 </div>
 
 <section>
-  <div class="container py-5">
-    <div class="row text-center justify-content-center">  
-      <h1 class="fw-bold fs-1 fs-md-2 tituloAcercaDe">
-        Acerca de nosostros
-      </h1>
-      <div class="contenedorAcercaDe hstack gap-2">
-        <div>
-          <img src="../assets/img/holaAcercaDe.png" alt="" id="saludoImg">
-        </div>
-        <div>
-          <p id="acercaDeTexto">
-            En nuestra esencia, somos impulsores del cambio y defensores de la cuantificación. 
-            Creemos en la visualización del uso de recursos para fomentar la conciencia y guiar decisiones efectivas.
-            Con el poder del Internet de las Cosas (IoT) y la micromedición, diseñamos tecnología innovadora. 
-            Nos dedicamos a mejorar el monitoreo y control en los ámbitos de la domótica e inmótica, creando soluciones que definen el mañana.
-            Somos más que tecnología; somos agentes de transformación.
-          </p>
-        </div>
-      </div>
-      <div class="contenedorVision hstack gap-2">
-        <div class="p-2">
-          <h3 class="fw-bold fs-1 fs-md-2 tituloMision">Nuestra misión:</h3>
-        </div>
-        <div class="textoMision p-2">
-          <p>Ofrecer tecnología de vanguardia, especializada en productos de automatización aplicados a casas e inmuebles inteligentes,
-             que cumplan con altos estándares de seguridad, mediante el empleo de tecnologías de la información.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
   <div class="container py-2">
     <div class="row text-center justify-content-center">
-      <h1 class="fw-bold fs-1 fs-md-2 tituloContactanos">
-        Contactanos
-      </h1>
-      <h3>
-        ¡Estamos aquí para ayudarte!
-      </h3>
+        <h1 class="fw-bold fs-1 fs-md-2 tituloContactanos">
+          Contactanos
+        </h1>
+        
+          <h3 class="subtituloContactanos">
+            ¡Estamos aquí para ayudarte!
+          </h3>
+          <a href="mailto:micromedicion.iot@gmail.com" class="correoMicromedicion">
+            <i class="bi bi-envelope"></i>
+            micromedicion.iot@gmail.com
+          </a>
+          <i class="bi bi-geo-alt"></i>
+          <p class="contenidoDireccion">
+            Ecatepec, Edo. Mex.
+          </p>
+        
     </div>
   </div>
 </section>

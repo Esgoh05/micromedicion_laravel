@@ -26,6 +26,8 @@ Auth::routes();
 
 Route::get('/', [FrontendController::class, 'index']);
 
+Route::get('/nosotros', [FrontendController::class, 'nosotros']);
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => ['auth', 'admin']], function(){

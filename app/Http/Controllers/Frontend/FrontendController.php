@@ -11,4 +11,8 @@ class FrontendController extends Controller
     {
         return view('frontend.index');
     }
+
+    public function nosotros(){
+        return view('frontend.nosotros');
+    }
 }

@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="../assets/css/navbarPrincipal.css">
     <link rel="icon" type="image/png" href="../assets/img/gotita_emergiendo.png">
     <link rel="stylesheet" href="../assets/css/acercaDe.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -71,7 +72,7 @@
                         @endguest
 
                         <li class="nav-item">
-                            <a class="nav-link" style="color: #ffffff" href="{{ route('login') }}">{{ __('Nosostros') }}</a>
+                            <a class="nav-link" style="color: #ffffff" href="/nosotros">{{ __('Nosostros') }}</a>
                         </li>
 
                         <li class="nav-item">
