@@ -118,7 +118,7 @@
                 
               </select>
               
-              <button type="submit" class="btn btn-primary">
+              <button type="submit" class="btn btn-primary" style="border-radius: 30px">
                 Graficar
               </button>
             </div>
@@ -131,7 +131,7 @@
             <h5>Mes.</h5>
             <form action="/panel-consumo" method="POST">
               {{  csrf_field()  }}
-            <div class="hstack gap-2 form-group">
+            <div class="vstack gap-2 form-group">
               <input class="form-control" name="datosMeses" type="Month">
               <!--<select id="dd_dispositivosInstalados" name="valorMesSeleccionado" class="form-control me-auto">
                 <option value="" hidden selected>Seleccionar mes</option>
@@ -149,7 +149,7 @@
                 <option value="11">Noviembre</option>
                 <option value="12">Diciembre</option>
               </select> -->             
-              <button type="submit" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Botón graficar">
+              <button type="submit" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Botón graficar" style="border-radius: 30px">
                 Graficar
               </button>
             </div>
@@ -170,6 +170,7 @@
                       </div>
                   </div>
               </div>
+              <p>-</p>
               <div class="col">
                   <div class="form-group">
                       <div class="input-group">
@@ -178,7 +179,7 @@
                   </div>
               </div>
           </div>
-          <button type="submit" class="btn btn-primary">Graficar</button>
+          <button type="submit" class="btn btn-primary btn-lg btn-block" style="border-radius: 30px; font-size:12px; padding: 11px 22px">Graficar</button>
           </form>
          </div>
         </div>
