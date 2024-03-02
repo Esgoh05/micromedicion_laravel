@@ -76,7 +76,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" style="color: #ffffff" href="{{ route('login') }}">{{ __('Contacto') }}</a>
+                            <a class="nav-link" style="color: #ffffff" href="/contacto">{{ __('Contacto') }}</a>
                         </li>
 
                     </ul>

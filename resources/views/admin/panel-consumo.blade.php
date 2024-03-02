@@ -38,7 +38,7 @@
       <div class="card card-chart">
           <div class="card-header ">
               <div class="row">
-                  <div class="col-sm-6 text-left">
+                  <div class="col-sm-8 text-left">
                       <h3 class="card-title" style="margin-left: 3.5rem; margin-top:24px;">Gráfico volumen de agua-tiempo.</h3>
                   </div>
                   <!--<div class="col-sm-6">
@@ -96,7 +96,19 @@
             <h5>Dispositivo.</h5>
             <form action="/panel" method="POST">
               {{  csrf_field()  }}
-            <div class="vstack gap-2 form-group">
+            <div class="vstack gap-3 form-group">
+              <div class="form-group">
+                <select id="inputState1" name="valorEmail" class="form-control" style="width: 100%" required>
+                <option value="" hidden selected>Selecciona un correo electrónico</option>
+                @foreach ($userId as $prueba)
+                <option value="{{ $prueba->id}}">{{ $prueba->email}} </option> 
+                @endforeach 
+                </select>
+                <div id="validationServer04Feedback" class="invalid-feedback">
+                  Por favor, selecciona un campo.
+                </div>
+              </div>
+
               <select id="dd_dispositivosInstalados" name="valor[]" class="form-control me-auto myselect" multiple="multiple">
                 <!--<option value="" hidden selected>Dispositivos instalados</option>-->
                 

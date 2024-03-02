@@ -62,22 +62,4 @@
         </div>
     </div>
 </div>
-
-<footer class="footer">
-    <div class=" container-fluid ">
-      <nav>
-        <ul>
-          <li>
-            <p>Micromedición IoT</p>
-          </li>
-        </ul>
-      </nav>
-      <div class="copyright" id="copyright">
-        &copy; <script>
-          document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
-        </script>, Diseñado y Programado por Micromedición IoT
-      </div>
-    </div>
-</footer>
-
 @endsection

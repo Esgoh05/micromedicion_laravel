@@ -1,0 +1,117 @@
+
+  #imgWelcome{
+    position: absolute;
+    width: 18%;
+    height: 30%;
+    top: 15%; /* Ajusta la posición vertical según sea necesario */
+    left: 40%;
+  }
+  
+  .contenedor {
+    position: relative;
+    margin: 50px auto;
+    width: 400px;
+    padding: 30px;
+    /*background: rgba(0, 0, 0, 0.5);
+    background: #FFFFFF;*/
+    background: linear-gradient(#7209b7, #3f37c0);
+    border-radius: 10px;
+    margin-top: 12.5%;
+  }
+  
+  .contenedor h2 {
+    margin: 0 0 30px;
+    padding: 0;
+    font-size: 30px;
+    color: #2c2c2c;
+    text-align: center;
+  }
+  
+  .contenedor .elemento label {
+    color: #000000;
+    margin-bottom: 20px;
+  }
+
+  .contenedor .elemento input{
+    background-color: #e8f0fe;
+    width: 100%;
+    padding: 10px 0;
+    border: 2px solid #e0e6ec;
+    color: #000000;
+    margin-bottom: 30px;
+    border-radius: 10px;
+  }
+  
+  #btnLogin {
+    width: 100%;
+    padding: 15px;
+    background-color: #1E88E5;
+    border: none;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    cursor: pointer;
+    margin-top: 30px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+  }
+  
+  #btnLogin:hover {
+    background-color: #1E88E5;
+    color: #FFFFFF;
+  }
+  
+  .hstack {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-self: stretch;
+  }
+  
+  /*#btnOcultarPassword {
+    width: 3rem;
+    padding: 10px 0;
+    border: none;
+    margin-bottom: 30px;
+    color: #1E88E5;
+    cursor: pointer;
+    background: transparent;
+  }*/
+  
+  .bi-eye{
+      width: 100%;
+  }
+
+  #olvidarPassword{
+    color:#FFA726;
+    font-weight: bold;
+    margin: 25%;
+  }
+
+  
+  .contenedor .elemento .password-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .contenedor .elemento .password-container input {
+    width: calc(100% - 40px); /* Ajusta según sea necesario */
+    padding: 10px;
+    border: 2px solid #e0e6ec;
+    color: #000000;
+    border-radius: 10px 0 0 10px;
+  }
+
+  .contenedor .elemento .password-container #btnOcultarPassword {
+    width: 40px;
+    padding: 10px 0;
+    border: 2px solid #1E88E5;
+    color: #ffffff;
+    cursor: pointer;
+    background-color: #1E88E5;
+    border-radius: 0 10px 10px 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }

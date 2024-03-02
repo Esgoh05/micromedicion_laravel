@@ -15,4 +15,8 @@ class FrontendController extends Controller
     public function nosotros(){
         return view('frontend.nosotros');
     }
+
+    public function contacto(){
+        return view('frontend.contacto');
+    }
 }

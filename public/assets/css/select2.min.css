@@ -255,8 +255,10 @@ border-width:0 4px 5px 4px}
 
 .select2-container--default 
 .select2-selection--multiple
-{background-color:white;
-border:1px solid #aaa;
+{/*background-color:white; /*-----cambio Fanny */
+/*border:1px solid #aaa;*/
+background-color:transparent;
+border:none;
 border-radius:4px;
 cursor:text;
 padding-bottom:5px;
@@ -359,7 +361,11 @@ margin-left:10px;
 margin-right:auto}
 
 .select2-container--default.select2-container--focus 
-.select2-selection--multiple{border:solid rgb(0, 0, 0) 1px;outline:0}
+.select2-selection--multiple
+{
+    /*border:solid rgb(0, 0, 0) 1px;*/
+    outline:0;
+}
 
 .select2-container--default.select2-container--disabled 
 .select2-selection--multiple
@@ -379,8 +385,12 @@ border-top-right-radius:0}
 .select2-container--default.select2-container--open.select2-container--below 
 .select2-selection--single,.select2-container--default.select2-container--open.select2-container--below 
 .select2-selection--multiple
-{border-bottom-left-radius:0;
-border-bottom-right-radius:0}
+{
+    border-bottom-left-radius:0;
+    border-bottom-right-radius:0;
+    margin-right: 5%;
+    border: none;
+}
 
 .select2-container--default 
 .select2-search--dropdown 
@@ -390,11 +400,13 @@ border-radius: 10px;}
 
 .select2-container--default 
 .select2-search--inline .select2-search__field
-{background:transparent;
+{
+background:transparent;
 border:none;
-outline:0;
+outline:none;
 box-shadow:none;
--webkit-appearance:textfield}
+-webkit-appearance:textfield;
+}
 
 .select2-container--default 
 .select2-results>.select2-results__options

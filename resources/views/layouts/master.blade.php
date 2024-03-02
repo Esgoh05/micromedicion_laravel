@@ -297,7 +297,7 @@
   <!--<script> src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"</script>-->
 
   <!-- Chart JS -->
-  <script type="module" src="../assets/js/plugins/chartjs.min.js"></script>
+  <script src="../assets/js/plugins/chartjs.min.js"></script>
   <!--  Notifications Plugin    -->
   <script src="../assets/js/plugins/bootstrap-notify.js"></script>
   <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->

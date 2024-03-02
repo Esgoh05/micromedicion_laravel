@@ -12,9 +12,12 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../assets/css/footer.css">
     <link rel="stylesheet" href="../assets/css/navbarPrincipal.css">
+    <link rel="stylesheet" href="../assets/css/login.css">
     <link rel="icon" type="image/png" href="../assets/img/gotita_emergiendo.png">
+
 
 
     <!-- Scripts -->

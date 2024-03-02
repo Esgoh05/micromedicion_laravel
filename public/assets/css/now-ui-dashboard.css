@@ -43,6 +43,10 @@ Copyright (c) 2015 Daniel Eden
   appearance:none;
 }
 
+#dd_usuariosRegistrados{
+  appearance: none;
+}
+
 #selectDispositivos{
   padding-top: 15px;
   width: 15rem;
@@ -1991,22 +1995,24 @@ fieldset[disabled] .btn-link.active {
 
 .input-group .form-control:first-child,
 .input-group-btn:first-child>.dropdown-toggle,
-.input-group-btn:last-child>.btn:not(:last-child):not(.dropdown-toggle) {
+/*.input-group-btn:last-child>.btn:not(:last-child):not(.dropdown-toggle) {
   border-right: 0 none;
-}
-
+}*/
+/* Cambio fanny-------*/
 .input-group .form-control:last-child,
 .input-group-btn:last-child>.dropdown-toggle,
-.input-group-btn:first-child>.btn:not(:first-child) {
+/*.input-group-btn:first-child>.btn:not(:first-child) {
   border-left: 0 none;
-}
+}*/
+/* Cambio fanny-------*/
 
 .form-control[disabled],
 .form-control[readonly],
 fieldset[disabled] .form-control {
-  background-color: #E3E3E3;
+  /*background-color: #E3E3E3;*/
+  background-color: #FFFFFF;
   color: #888;
-  cursor: not-allowed;
+  /*cursor: not-allowed;*/
 }
 
 .input-group-btn .btn {

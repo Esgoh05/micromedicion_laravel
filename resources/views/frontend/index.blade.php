@@ -84,29 +84,6 @@
   </button>
 </div>
 
-<section>
-  <div class="container py-2">
-    <div class="row text-center justify-content-center">
-        <h1 class="fw-bold fs-1 fs-md-2 tituloContactanos">
-          Contactanos
-        </h1>
-        
-          <h3 class="subtituloContactanos">
-            ¡Estamos aquí para ayudarte!
-          </h3>
-          <a href="mailto:micromedicion.iot@gmail.com" class="correoMicromedicion">
-            <i class="bi bi-envelope"></i>
-            micromedicion.iot@gmail.com
-          </a>
-          <i class="bi bi-geo-alt"></i>
-          <p class="contenidoDireccion">
-            Ecatepec, Edo. Mex.
-          </p>
-        
-    </div>
-  </div>
-</section>
-
 <footer class="footer">
   <div class="container-fluid">
     <nav>

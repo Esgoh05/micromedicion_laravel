@@ -239,7 +239,9 @@ class DashboardController extends Controller
 
     public function viewpanelconsumo(Request $request){
         $user = Auth::user();
+        $userId = User::select('id','email')->get(); 
         $deviceIds = Device::select('id','modeloSensor')->get();
+
 
         $getDeviceSelected = $request->get('valor');
 
@@ -287,9 +289,68 @@ class DashboardController extends Controller
 
         //dd($data);
 
-        return view('admin.panel-consumo', $data, compact('user', 'deviceIds', 'end', 'start'));  
+        return view('admin.panel-consumo', $data, compact('user', 'userId', 'deviceIds', 'end', 'start'));  
         
     }
+
+    /*
+        public function viewpanelconsumo(Request $request){
+        $user = Auth::user();
+        $userId = User::select('id','email')->get(); 
+        $deviceIds = Device::select('id','modeloSensor')->get();
+
+        $getEmailSelected = $request->get('valorEmail');
+
+        $getDeviceSelected = $request->get('valor');
+
+        $inicioMes = Carbon::now()->startOfMonth();
+
+        $now = Carbon::now();
+        $end = $now->format('Y-m-d');
+        $start = $now->subDays()->format('Y-m-d');
+
+        //$medicionesContinuas = MedicionContinua::whereMonth('fin', now()->month(5))->select(DB::raw('sum(caudalpromedio) as caudalpromedio'), DB::raw('sum(volumen) as volumen'))->get();
+
+        
+        //$medicionesContinuas = MedicionContinua::all();
+        //$medicionesContinuas = MedicionContinua::selectRaw('SUM(caudalpromedio) as caudalpromedio, SUM(volumen) as volumen')->get();
+        //Filtrar por dia
+        $medicionesContinuas = MedicionContinua::groupBy(DB::raw('fin::date'))->select(DB::raw('fin::date'), DB::raw('sum(caudalpromedio) as caudalpromedio'), DB::raw('sum(volumen) as volumen'))->get();
+
+        //$medicionesContinuas = MedicionContinua::select('idDispositivo', DB::raw('SUM(volumen) as volumen'))->groupBy('idDispositivo')->get();
+        
+        //echo($medicionesContinuas);
+        $data=[];
+
+        $iddispositivo = 'Todos los dispositivos';
+        
+
+        //echo($deviceIds);
+        //echo($getDeviceSelected);
+
+        
+        //echo($caudalPromedioGeneral);
+        //echo($tiempoGeneral);
+        //echo($medicionesContinuas);
+          
+
+        foreach($medicionesContinuas as $medicionContinua){
+            $data['caudalpromedio'][] = $medicionContinua->caudalpromedio;
+            $data['volumen'][] = $medicionContinua->volumen;
+            $data['data'][] = $medicionContinua->fin;
+            $data['iddispositivo'] = $iddispositivo;
+        }
+
+
+
+        $data['data'] = json_encode($data); 
+
+        //dd($data);
+
+        return view('admin.panel-consumo', $data, compact('user', 'userId', 'deviceIds', 'end', 'start'));  
+        
+    }
+    */
 
 
     public function btnmediciontotal(Request $request){
@@ -404,6 +465,7 @@ class DashboardController extends Controller
 
     public function btncaudalpormes(Request $request){
         $user = Auth::user();
+        $userId = User::select('id','email')->get(); 
         $now = Carbon::now();
         $end = $now->format('Y-m-d');
         $start = $now->subDay()->format('Y-m-d');
@@ -479,13 +541,14 @@ class DashboardController extends Controller
 
         $data['data'] = json_encode($data); 
 
-        return view('admin.panel-consumo', $data, compact('user', 'deviceIds', 'end', 'start'));  
+        return view('admin.panel-consumo', $data, compact('user', 'userId', 'deviceIds', 'end', 'start'));  
     
     }
 
     
     public function btncaudaldatepicker(Request $request){
         $user = Auth::user();
+        $userId = User::select('id','email')->get(); 
         $deviceIds = Device::select('id','modeloSensor')->get();
         $now = Carbon::now();
         $end = $now->format('Y-m-d');
@@ -516,7 +579,7 @@ class DashboardController extends Controller
 
         $data['data'] = json_encode($data); 
 
-        return view('admin.panel-consumo', $data, compact('user', 'deviceIds', 'end', 'start'));
+        return view('admin.panel-consumo', $data, compact('user', 'userId', 'deviceIds', 'end', 'start'));
 
 
     }
