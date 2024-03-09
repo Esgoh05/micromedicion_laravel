@@ -369,7 +369,7 @@ margin-right:auto}
 
 .select2-container--default.select2-container--disabled 
 .select2-selection--multiple
-{background-color:#eee;
+{background-color: transparent;
 cursor:default}
 
 .select2-container--default.select2-container--disabled 

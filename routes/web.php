@@ -79,6 +79,12 @@ Route::group(['middleware' => ['auth', 'admin']], function(){
     Route::post('/panel-consumo-datepicker', [DashboardController::class,'btncaudaldatepicker']);
 
     Route::post('/medicion-volumen', [DashboardController::class,'btnmedicionvolumen']);
+
+    Route::get('/obtener-opciones', [DashboardController::class,'obtenerDispositivos']);
+
+    //Obtener idUsuario de select, metodo AJAX
+    Route::post('/dispositivos-asignados', [DashboardController::class,'dispositivosAsignados']);
+
     
 });
 

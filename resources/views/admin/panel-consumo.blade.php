@@ -18,7 +18,7 @@
                   </div>
                   
                   <div class="col-sm-6">
-                    <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal" style="margin-right: 1.5rem; margin-top:24px;">
+                    <button type="button" class="btn btn-lg btn-primary float-right" data-toggle="modal" data-target="#exampleModal" style="margin-right: 1.5rem; margin-top:24px; font-size:12px; padding: 12px 45px">
                       Graficar
                     </button>
                   </div>
@@ -89,72 +89,66 @@
       </div>
       <div class="modal-body">
         <div class="container-fluid">
-        <!--<form action="/save-new-user" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
-        {{ csrf_field() }} -->
-          
           <div class="form-group">
             <h5>Dispositivo.</h5>
             <form action="/panel" method="POST">
-              {{  csrf_field()  }}
-            <div class="vstack gap-3 form-group">
-              <div class="form-group">
-                <select id="inputState1" name="valorEmail" class="form-control" style="width: 100%" required>
-                <option value="" hidden selected>Selecciona un correo electrónico</option>
-                @foreach ($userId as $prueba)
-                <option value="{{ $prueba->id}}">{{ $prueba->email}} </option> 
-                @endforeach 
-                </select>
-                <div id="validationServer04Feedback" class="invalid-feedback">
-                  Por favor, selecciona un campo.
+                @csrf <!-- Mover @csrf aquí fuera del formulario interno -->
+                <div class="vstack gap-3 form-group">
+                    <div class="form-group">
+                        <select id="inputState1" name="valorEmail" class="form-control" style="width: 100%" required>
+                            <option value="" hidden selected>Selecciona un correo electrónico</option>
+                            @foreach ($userId as $prueba)
+                                <option value="{{ $prueba->id }}">{{ $prueba->email }}</option> 
+                            @endforeach 
+                        </select>
+                        <div id="validationServer04Feedback" class="invalid-feedback">
+                            Por favor, selecciona un campo.
+                        </div>
+                    </div>
+        
+                    <select id="dd_dispositivosInstalados" name="valor[]" class="form-control me-auto myselect" multiple="multiple" style="background-color: white">
+                        @foreach ($deviceIds as $deviceId)
+                            <option value="{{ $deviceId->id }}"> {{ $deviceId->id}} -> {{ $deviceId->modeloSensor}}</option> 
+                        @endforeach
+                    </select>
+                  
+                    <button type="submit" class="btn btn-primary" style="border-radius: 30px">
+                        Graficar
+                    </button>
                 </div>
-              </div>
-
-              <select id="dd_dispositivosInstalados" name="valor[]" class="form-control me-auto myselect" multiple="multiple">
-                <!--<option value="" hidden selected>Dispositivos instalados</option>-->
-                
-                @foreach ($deviceIds as $deviceId)
-                    <option value="{{ $deviceId->id}}"> {{ $deviceId->id}} -> {{ $deviceId->modeloSensor}}</option> 
-                @endforeach
-                
-              </select>
-              
-              <button type="submit" class="btn btn-primary" style="border-radius: 30px">
-                Graficar
-              </button>
-            </div>
             </form>
-          </div>
+        </div>
 
-          <hr>
+        <hr>
           
-          <div class="form-group">
-            <h5>Mes.</h5>
-            <form action="/panel-consumo" method="POST">
-              {{  csrf_field()  }}
-            <div class="vstack gap-2 form-group">
-              <input class="form-control" name="datosMeses" type="Month">
-              <!--<select id="dd_dispositivosInstalados" name="valorMesSeleccionado" class="form-control me-auto">
-                <option value="" hidden selected>Seleccionar mes</option>
-                
-                <option value="1">Enero</option>
-                <option value="2">Febrero</option>
-                <option value="3">Marzo</option>
-                <option value="4">Abril</option>
-                <option value="5">Mayo</option>
-                <option value="6">Junio</option>
-                <option value="7">Julio</option>
-                <option value="8">Agosto</option>
-                <option value="9">Septiembre</option>
-                <option value="10">Octubre</option>
-                <option value="11">Noviembre</option>
-                <option value="12">Diciembre</option>
-              </select> -->             
-              <button type="submit" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Botón graficar" style="border-radius: 30px">
-                Graficar
-              </button>
-            </div>
-          </form>
+        <div class="form-group">
+          <h5>Mes.</h5>
+          <form action="/panel-consumo" method="POST">
+            {{  csrf_field()  }}
+          <div class="vstack gap-2 form-group">
+            <input class="form-control" name="datosMeses" type="Month">
+            <!--<select id="dd_dispositivosInstalados" name="valorMesSeleccionado" class="form-control me-auto">
+              <option value="" hidden selected>Seleccionar mes</option>
+              
+              <option value="1">Enero</option>
+              <option value="2">Febrero</option>
+              <option value="3">Marzo</option>
+              <option value="4">Abril</option>
+              <option value="5">Mayo</option>
+              <option value="6">Junio</option>
+              <option value="7">Julio</option>
+              <option value="8">Agosto</option>
+              <option value="9">Septiembre</option>
+              <option value="10">Octubre</option>
+              <option value="11">Noviembre</option>
+              <option value="12">Diciembre</option>
+            </select> -->             
+            <button type="submit" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Botón graficar" style="border-radius: 30px">
+              Graficar
+            </button>
           </div>
+        </form>
+        </div>
 
           <hr>
 
@@ -246,7 +240,8 @@
       //labels: tiempo,
       labels: cData.data,
       datasets:[{
-        label:'Caudal',
+        //label:'Caudal', 
+        label: cData.iddispositivo,
         //data: caudalPromedio,
         data: cData.caudalpromedio,
         fill: false,
@@ -265,7 +260,8 @@
         xAxes: [{
       scaleLabel: {
         display: true,
-        labelString: cData.iddispositivo, //recorrerArreglo,
+        //labelString: cData.iddispositivo, //recorrerArreglo,
+        labelString: "Tiempo.",
         fontColor: "rgb(12, 38, 70, 0.8)",
         fontSize: 15,
       }
@@ -296,6 +292,14 @@
 
   });
 
+  var labels = cData.volumen.map(function(item) {
+    return item.label;
+  });
+
+  var values = cData.data.map(function(item) {
+    return item.value;
+  });
+
 
   var barChart = new Chart(ctxBar, {
     type: "bar",
@@ -303,19 +307,20 @@
       //labels: tiempo,
       labels: cData.data,
       datasets:[{
-        label:'Volumen de agua',
+        //label:'Volumen de agua',
+        label: cData.iddispositivo,
         //data: caudalPromedio,
         data: cData.volumen,
         fill: false,
-        backgroundColor: this.generaArregloColores(cData.volumen.length) //cData.backgroundColor
-
+        backgroundColor: this.generaArregloColores(cData.volumen.length), //cData.backgroundColor
         /*[
           '#0c2646',
-        ]*/,
+        ]*/
         //this.generaArregloColores(cData.volumen.length()) //cData.backgroundColor
         borderColor: [
           //'#0c2646',
-          'rgb(12, 38, 70, 0.8)'
+          //'rgb(12, 38, 70, 0.8)'
+          this.generaArregloColores(cData.volumen.length)
         ],
         //cData.borderColor
         }]
@@ -349,6 +354,7 @@
 
   });
 
+
  function generaArregloColores(tam){
 	let arrayColors = [];
 
@@ -381,6 +387,38 @@
   });
 
 
+  $(document).ready(function(){
+        $('#inputState1').change(function(){
+            var valorSeleccionado = $(this).val();
+            console.log(valorSeleccionado);
+            
+            // Enviar el valor seleccionado al controlador de Laravel
+            $.ajax({
+                url: "dispositivos-asignados",
+                type: "POST",
+                data: {
+                    valor: valorSeleccionado,
+                    _token: "{{ csrf_token() }}" //token CSRF 
+                },
+                success: function(response){
+                    // Manejar la respuesta del servidor
+                    console.log(response);
+
+                    // Limpiar el select antes de agregar nuevos dispositivos
+                    $('#dd_dispositivosInstalados').empty();
+                    
+                    // Llenar el select con los dispositivos obtenidos en la respuesta
+                    $.each(response.dispositivos, function(index, dispositivo) {
+                        $('#dd_dispositivosInstalados').append('<option value="' + dispositivo + '">' + dispositivo + '</option>');
+                    });
+                },
+                error: function(xhr, status, error){
+                    // Manejar errores si es necesario
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+    });
 
 
 

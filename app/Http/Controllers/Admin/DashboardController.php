@@ -240,8 +240,9 @@ class DashboardController extends Controller
     public function viewpanelconsumo(Request $request){
         $user = Auth::user();
         $userId = User::select('id','email')->get(); 
-        $deviceIds = Device::select('id','modeloSensor')->get();
 
+            
+        $deviceIds = Device::select('id','modeloSensor')->get();
 
         $getDeviceSelected = $request->get('valor');
 
@@ -286,6 +287,13 @@ class DashboardController extends Controller
 
 
         $data['data'] = json_encode($data); 
+
+            
+        
+
+        //$getEmailUSer = $request->get('valorEmail');
+        
+
 
         //dd($data);
 
@@ -355,27 +363,38 @@ class DashboardController extends Controller
 
     public function btnmediciontotal(Request $request){
         $user = Auth::user();
+        $userId = User::select('id','email')->get(); 
         $now = Carbon::now();
         $end = $now->format('Y-m-d');
         $start = $now->subDay()->format('Y-m-d');
+
         $deviceIds = Device::select('id','modeloSensor')->get();
+        
 
         $getDeviceValue = $request->get('valor');
-
-        $getDevices = $request->input('valor');
         //dd($getDeviceValue);
 
-
-
-        //echo($getDevices);
+        if(!is_null($getDeviceValue)){
+            //echo($getDevices);
         
         //raw sirve para que interprete como comando sql
         $getDeviceSelected = MedicionContinua::whereIn('iddispositivo', $getDeviceValue)->groupBy(DB::raw('iddispositivo::int'), DB::raw('fin::date'))->select(DB::raw('iddispositivo::int'), DB::raw('fin::date'), DB::raw('sum(caudalpromedio) as caudalpromedio'), DB::raw('sum(volumen) as volumen'))->get();
 
+        /*$getDeviceSelected = MedicionContinua::whereIn('iddispositivo', $getDeviceValue)
+        ->groupBy(DB::raw('iddispositivo::int'), DB::raw('fin::date'), DB::raw('EXTRACT(YEAR FROM fin)'), DB::raw('EXTRACT(MONTH FROM fin)'))
+        ->select(DB::raw('iddispositivo::int'), 
+                DB::raw('fin::date'),
+                DB::raw('EXTRACT(YEAR FROM fin) as year'), 
+                DB::raw('EXTRACT(MONTH FROM fin) as month'), 
+                DB::raw('sum(caudalpromedio) as caudalpromedio'), 
+                DB::raw('sum(volumen) as volumen'))
+        ->get();*/
+
+
         //$data = $getDeviceSelected;
         //echo($deviceIds);
         //echo($getDeviceValue);
-        echo($getDeviceSelected);
+        echo($getDeviceSelected."despues de seuma caudalpromedio por dia y volumen por mes");
 
         $numero = $getDeviceSelected->toArray();
         //dd($numero);
@@ -385,7 +404,7 @@ class DashboardController extends Controller
 
         //dd($datos);
 
-        foreach($datos as $fila) {
+        /*foreach($datos as $fila) {
             echo $fila->iddispositivo;
             $id[] = $fila->iddispositivo;
             echo $fila->fin;
@@ -393,7 +412,9 @@ class DashboardController extends Controller
             echo $fila->caudalpromedio;
             echo $fila->volumen;
 
-        }
+        }*/
+
+        
         //dd($fin);
         //$uniques = array_unique($id);
         //$valores = array_count_values($id);
@@ -403,6 +424,24 @@ class DashboardController extends Controller
 
         
         $data=[];
+
+        foreach($getDeviceSelected as $medicionContinua){
+            $data['caudalpromedio'][] = $medicionContinua->caudalpromedio;
+            $data['volumen'][] = $medicionContinua->volumen;
+            $data['data'][] = $medicionContinua->fin;
+            $data['iddispositivo'] = $getDeviceValue;
+        }
+
+        /*foreach($getDeviceSelected as $fila) {
+            echo " ". $fila->iddispositivo." iddispositivo";
+            $id[] = $fila->iddispositivo;
+            echo $fila->fin;
+            $fin[] =  [$fila->iddispositivo, $fila->caudalpromedio, $fila->volumen];
+            echo $fila->caudalpromedio;
+            echo $fila->volumen;
+        }*/
+
+        //dd($data);
 
 
         foreach($numero as $medicionContinua){
@@ -426,11 +465,16 @@ class DashboardController extends Controller
             
             
         };
-
-        /*$data['data'] = json_encode($data); 
-
+        $data['data'] = json_encode($data); 
+        
          
-        return view('admin.panel-consumo', $data, compact('user', 'deviceIds', 'end', 'start'));*/   
+        return view('admin.panel-consumo', $data, compact('user', 'userId', 'deviceIds', 'end', 'start'));
+        } else{
+            return view('admin.panel-consumo', compact('user', 'deviceIds', 'end', 'start'));
+        }
+
+
+          
     
     }
 
@@ -583,6 +627,37 @@ class DashboardController extends Controller
 
 
     }
+
+    public function dispositivosAsignados(Request $request){
+        
+        // Obtener el valor seleccionado del correo electrónico del request
+        $idUsuario = $request->input('valor');
+        //echo($valorEmail);
+
+        // Buscar el dispositivo(s) asociado(s) al correo electrónico
+        $getDispositivos = Instalacion::where('idUsuario', $idUsuario)->pluck('idDispositivo');
+        
+        // Inicializar una variable para almacenar los dispositivos como un arreglo
+        $dispositivosArray = [];
+
+        // Recorrer la colección de idDispositivos y agregarlos al arreglo
+        foreach($getDispositivos as $dispositivo) {
+            $dispositivosArray[] = $dispositivo;
+        }
+
+        // Retornar la respuesta JSON con los idDispositivos encontrados
+        return response()->json([
+            'message' => '¡Solicitud POST recibida correctamente!',
+            'idUsuario' => $idUsuario,
+            'dispositivos' => $dispositivosArray,
+        ]);
+    }
+
+
+
+
+
+    
 
     
 }
