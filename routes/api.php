@@ -25,4 +25,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //ipCompu:8000/api/save_data
 
 Route::post('save_data', [MedicionContinuaController::class,'saveData']); 
-Route::get('save_data', [MedicionContinuaController::class,'saveData']); 
+//Route::get('save_data', [MedicionContinuaController::class,'saveData']); 

@@ -125,72 +125,73 @@
 <!-- End Modal Delete -->
 
 <div class="row">
-<div class="col-md-12">
-            <div class="card">
-              <div class="card-header">
-                <h2 class="card-title">
-                  <i class="bi bi-house-gear"></i>
-                  Instalación
-                </h2>
-                <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
-                  <i class="bi bi-plus"></i>
-                  Agregar nueva instalación
-                </button>
-              </div>  
-            </div>
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">
+          <i class="bi bi-house-gear"></i>
+          Instalación
+        </h2>
+        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
+          <i class="bi bi-plus"></i>
+          Agregar nueva instalación
+        </button>
+      </div>  
+    </div>
+  </div>
+</div>
 
 <div class="row">
-          <div class="col-md-12">
-            <div class="card">
-              <div class="card-header">
-                <h2 class="card-title">Instalaciones registradas</h2>
-                <!-- @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif -->
-              </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table id="installationDatatable" class="table">
-                    <thead class=" text-primary">
-                      <th>Id</th>  
-                      <th>Id Usuario</th>
-                      <th>Id Dispositivo</th>
-                      <th>Diámetro de tubería</th>
-                      <th>Ubicación de dispositivo</th>
-                      <th>Editar</th>
-                      <th>Eliminar</th>
-                    </thead>
-                    <tbody>
-                      @foreach($instalacion as $row)
-                      <tr>
-                        <td>{{ $row->id }}</td>  
-                        <td>{{ $row->idUsuario }}</td>
-                        <td>{{ $row->idDispositivo }}</td>
-                        <td>{{ $row->diametroTuberia }}</td>
-                        <td>{{ $row->ubicacionDispositivo }}</td>
-                        <td>
-                            <a href="/instalacion-edit/{{ $row->id }}" class="btn btn-success">
-                              <i class="bi bi-pencil"></i>
-                              Editar
-                            </a>
-                        </td>
-                        <td>
-                          <a href="javascript:void(0)" class="btn btn-danger deletebtn">
-                            <i class="bi bi-trash3"></i>
-                            Eliminar
-                          </a>
-                        </td>
-                      </tr>
-                      @endforeach
-                    </tbody>
-                  </table>
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">Instalaciones registradas</h2>
+        <!-- @if (session('status'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('status') }}
                 </div>
-              </div>
-            </div>
-          </div>
-          
+            @endif -->
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table id="installationDatatable" class="table">
+            <thead class=" text-primary">
+              <th>Id</th>  
+              <th>Id Usuario</th>
+              <th>Id Dispositivo</th>
+              <th>Diámetro de tubería</th>
+              <th>Ubicación de dispositivo</th>
+              <th>Editar</th>
+              <th>Eliminar</th>
+            </thead>
+            <tbody>
+              @foreach($instalacion as $row)
+              <tr>
+                <td>{{ $row->id }}</td>  
+                <td>{{ $row->idUsuario }}</td>
+                <td>{{ $row->idDispositivo }}</td>
+                <td>{{ $row->diametroTuberia }}</td>
+                <td>{{ $row->ubicacionDispositivo }}</td>
+                <td>
+                    <a href="/instalacion-edit/{{ $row->id }}" class="btn btn-success">
+                      <i class="bi bi-pencil"></i>
+                      Editar
+                    </a>
+                </td>
+                <td>
+                  <a href="javascript:void(0)" class="btn btn-danger deletebtn">
+                    <i class="bi bi-trash3"></i>
+                    Eliminar
+                  </a>
+                </td>
+              </tr>
+              @endforeach
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>       
 </div>
 
 @endsection

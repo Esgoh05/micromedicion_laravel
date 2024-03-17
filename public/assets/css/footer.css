@@ -1,28 +1,28 @@
-.footer {
+.footer-blanco {
     padding: 30px 50px 0;
   }
   
-  .footer.footer-default {
+  .footer-blanco.footer-default {
     background-color: #f2f2f2;
   }
   
-  .footer nav {
+  .footer-blanco nav {
     display: inline-block;
     float: left;
     padding-left: 7px;
   }
   
-  .footer ul {
+  .footer-blanco ul {
     margin-bottom: 0;
     padding: 0;
     list-style: none;
   }
   
-  .footer ul li {
+  .footer-blanco ul li {
     display: inline-block;
   }
   
-  .footer ul li a {
+  .footer-blanco ul li a {
     color: inherit;
     padding: 0.5rem;
     font-size: 0.8571em;
@@ -30,11 +30,11 @@
     text-decoration: none;
   }
   
-  .footer ul li a:hover {
+  .footer-blanco ul li a:hover {
     text-decoration: none;
   }
   
-  .footer.fixed-bottom {
+  .footer-blanco.fixed-bottom {
     width: calc(100% - 80px);
     margin-left: auto;
   }

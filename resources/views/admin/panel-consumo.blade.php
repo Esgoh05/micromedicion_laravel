@@ -89,7 +89,7 @@
       </div>
       <div class="modal-body">
         <div class="container-fluid">
-          <div class="form-group">
+          <div class="form-group" id="contenedorFiltroDispositivo">
             <h5>Dispositivo.</h5>
             <form action="/panel" method="POST">
                 @csrf <!-- Mover @csrf aquí fuera del formulario interno -->
@@ -106,10 +106,11 @@
                         </div>
                     </div>
         
-                    <select id="dd_dispositivosInstalados" name="valor[]" class="form-control me-auto myselect" multiple="multiple" style="background-color: white">
-                        @foreach ($deviceIds as $deviceId)
+                    <select id="dd_dispositivosInstalados" name="valor[]" class="form-control me-auto myselect" multiple="multiple" style="background-color: white" disabled>
+                      <!--<option value="" hidden selected>Selecciona al menos un dispositivo</option>
+                      @foreach ($deviceIds as $deviceId)
                             <option value="{{ $deviceId->id }}"> {{ $deviceId->id}} -> {{ $deviceId->modeloSensor}}</option> 
-                        @endforeach
+                        @endforeach-->
                     </select>
                   
                     <button type="submit" class="btn btn-primary" style="border-radius: 30px">
@@ -125,57 +126,56 @@
           <h5>Mes.</h5>
           <form action="/panel-consumo" method="POST">
             {{  csrf_field()  }}
-          <div class="vstack gap-2 form-group">
-            <input class="form-control" name="datosMeses" type="Month">
-            <!--<select id="dd_dispositivosInstalados" name="valorMesSeleccionado" class="form-control me-auto">
-              <option value="" hidden selected>Seleccionar mes</option>
-              
-              <option value="1">Enero</option>
-              <option value="2">Febrero</option>
-              <option value="3">Marzo</option>
-              <option value="4">Abril</option>
-              <option value="5">Mayo</option>
-              <option value="6">Junio</option>
-              <option value="7">Julio</option>
-              <option value="8">Agosto</option>
-              <option value="9">Septiembre</option>
-              <option value="10">Octubre</option>
-              <option value="11">Noviembre</option>
-              <option value="12">Diciembre</option>
-            </select> -->             
-            <button type="submit" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Botón graficar" style="border-radius: 30px">
-              Graficar
-            </button>
-          </div>
-        </form>
+            <div class="vstack gap-2 form-group">
+              <input class="form-control" name="datosMeses" type="Month">
+              <!--<select id="dd_dispositivosInstalados" name="valorMesSeleccionado" class="form-control me-auto">
+                <option value="" hidden selected>Seleccionar mes</option>
+                
+                <option value="1">Enero</option>
+                <option value="2">Febrero</option>
+                <option value="3">Marzo</option>
+                <option value="4">Abril</option>
+                <option value="5">Mayo</option>
+                <option value="6">Junio</option>
+                <option value="7">Julio</option>
+                <option value="8">Agosto</option>
+                <option value="9">Septiembre</option>
+                <option value="10">Octubre</option>
+                <option value="11">Noviembre</option>
+                <option value="12">Diciembre</option>
+              </select> -->             
+              <button type="submit" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Botón graficar" style="border-radius: 30px">
+                Graficar
+              </button>
+            </div>
+          </form>
         </div>
 
           <hr>
 
-          <div class="form-group">
+        <div class="form-group">
             <h5>Periodo.</h5>
             <form action="/panel-consumo-datepicker" method="POST">
-              {{  csrf_field()  }}
-            <div class="input-daterange datepicker row align-items-center" id="datetimepicker" date-date-format="yyyy-mm-dd">
-              <div class="col">
-                  <div class="form-group">
-                      <div class="input-group">
-                          <input class="form-control" placeholder="Fecha inicio" name="fechaInicioCaudal" type="Date" value="{{ $start }}">
-                      </div>
-                  </div>
+                {{  csrf_field()  }}
+              <div class="input-daterange datepicker row align-items-center" id="datetimepicker" date-date-format="yyyy-mm-dd">
+                <div class="col">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input class="form-control" placeholder="Fecha inicio" name="fechaInicioCaudal" type="Date" value="{{ $start }}">
+                        </div>
+                    </div>
+                </div>
+                <p>-</p>
+                <div class="col">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input class="form-control datepicker" placeholder="Fecha fin" name="fechaFinCaudal" type="date" value="{{ $end }}">
+                        </div>
+                    </div>
+                </div>
               </div>
-              <p>-</p>
-              <div class="col">
-                  <div class="form-group">
-                      <div class="input-group">
-                          <input class="form-control datepicker" placeholder="Fecha fin" name="fechaFinCaudal" type="date" value="{{ $end }}">
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <button type="submit" class="btn btn-primary btn-lg btn-block" style="border-radius: 30px; font-size:12px; padding: 11px 22px">Graficar</button>
-          </form>
-         </div>
+              <button type="submit" class="btn btn-primary btn-lg btn-block" style="border-radius: 30px; font-size:12px; padding: 11px 22px">Graficar</button>
+            </form>
         </div>
       </div>
     </div>
@@ -198,194 +198,140 @@
   const cData = JSON.parse('<?php echo $data; ?>');
   console.log(cData);
 
-  /*const recorrerArreglo = cData.iddispositivo.filter((item,index)=>{
-    return cData.iddispositivo.indexOf(item) === index;
-  });
+  // Convertir el objeto JSON en un array si es necesario
+const dataArray = Array.isArray(cData) ? cData : [cData];
 
-  console.log(recorrerArreglo); */
+// Verificar si el campo iddispositivo está presente en cada objeto del arreglo
+const hasDeviceId = dataArray.every(item => item.hasOwnProperty('iddispositivo'));
 
-
-
-  //const caudalPromedio = [179, 179, 238, 218, 348, 398, 407, 417, 407, 437, 467, 457, 447, 447, 437, 447, 447, 437, 447,]
-  //const tiempo = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
-
-  /*var bigDashboardChart = new Chart(ctx, {
-    type: "bar",
-    data:{
-      labels:['col1', 'col2', 'col3'],
-      datasets:[{
-        label:'Num datos',
-        data:[10,9,15],
-        backgroundColor:[
-          'rgb(255, 87, 51)',
-          'rgb(51, 87, 51)',
-          'rgb(51, 147, 255)',
-        ]
-      }]
-    },
-    options:{
-      scales:{
-        yAxes:[{
-          ticks:{
-            beginAtZero:true
-          }
-        }]
-      }
-    }
-
-  })*/
-  var bigDashboardChart = new Chart(ctx, {
-    type: "line",
-    data:{
-      //labels: tiempo,
-      labels: cData.data,
-      datasets:[{
-        //label:'Caudal', 
-        label: cData.iddispositivo,
-        //data: caudalPromedio,
-        data: cData.caudalpromedio,
-        fill: false,
-        backgroundColor:[
-          '#0c2646'
-        ],
-        borderColor:[
-          //'#0c2646',
-          'rgb(12, 38, 70, 0.8)'
-        ]
-        }]
-
-    },
-    options: {
-      scales:{
-        xAxes: [{
-      scaleLabel: {
-        display: true,
-        //labelString: cData.iddispositivo, //recorrerArreglo,
-        labelString: "Tiempo.",
-        fontColor: "rgb(12, 38, 70, 0.8)",
-        fontSize: 15,
-      }
-    }],
-        yAxes:[{
-          scaleLabel: {
-        display: true,
-        labelString: "Caudal (L/h).",
-        fontColor: "rgb(12, 38, 70, 0.8)",
-        fontSize: 15,
-      }
-        }]
-      },
-    legend: {
-        position: 'bottom',
-        fontColor: "rgb(12, 38, 70, 0.8)",
-    },
-    /*title: {
-        display: true,
-        text: 'Gráfica caudal-tiempo',
-        position: 'top',
-        fontSize: 20,
-        fontColor: "rgb(12, 38, 70, 0.8)",
-      }*/
-
-    }
-
-
-  });
-
-  var labels = cData.volumen.map(function(item) {
-    return item.label;
-  });
-
-  var values = cData.data.map(function(item) {
-    return item.value;
-  });
-
-
-  var barChart = new Chart(ctxBar, {
-    type: "bar",
-    data:{
-      //labels: tiempo,
-      labels: cData.data,
-      datasets:[{
-        //label:'Volumen de agua',
-        label: cData.iddispositivo,
-        //data: caudalPromedio,
-        data: cData.volumen,
-        fill: false,
-        backgroundColor: this.generaArregloColores(cData.volumen.length), //cData.backgroundColor
-        /*[
-          '#0c2646',
-        ]*/
-        //this.generaArregloColores(cData.volumen.length()) //cData.backgroundColor
-        borderColor: [
-          //'#0c2646',
-          //'rgb(12, 38, 70, 0.8)'
-          this.generaArregloColores(cData.volumen.length)
-        ],
-        //cData.borderColor
-        }]
-
-    },
-    options: {
-      scales:{
-        xAxes: [{
-      scaleLabel: {
-        display: true,
-        labelString: "Tiempo.",
-        fontColor: "rgb(12, 38, 70, 0.8)",
-        fontSize: 15,
-      }
-    }],
-        yAxes:[{
-          scaleLabel: {
-        display: true,
-        labelString: "Volumen de agua (L).",
-        fontColor: "rgb(12, 38, 70, 0.8)",
-        fontSize: 15,
-      }
-        }]
-      },
-    legend: {
-        position: 'bottom',
-        fontColor: "rgb(12, 38, 70, 0.8)",
-    },
-
-    }
-
-  });
-
-
- function generaArregloColores(tam){
-	let arrayColors = [];
-
-  console.log(tam);
-	
-	for(var i = 0; i < tam; i++){
-    console.log("entre al for");
-	 arrayColors.push(this.colorRamdom());
-   console.log(i);
-	}
-
-	return arrayColors;
+// Si no hay campo iddispositivo en los datos
+if (!hasDeviceId) {
+    // Agregar "Todos los dispositivos" como etiqueta en cada objeto
+    dataArray.forEach(item => {
+        item.iddispositivo = "Todos los dispositivos";
+    });
 }
+ 
+  // Objeto para almacenar los datos agrupados por dispositivo
+  const groupedData = {};
 
- function colorRamdom(){
-    let min = Math.ceil(0);
-    let max = Math.floor(255);
-    let color = 'rgba('+
-      Math.floor(Math.random() * (max - min) + min) +',' +
-      Math.floor(Math.random() * (max - min) + min) +',' +
-      Math.floor(Math.random() * (max - min) + min) +',' +
-      '0.8)';
-    return color;
-  }
-
-  $(".myselect").select2({
-    placeholder: 'Dispositivos instalados' ,
-    tags: true,
-    tokenSeparators: ['', '']
+  dataArray.forEach(item => {
+    const dispositivo = item.iddispositivo.toString();
+    if (!groupedData[dispositivo]) {
+        groupedData[dispositivo] = [];
+    }
+    groupedData[dispositivo].push({
+        fin: item.fin,
+        caudalpromedio: parseFloat(item.caudalpromedio),
+        volumen: parseFloat(item.volumen)
+    });
   });
 
+  // Generar dinámicamente los datasets
+  const datasets = Object.keys(groupedData).map(dispositivo => {
+      const data = groupedData[dispositivo].map(item => item.caudalpromedio);
+      const backgroundColor = `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, 0.2)`;
+      const borderColor = `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, 1)`;
+      return {
+          label: `Dispositivo: ${dispositivo}`,
+          data: data,
+          backgroundColor: backgroundColor,
+          borderColor: borderColor,
+          borderWidth: 1,
+          fill: false
+      };
+  });
+
+  // Generar dinámicamente los datasets para volumen
+  const datasetsVolumen = Object.keys(groupedData).map(dispositivo => {
+      const data = groupedData[dispositivo].map(item => item.volumen);
+      const backgroundColor = `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, 0.2)`;
+      const borderColor = `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, 1)`;
+      return {
+          label: `Volumen - Dispositivo: ${dispositivo}`,
+          data: data,
+          backgroundColor: backgroundColor,
+          borderColor: borderColor,
+          borderWidth: 1
+      };
+  });
+
+  // Obtener todas las fechas únicas
+  const fechasUnicas = dataArray.reduce((fechas, item) => {
+      fechas.add(item.fin);
+      return fechas;
+  }, new Set());
+
+  // Convertir el conjunto de fechas a un arreglo y ordenarlo
+  const etiquetas = [...fechasUnicas].sort();
+
+  // Crear el gráfico
+  var bigDashboardChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+          labels: etiquetas,
+          datasets: datasets
+      },
+      options: {
+        scales:{
+          xAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: "Tiempo.",
+          fontColor: "rgb(12, 38, 70, 0.8)",
+          fontSize: 15,
+        }
+      }],
+          yAxes:[{
+            scaleLabel: {
+          display: true,
+          labelString: "Caudal (L/h).",
+          fontColor: "rgb(12, 38, 70, 0.8)",
+          fontSize: 15,
+        }
+          }]
+        },
+        legend: {
+            position: 'bottom',
+            fontColor: "rgb(12, 38, 70, 0.8)",
+        }
+      }
+  });
+
+  // Crear el gráfico de barras para volumen
+  var barChart = new Chart(ctxBar, {
+      type: 'bar',
+      data: {
+          labels: etiquetas, // Utiliza las etiquetas obtenidas anteriormente
+          datasets: datasetsVolumen
+      },
+      options: {
+        scales:{
+          xAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: "Tiempo.",
+          fontColor: "rgb(12, 38, 70, 0.8)",
+          fontSize: 15,
+        }
+      }],
+          yAxes:[{
+            scaleLabel: {
+          display: true,
+          labelString: "Volumen de agua (L).",
+          fontColor: "rgb(12, 38, 70, 0.8)",
+          fontSize: 15,
+        }
+          }]
+        },
+      }
+  });
+
+  //Esto hará que el menú desplegable se adjunte al modal, en lugar del<body>elemento.
+  $('#dd_dispositivosInstalados').select2({
+      placeholder: "Selecciona al menos un dispositivo",
+      dropdownParent: $('#contenedorFiltroDispositivo')
+    });
 
   $(document).ready(function(){
         $('#inputState1').change(function(){
@@ -403,6 +349,7 @@
                 success: function(response){
                     // Manejar la respuesta del servidor
                     console.log(response);
+                    $('#dd_dispositivosInstalados').prop('disabled', false);
 
                     // Limpiar el select antes de agregar nuevos dispositivos
                     $('#dd_dispositivosInstalados').empty();
@@ -420,10 +367,6 @@
         });
     });
 
-
-
-
-  
 </script>
 
 

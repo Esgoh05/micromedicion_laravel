@@ -151,7 +151,7 @@
         box-shadow: 0 1px 15px 1px rgba(39, 39, 39, 0.1);
         /*background-color: #fff55f;*/
         background-color: #30CFF2;
-        height: 18rem;
+        height: 13rem;
     }
 
     #saludoImg{
@@ -183,6 +183,16 @@
         padding-left: 20%;
         width: 90%;
         height: 20%;
+    }
+
+    .tituloMision{
+        font-size: 16px !important;
+    }
+    #parrafoMision{
+        font-size: 10px;
+    }
+    #acercaDeTexto{
+        font-size: 8px !important;
     }
 }
 

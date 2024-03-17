@@ -28,7 +28,7 @@
           <h3 class="fw-bold fs-1 fs-md-2 tituloMision">Nuestra misión:</h3>
         </div>
         <div class="textoMision p-2">
-          <p>Ofrecer tecnología de vanguardia, especializada en productos de automatización aplicados a casas e inmuebles inteligentes,
+          <p id="parrafoMision">Ofrecer tecnología de vanguardia, especializada en productos de automatización aplicados a casas e inmuebles inteligentes,
              que cumplan con altos estándares de seguridad, mediante el empleo de tecnologías de la información.
           </p>
         </div>
