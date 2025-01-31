@@ -8,7 +8,7 @@
 
 @section('content')
 
-<!--INICIO Sección. Modal registro de usuario-->
+<!--INICIO Sección. Modal registro de usuario -->
 <section class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog p-5" role="document">
     <div class="modal-content">

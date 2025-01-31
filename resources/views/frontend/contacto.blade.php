@@ -32,7 +32,7 @@
     <nav>
       <ul>
         <li>
-          <p>Micromedición IoT</p>
+          <p id="micromedicioniot">Micromedición IoT</p>
         </li>
       </ul>
     </nav>

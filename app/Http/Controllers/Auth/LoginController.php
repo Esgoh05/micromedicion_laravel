@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log; 
 
 class LoginController extends Controller
 {
@@ -32,6 +33,7 @@ class LoginController extends Controller
     protected function redirecTo(){
         
         if(Auth::user()->usertype == 'admin'){
+            Log::info('Usuario tipo admin inició sesión.');
             return 'dashboard';
         }
         if(Auth::user()->usertype == 'user'){

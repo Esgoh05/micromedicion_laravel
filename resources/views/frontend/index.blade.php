@@ -14,7 +14,7 @@
       <img src="../assets/img/gotita_running.png" class="d-block w-100" alt="slider1">
       <div class="carousel-caption d-none d-md-block">
         <div class="custom-carousel-content">
-            <h1 class="tituloSlider1">
+            <h1 class="titulo1">
                 <span>MicromediciónIoT: </span>
                 Transformando Datos en Conciencia.
             </h1>
@@ -89,7 +89,7 @@
     <nav>
       <ul>
         <li>
-          <p>Micromedición IoT</p>
+          <p id="micromedicioniot">Micromedición IoT</p>
         </li>
       </ul>
     </nav>

@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
             'name' => 'Fanny',
             'phone' => '9622796913',
             'usertype' => 'admin',
-            'email' => 'ada_hack143@hackademy.mx',
+            'email' => 'fanny.epk@gmail.com',
             'password' => Hash::make('password'),
             'foto_perfil' => 'gatito.jpg',
         ]);
