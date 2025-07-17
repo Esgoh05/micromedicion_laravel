@@ -314,7 +314,7 @@
           //alert('{{ session('status') }}');
           swal({
             title: '{{ session('status') }}',
-            text: "You clicked the button!",
+            text: "Por favor presiona el boton",
             //icon: '{{ session('statuscode') }}',
             icon: "success",
             button: "OK",

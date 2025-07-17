@@ -885,8 +885,12 @@ fieldset[disabled] .btn-primary:focus,
 fieldset[disabled] .btn-primary.focus,
 fieldset[disabled] .btn-primary:active,
 fieldset[disabled] .btn-primary.active {
-  background-color: #f96332;
-  border-color: #f96332;
+  /* background-color: #f96332; */
+  /* border-color: #f96332; */
+  pointer-events: none; 
+  cursor: default; 
+  background-color: rgba(148, 146, 146, 0.5);
+  /* box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.17); */
 }
 
 .btn-primary.btn-link {

@@ -165,6 +165,7 @@
               <th>Teléfono</th>
               <th>Tipo de usuario</th>
               <th>Correo electrónico</th>
+              <th>Estatus usuario</th>
               <th>Editar</th>
               <th>Eliminar</th>
             </thead>
@@ -177,16 +178,37 @@
                 <td>{{ $row->usertype }}</td>
                 <td>{{ $row->email }}</td>
                 <td>
+                  @if ($row->instalacion_count > 0)
+                    Vinculado
+                    <i class="biHose bi-house-check-fill"></i>
+                  @else
+                    Activo
+                    <i class="biActivo bi-circle-fill"></i>
+                  @endif
+                </td>
+                <td>
                     <a href="/role-edit/{{ $row->id }}" class="btn btn-success">
                       <i class="bi bi-pencil"></i>
                       Editar
                     </a>
                 </td>
                 <td>
-                  <a href="javascript:void(0)" class="btn btn-danger deletebtn">
+                  @if ($row->instalacion_count > 0)
+                  <a href="#" class="btn deletebtndisable" disabled>
+                  
                     <i class="bi bi-trash3"></i>
                     Eliminar
                   </a>
+                @else
+                <a href="javascript:void(0)" class="btn btn-danger deletebtn">
+                  <i class="bi bi-trash3"></i>
+                  Eliminar
+                </a>  
+                @endif
+                  {{-- <a href="javascript:void(0)" class="btn btn-danger deletebtn">
+                    <i class="bi bi-trash3"></i>
+                    Eliminar
+                  </a> --}}
                 </td>
               </tr>
               @endforeach

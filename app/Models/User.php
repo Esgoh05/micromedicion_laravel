@@ -47,6 +47,6 @@ class User extends Authenticatable
     ];
 
     public function instalacion(){
-        return $this->hasMany(Instalacion::class);
+        return $this->hasMany(Instalacion::class, 'idUsuario');
     }
 }

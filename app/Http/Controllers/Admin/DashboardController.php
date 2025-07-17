@@ -29,7 +29,9 @@ class DashboardController extends Controller
 
     public function registered(){
         $user = Auth::user();
-        $users = User::all();
+        // $users = User::all();
+        $users = User::withCount('instalacion')->get();
+
         session_start();
         
         //$value = 'success';

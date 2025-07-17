@@ -113,7 +113,7 @@
                         @endforeach-->
                     </select>
                   
-                    <button type="submit" class="btn btn-primary" style="border-radius: 30px">
+                    <button type="submit" class="btn btn-primary" id="btnFiltroDispositivos" style="border-radius: 30px" disabled>
                         Graficar
                     </button>
                 </div>
@@ -127,7 +127,7 @@
           <form action="/panel-consumo" method="POST">
             {{  csrf_field()  }}
             <div class="vstack gap-2 form-group">
-              <input class="form-control" name="datosMeses" type="Month">
+              <input class="form-control" id="inputState2" name="datosMeses" type="Month">
               <!--<select id="dd_dispositivosInstalados" name="valorMesSeleccionado" class="form-control me-auto">
                 <option value="" hidden selected>Seleccionar mes</option>
                 
@@ -144,7 +144,7 @@
                 <option value="11">Noviembre</option>
                 <option value="12">Diciembre</option>
               </select> -->             
-              <button type="submit" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Botón graficar" style="border-radius: 30px">
+              <button type="submit" class="btn btn-primary" id="btnFiltroMes" data-toggle="tooltip" data-placement="top" title="Botón graficar" style="border-radius: 30px" disabled>
                 Graficar
               </button>
             </div>
@@ -161,7 +161,7 @@
                 <div class="col">
                     <div class="form-group">
                         <div class="input-group">
-                            <input class="form-control" placeholder="Fecha inicio" name="fechaInicioCaudal" type="Date" value="{{ $start }}">
+                            <input class="form-control" id="fechaInicio" placeholder="Fecha inicio" name="fechaInicioCaudal" type="Date" value="{{ $start }}">
                         </div>
                     </div>
                 </div>
@@ -169,12 +169,12 @@
                 <div class="col">
                     <div class="form-group">
                         <div class="input-group">
-                            <input class="form-control datepicker" placeholder="Fecha fin" name="fechaFinCaudal" type="date" value="{{ $end }}">
+                            <input class="form-control datepicker" id="fechaFin" placeholder="Fecha fin" name="fechaFinCaudal" type="date" value="{{ $end }}">
                         </div>
                     </div>
                 </div>
               </div>
-              <button type="submit" class="btn btn-primary btn-lg btn-block" style="border-radius: 30px; font-size:12px; padding: 11px 22px">Graficar</button>
+              <button type="submit" class="btn btn-primary btn-lg btn-block" id="btnFiltroPeriodo" style="border-radius: 30px; font-size:12px; padding: 11px 22px">Graficar</button>
             </form>
         </div>
       </div>
@@ -358,6 +358,18 @@ if (!hasDeviceId) {
                     $.each(response.dispositivos, function(index, dispositivo) {
                         $('#dd_dispositivosInstalados').append('<option value="' + dispositivo + '">' + dispositivo + '</option>');
                     });
+
+                    console.log(response.dispositivos);
+
+                    let arrayDispositivosFiltro = response.dispositivos;
+
+                    if(arrayDispositivosFiltro == 0 ){
+                      $('#btnFiltroDispositivos').prop('disabled', true);
+                    }else{
+                      $('#btnFiltroDispositivos').prop('disabled', false);
+                    }
+                    
+                    
                 },
                 error: function(xhr, status, error){
                     // Manejar errores si es necesario
@@ -365,7 +377,81 @@ if (!hasDeviceId) {
                 }
             });
         });
+
+
     });
+
+    document.getElementById("inputState2").addEventListener("input", function() {
+        document.getElementById("btnFiltroMes").disabled = !this.value;
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        let today = new Date();
+        let year = today.getFullYear();
+        let month = (today.getMonth() + 1).toString().padStart(2, "0"); // Obtiene el mes con dos dígitos
+
+        let maxMonth = `${year}-${month}`; // Formato YYYY-MM
+        document.getElementById("inputState2").setAttribute("max", maxMonth);
+    });
+
+
+    // document.addEventListener("DOMContentLoaded", function () {
+    //     const fechaInicio = document.getElementById("fechaInicio");
+    //     const fechaFin = document.getElementById("fechaFin");
+    //     const btnFiltroPeriodo = document.getElementById("btnFiltroPeriodo");
+
+    //     function validarFechas() {
+    //         submitBtn.disabled = !(fechaInicio.value && fechaFin.value);
+    //     }
+
+    //     fechaInicio.addEventListener("input", validarFechas);
+    //     fechaFin.addEventListener("input", validarFechas);
+    // });
+
+    document.addEventListener("DOMContentLoaded", function () {
+    const fechaInicio = document.getElementById("fechaInicio");
+    const fechaFin = document.getElementById("fechaFin");
+    const submitBtn = document.getElementById("submitBtn");
+
+    // Obtener fechas actuales
+    let today = new Date();
+    let yesterday = new Date();
+    yesterday.setDate(today.getDate() - 1); // Ayer
+
+    // Formatear fechas a YYYY-MM-DD
+    function formatDate(date) {
+        return date.toISOString().split('T')[0];
+    }
+
+    // Definir límites
+    let minDate = "2022-01-01"; // Mínimo 2022
+    let maxDate = formatDate(today); // Máximo hoy
+
+    // Asignar valores y restricciones a los inputs
+    fechaInicio.value = formatDate(yesterday);
+    fechaInicio.min = minDate;
+    fechaInicio.max = maxDate;
+
+    fechaFin.value = formatDate(today);
+    fechaFin.min = minDate;
+    fechaFin.max = maxDate;
+
+    // Actualizar restricciones en fechaFin cuando cambia fechaInicio
+    fechaInicio.addEventListener("input", function () {
+        fechaFin.min = fechaInicio.value; // No se puede seleccionar antes de fechaInicio
+        if (fechaFin.value < fechaInicio.value) {
+            fechaFin.value = fechaInicio.value; // Ajustar fechaFin si ya es menor
+        }
+        validarFechas();
+    });
+
+    // Validar que ambos inputs tengan fecha para habilitar el botón
+    function validarFechas() {
+        submitBtn.disabled = !(fechaInicio.value && fechaFin.value);
+    }
+
+    fechaFin.addEventListener("input", validarFechas);
+});
 
 </script>
 
