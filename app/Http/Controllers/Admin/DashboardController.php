@@ -148,7 +148,9 @@ class DashboardController extends Controller
         $user = Auth::user();
         $userId = User::select('id','email')->get(); 
         $deviceIds = Device::select('id','modeloSensor', 'status_dispositivo')->get(); 
-        $instalacion = Instalacion::all();
+        // $instalacion = Instalacion::all();
+        // Aquí cargamos las relaciones necesarias para mostrar el email y modeloSensor
+        $instalacion = Instalacion::with(['user', 'device'])->get();
         return view('admin.instalacion', compact('user','userId', 'deviceIds')) ->with('instalacion', $instalacion);
     }
 

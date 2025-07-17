@@ -15,4 +15,8 @@ class Device extends Model
         'modeloSensor',
         'factorK',
     ];
+
+    public function instalacion(){
+        return $this->hasMany(Instalacion::class, 'idDispositivo');
+    }
 }

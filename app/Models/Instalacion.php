@@ -20,6 +20,10 @@ class Instalacion extends Model
     ];
 
     public function user(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'idUsuario');
+    }
+
+    public function device(){
+        return $this->belongsTo(Device::class, 'idDispositivo');
     }
 }

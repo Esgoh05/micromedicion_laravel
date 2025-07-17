@@ -157,8 +157,8 @@
           <table id="installationDatatable" class="table">
             <thead class=" text-primary">
               <th>Id</th>  
-              <th>Id Usuario</th>
-              <th>Id Dispositivo</th>
+              <th>Usuario</th>
+              <th>Dispositivo</th>
               <th>Diámetro de tubería</th>
               <th>Ubicación de dispositivo</th>
               <th>Editar</th>
@@ -168,8 +168,10 @@
               @foreach($instalacion as $row)
               <tr>
                 <td>{{ $row->id }}</td>  
-                <td>{{ $row->idUsuario }}</td>
-                <td>{{ $row->idDispositivo }}</td>
+                {{-- <td>{{ $row->idUsuario }}</td> --}}
+                <td>{{ $row->user->email ?? '—' }}</td>
+                {{-- <td>{{ $row->idDispositivo }}</td> --}}
+                <td>{{ $row->device->modeloSensor ?? '—' }}</td>
                 <td>{{ $row->diametroTuberia }}</td>
                 <td>{{ $row->ubicacionDispositivo }}</td>
                 <td>
