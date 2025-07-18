@@ -78,7 +78,7 @@
 
 
 <!--Modal filtro-->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
   <div class="modal-dialog p-5" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -423,6 +423,13 @@ if (!hasDeviceId) {
         return date.toISOString().split('T')[0];
     }
 
+    //Función para sumar días
+    function addDays(dateString, days) {
+        const date = new Date(dateString);
+        date.setDate(date.getDate() + days);
+        return formatDate(date);
+    }
+
     // Definir límites
     let minDate = "2022-01-01"; // Mínimo 2022
     let maxDate = formatDate(today); // Máximo hoy
@@ -432,16 +439,35 @@ if (!hasDeviceId) {
     fechaInicio.min = minDate;
     fechaInicio.max = maxDate;
 
-    fechaFin.value = formatDate(today);
-    fechaFin.min = minDate;
-    fechaFin.max = maxDate;
+    //Establecer fechaFin a un día después de fechaInicio
+    fechaFin.value = addDays(fechaInicio.value, 1);         
+    fechaFin.min = addDays(fechaInicio.value, 1);           
+    fechaFin.max = maxDate;                                 
+
+    // fechaFin.value = formatDate(today);
+    // fechaFin.min = minDate;
+    // fechaFin.max = maxDate;
+
+    // // Actualizar restricciones en fechaFin cuando cambia fechaInicio
+    // fechaInicio.addEventListener("input", function () {
+    //     fechaFin.min = fechaInicio.value; // No se puede seleccionar antes de fechaInicio
+    //     if (fechaFin.value < fechaInicio.value) {
+    //         fechaFin.value = fechaInicio.value; // Ajustar fechaFin si ya es menor
+    //     }
+    //     validarFechas();
+    // });
 
     // Actualizar restricciones en fechaFin cuando cambia fechaInicio
     fechaInicio.addEventListener("input", function () {
-        fechaFin.min = fechaInicio.value; // No se puede seleccionar antes de fechaInicio
-        if (fechaFin.value < fechaInicio.value) {
-            fechaFin.value = fechaInicio.value; // Ajustar fechaFin si ya es menor
+        //Calcular nuevo mínimo (un día después de fechaInicio)
+        fechaFin.min = addDays(fechaInicio.value, 1);       
+        fechaFin.max = maxDate;                             
+
+        //Ajustar valor si fechaFin es inválida
+        if (fechaFin.value <= fechaInicio.value) {          
+            fechaFin.value = addDays(fechaInicio.value, 1);
         }
+
         validarFechas();
     });
 
