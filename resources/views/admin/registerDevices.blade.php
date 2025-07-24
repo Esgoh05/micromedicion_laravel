@@ -22,27 +22,44 @@
         <form action="/save-new-device" method="POST" class="needs-validation" novalidate>
         {{ csrf_field() }} 
 
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Dirección Mac:</label>
-            <input type="text" name="direccionMac" class="form-control" id="recipient-name" required>
-            <label class="invalid-feedback">
-              Por favor, completa este campo.
-            </label>
-          </div>
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Modelo del sensor:</label>
-            <input type="text" name="modeloSensor" class="form-control" id="recipient-name" required>
-            <label class="invalid-feedback">
-              Por favor, completa este campo.
-            </label>
-          </div>
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Factor K:</label>
-            <input type="text" name="factorK" class="form-control" id="recipient-name" required>
-            <label class="invalid-feedback">
-              Por favor, completa este campo.
-            </label>
-          </div>
+        <div class="form-group">
+          <label for="recipient-name" class="col-form-label">Dirección MAC:</label>
+          <input type="text" name="direccionMac" class="form-control"
+                 id="recipient-name" required
+                 oninput="this.value = this.value.replace(/\s/g, '')"
+                 pattern="^([A-Fa-f0-9]{2}[:-]){5}[A-Fa-f0-9]{2}$"
+                 title="Ingresa una dirección MAC válida, sin espacios. Ej: 00:1A:2B:3C:4D:5E">
+          <label class="invalid-feedback">
+            Por favor, completa este campo.
+          </label>
+        </div>
+        
+        <div class="form-group">
+          <label for="recipient-name" class="col-form-label">Modelo del sensor:</label>
+          <input type="text" name="modeloSensor" class="form-control"
+                 id="recipient-name" required
+                 oninput="this.value = this.value.replace(/\s/g, '')"
+                 pattern="^[^\s]+$"
+                 title="No se permiten espacios.">
+          <label class="invalid-feedback">
+            Por favor, completa este campo.
+          </label>
+        </div>
+        <div class="form-group">
+          <label for="recipient-name" class="col-form-label">Factor K:</label>
+          <input type="text" name="factorK" class="form-control"
+                 id="recipient-name" required
+                 oninput="this.value = this.value
+                   .replace(/[^0-9.]/g, '')                      // solo números y punto
+                   .replace(/^(\d*\.\d{0,2}).*$/, '$1')         // máximo dos decimales
+                   .replace(/^\.*/, '')                         // evita empezar con punto
+                   .replace(/(\..*)\./g, '$1')">                <!-- solo un punto -->
+          <label class="invalid-feedback">
+            Por favor, completa este campo.
+          </label>
+        </div>
+        
+        
 
           </div>
           <div class="modal-footer border-white">

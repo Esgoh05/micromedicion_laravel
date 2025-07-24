@@ -54,6 +54,7 @@ class DashboardController extends Controller
         $users->phone = $request->input('phone');
         $users->usertype = $request->input('usertype');
         $users->email = $request->input('email');
+
         $users->update();
 
 
@@ -134,7 +135,12 @@ class DashboardController extends Controller
         $data->phone = $request->input('phone');
         $data->usertype = $request->input('usertype');
         $data->email = $request->input('email');
-        $data->password = Hash::make($request->input('password'));
+        // $data->password = Hash::make($request->input('password'));
+
+        // Establecer contraseña por defecto
+        // $users->password = Hash::make('micromedicion_IoT2025!'); 
+        // $data->password = Hash::make($request->input('micromedicion_IoT2025!'));
+        $data->password = Hash::make('micromedicion_IoT2025!');
         
        // input('password');
 

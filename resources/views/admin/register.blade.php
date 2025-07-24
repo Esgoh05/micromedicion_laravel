@@ -27,7 +27,11 @@
               <!--INICIO. Input modal: nombre de usuario-->
               <div class="form-group">
                 <label for="name" class="col-form-label">Nombre:</label>
-                <input type="text" name="name" id="name" class="form-control" autocomplete="off" required>
+                {{-- <input type="text" name="name" id="name" class="form-control" autocomplete="off" required> --}}
+                <input type="text" name="name" id="name" class="form-control" autocomplete="off" required
+                pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$"
+                title="Solo letras y espacios"
+                oninput="this.value = this.value.replace(/[^A-Za-zÁÉÍÓÚáéíóúÑñ ]/g, '').replace(/^\s+/, '')">         
                 <label class="invalid-feedback" for="name">
                   Por favor, completa este campo.
                 </label>
@@ -37,7 +41,8 @@
               <!--INICIO. Input modal: telefono de usuario-->
               <div class="form-group">
                 <label for="phone" class="col-form-label">Teléfono:</label>
-                <input type="tel" name="phone" id="phone" class="form-control" autocomplete="on" required>
+                <input type="tel" name="phone" id="phone" class="form-control" autocomplete="on" pattern="^\d{10}$" 
+                  oninput="this.value = this.value.replace(/\s/g, '')" required>
                 <label class="invalid-feedback" for="phone">
                   Por favor, completa este campo.
                 </label>
@@ -61,12 +66,16 @@
               <!--INICIO. Input modal: correo electrónico de usuario-->
               <div class="form-group">
                 <label for="email" class="col-form-label">Correo electrónico:</label>
-                <input type="email" name="email" id="email" class="form-control" autocomplete="off" required>
-              </div>
+                <input type="email" name="email" id="email" class="form-control"
+                       autocomplete="off" required
+                       pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
+                       title="Ingresa un correo válido sin espacios, con '@' y al menos un punto."
+                       oninput="this.value = this.value.replace(/\s/g, '')">
+              </div>              
               <!--FIN. Input modal: correo electrónico de usuario-->
               
               <!--INICIO. Input modal: contraseña de correo electrónico-->
-              <div class="form-group">
+              {{-- <div class="form-group">
                 <label for="password" class="col-form-label">Contraseña:</label>
                 <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" class="form-control" required>
                     @error('password')
@@ -74,7 +83,7 @@
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-              </div>
+              </div> --}}
               <!--FIN. Input modal: contraseña de correo electrónico-->
 
               <!--INICIO. Input modal: foto de perfil-->
