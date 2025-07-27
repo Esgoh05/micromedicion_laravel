@@ -15,13 +15,22 @@
               <div class="row">
                   <div class="col-sm-6 text-left">
                       <h3 class="card-title" style="margin-left: 3.5rem; margin-top:24px;">Gráfico caudal-tiempo.</h3>
+                      {{-- <p class="periodo-filtrado">Periodo filtrado por:</p> --}}
+                      {{-- @if(isset($tipoPeriodo))
+                        <p class="periodo-filtrado"> {{ $tipoPeriodo }} </p>
+                      @endif                   --}}
                   </div>
                   
                   <div class="col-sm-6">
                     <button type="button" class="btn btn-lg btn-primary float-right" data-toggle="modal" data-target="#exampleModal" style="margin-right: 1.5rem; margin-top:24px; font-size:12px; padding: 12px 45px">
-                      Graficar
+                      Filtrar
                     </button>
                   </div>
+              </div>
+              <div class="row">
+                @if(isset($tipoPeriodo))
+                  <p class="periodo-filtrado"> {{ $tipoPeriodo }} </p>
+                @endif   
               </div>
           </div>
           <div class="card-body">

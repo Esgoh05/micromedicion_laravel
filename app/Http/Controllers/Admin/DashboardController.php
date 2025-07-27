@@ -247,70 +247,90 @@ class DashboardController extends Controller
         //return redirect('/instalacion-register') ->with('status','Tu infromación ha sido eliminada');
     }
 
+    // public function viewpanelconsumo(Request $request){
+    //     $user = Auth::user();
+    //     $userId = User::select('id','email')->get(); 
+    //     $data['tipoPeriodo'] = 'Periodo actual (mes en curso)';
+
+            
+    //     $deviceIds = Device::select('id','modeloSensor')->get();
+
+    //     $getDeviceSelected = $request->get('valor');
+
+    //     $inicioMes = Carbon::now()->startOfMonth();
+
+    //     $now = Carbon::now();
+    //     $end = $now->format('Y-m-d');
+    //     $start = $now->subDays()->format('Y-m-d');
+
+    //     //$medicionesContinuas = MedicionContinua::whereMonth('fin', now()->month(5))->select(DB::raw('sum(caudalpromedio) as caudalpromedio'), DB::raw('sum(volumen) as volumen'))->get();
+
+        
+    //     //$medicionesContinuas = MedicionContinua::all();
+    //     //$medicionesContinuas = MedicionContinua::selectRaw('SUM(caudalpromedio) as caudalpromedio, SUM(volumen) as volumen')->get();
+    //     //Filtrar por dia
+    //     $medicionesContinuas = MedicionContinua::groupBy(DB::raw('fin::date'))->select(DB::raw('fin::date'), DB::raw('sum(caudalpromedio) as caudalpromedio'), DB::raw('sum(volumen) as volumen'))->get();
+
+    //     //$medicionesContinuas = MedicionContinua::select('idDispositivo', DB::raw('SUM(volumen) as volumen'))->groupBy('idDispositivo')->get();
+        
+    //     //echo($medicionesContinuas);
+    //     //$data=[];
+
+    //     //$iddispositivo = 'Todos los dispositivos';
+        
+
+    //     //echo($deviceIds);
+    //     //echo($getDeviceSelected);
+
+        
+    //     //echo($caudalPromedioGeneral);
+    //     //echo($tiempoGeneral);
+    //     //echo($medicionesContinuas);
+          
+
+    //     /*foreach($medicionesContinuas as $medicionContinua){
+    //         $data['caudalpromedio'][] = $medicionContinua->caudalpromedio;
+    //         $data['volumen'][] = $medicionContinua->volumen;
+    //         $data['data'][] = $medicionContinua->fin;
+    //         $data['iddispositivo'] = $iddispositivo;
+    //     }*/
+
+
+
+    //     //$data['data'] = json_encode($data); 
+    //     $data['data'] = json_encode($medicionesContinuas); 
+
+            
+        
+
+    //     //$getEmailUSer = $request->get('valorEmail');
+        
+
+
+    //     //dd($data);
+
+    //     return view('admin.panel-consumo', $data, compact('user', 'userId', 'deviceIds', 'end', 'start'));  
+        
+    // }
     public function viewpanelconsumo(Request $request){
         $user = Auth::user();
         $userId = User::select('id','email')->get(); 
-
-            
         $deviceIds = Device::select('id','modeloSensor')->get();
-
-        $getDeviceSelected = $request->get('valor');
-
-        $inicioMes = Carbon::now()->startOfMonth();
-
+    
         $now = Carbon::now();
         $end = $now->format('Y-m-d');
         $start = $now->subDays()->format('Y-m-d');
-
-        //$medicionesContinuas = MedicionContinua::whereMonth('fin', now()->month(5))->select(DB::raw('sum(caudalpromedio) as caudalpromedio'), DB::raw('sum(volumen) as volumen'))->get();
-
-        
-        //$medicionesContinuas = MedicionContinua::all();
-        //$medicionesContinuas = MedicionContinua::selectRaw('SUM(caudalpromedio) as caudalpromedio, SUM(volumen) as volumen')->get();
-        //Filtrar por dia
-        $medicionesContinuas = MedicionContinua::groupBy(DB::raw('fin::date'))->select(DB::raw('fin::date'), DB::raw('sum(caudalpromedio) as caudalpromedio'), DB::raw('sum(volumen) as volumen'))->get();
-
-        //$medicionesContinuas = MedicionContinua::select('idDispositivo', DB::raw('SUM(volumen) as volumen'))->groupBy('idDispositivo')->get();
-        
-        //echo($medicionesContinuas);
-        //$data=[];
-
-        //$iddispositivo = 'Todos los dispositivos';
-        
-
-        //echo($deviceIds);
-        //echo($getDeviceSelected);
-
-        
-        //echo($caudalPromedioGeneral);
-        //echo($tiempoGeneral);
-        //echo($medicionesContinuas);
-          
-
-        /*foreach($medicionesContinuas as $medicionContinua){
-            $data['caudalpromedio'][] = $medicionContinua->caudalpromedio;
-            $data['volumen'][] = $medicionContinua->volumen;
-            $data['data'][] = $medicionContinua->fin;
-            $data['iddispositivo'] = $iddispositivo;
-        }*/
-
-
-
-        //$data['data'] = json_encode($data); 
-        $data['data'] = json_encode($medicionesContinuas); 
-
-            
-        
-
-        //$getEmailUSer = $request->get('valorEmail');
-        
-
-
-        //dd($data);
-
-        return view('admin.panel-consumo', $data, compact('user', 'userId', 'deviceIds', 'end', 'start'));  
-        
+    
+        $medicionesContinuas = MedicionContinua::groupBy(DB::raw('fin::date'))
+            ->select(DB::raw('fin::date'), DB::raw('sum(caudalpromedio) as caudalpromedio'), DB::raw('sum(volumen) as volumen'))
+            ->get();
+    
+        $data['data'] = json_encode($medicionesContinuas);
+        $tipoPeriodo = 'Periodo filtrado por: Todos los dispositivos.'; // <-- tipo de periodo
+    
+        return view('admin.panel-consumo', $data, compact('user', 'userId', 'deviceIds', 'end', 'start', 'tipoPeriodo'));
     }
+    
 
     /*
         public function viewpanelconsumo(Request $request){
@@ -380,10 +400,16 @@ class DashboardController extends Controller
         $start = $now->subDay()->format('Y-m-d');
 
         $deviceIds = Device::select('id','modeloSensor')->get();
+
+        // dd($request);
+        // dd($request->get('valorEmail'));
+        $selectedUser = User::find($request->get('valorEmail'));
+        // dd($selectedUser);
+        $data['tipoPeriodo'] = 'Filtra dispositivo(s) de: ' . $selectedUser->email;
         
 
         $getDeviceValue = $request->get('valor');
-        //dd($getDeviceValue);
+        // dd($getDeviceValue);
 
         if(!is_null($getDeviceValue)){
             //echo($getDevices);
@@ -394,6 +420,7 @@ class DashboardController extends Controller
         //$data=[];
 
         $data['data'] = json_encode($getDeviceSelected); 
+        // $data['tipoPeriodo'] = 'Dispositivo(s) de: ' . $user->email;
         
          
         return view('admin.panel-consumo', $data, compact('user', 'userId', 'deviceIds', 'end', 'start'));
@@ -406,6 +433,7 @@ class DashboardController extends Controller
     public function btnmedicionvolumen(Request $request){
         $user = Auth::user();
         $deviceIds = Device::select('id','modeloSensor')->get();
+        // $data['tipoPeriodo'] = 'Periodo filtrado por dispositivo(s)';
 
         $getValue = $request->get('valorVolumen');
 
@@ -443,58 +471,105 @@ class DashboardController extends Controller
         $getDeviceSelected = $request->get('valor');
         $mesSeleccionado = $request->input('valorMesSeleccionado');
 
+        // dd($mesSeleccionado );
+
         $getMonth = $request->input('datosMeses');
+        // echo($getMonth);
 
         $fecha = Carbon::parse($getMonth);
         $afecha = $fecha->year;
         $mfecha = $fecha->month;
 
+        // dd($mfecha);
         //Filtrado por mes y suma de valores de caudal promedio/volumen de agua.
         //$medicionesContinuas = MedicionContinua::whereMonth('fin', now()->month($mesSeleccionado))->select(DB::raw('sum(caudalpromedio) as caudalpromedio'), DB::raw('sum(volumen) as volumen'))->get();
         
         $medicionesContinuas = MedicionContinua::groupBy(DB::raw('fin::date'))->select(DB::raw('fin::date'), DB::raw('sum(caudalpromedio) as caudalpromedio'), DB::raw('sum(volumen) as volumen'))->whereYear('fin', '=', $afecha)->whereMonth('fin', now()->month($mfecha))->get();
         $medicionesContinuasVolumen = MedicionContinua::whereMonth('fin', now()->month($mesSeleccionado))->select(DB::raw('sum(volumen) as volumen'))->get();
 
-        switch ($mesSeleccionado) {
+        // switch ($mesSeleccionado) {
+        //     case 1:
+        //         $mesSeleccionado = 'Enero';
+        //         break;
+        //     case 2:
+        //         $mesSeleccionado = 'Febrero';
+        //         break;
+        //     case 3:
+        //         $mesSeleccionado = 'Marzo';
+        //         break;
+        //     case 4:
+        //         $mesSeleccionado = 'Abril';
+        //         break;
+        //     case 5:
+        //         $mesSeleccionado = 'Mayo';
+        //         break;
+        //     case 6:
+        //         $mesSeleccionado = 'Junio';
+        //         break;
+        //     case 7:
+        //         $mesSeleccionado = 'Julio';
+        //         break;
+        //     case 8:
+        //         $mesSeleccionado = 'Agosto';
+        //         break;
+        //     case 9:
+        //         $mesSeleccionado = 'Septiembre';
+        //         break;
+        //     case 10:
+        //         $mesSeleccionado = 'Octubre';
+        //         break;
+        //     case 11:
+        //         $mesSeleccionado = 'Noviembre';
+        //         break;
+        //     case 12:
+        //         $mesSeleccionado = 'Diciembre';
+        //         break;
+        // }
+
+        
+        switch ($mfecha) {
             case 1:
-                $mesSeleccionado = 'Enero';
+                $mfecha = 'Enero';
                 break;
             case 2:
-                $mesSeleccionado = 'Febrero';
+                $mfecha = 'Febrero';
                 break;
             case 3:
-                $mesSeleccionado = 'Marzo';
+                $mfecha = 'Marzo';
                 break;
             case 4:
-                $mesSeleccionado = 'Abril';
+                $mfecha = 'Abril';
                 break;
             case 5:
-                $mesSeleccionado = 'Mayo';
+                $mfecha = 'Mayo';
                 break;
             case 6:
-                $mesSeleccionado = 'Junio';
+                $mfecha = 'Junio';
                 break;
             case 7:
-                $mesSeleccionado = 'Julio';
+                $mfecha = 'Julio';
                 break;
             case 8:
-                $mesSeleccionado = 'Agosto';
+                $mfecha = 'Agosto';
                 break;
             case 9:
-                $mesSeleccionado = 'Septiembre';
+                $mfecha = 'Septiembre';
                 break;
             case 10:
-                $mesSeleccionado = 'Octubre';
+                $mfecha = 'Octubre';
                 break;
             case 11:
-                $mesSeleccionado = 'Noviembre';
+                $mfecha = 'Noviembre';
                 break;
             case 12:
-                $mesSeleccionado = 'Diciembre';
+                $mfecha = 'Diciembre';
                 break;
         }
+
+        $tipoPeriodo = 'Periodo filtrado por mes: ' . $mfecha . '.';
         
-        echo($medicionesContinuas);
+        // echo($medicionesContinuas);
+        // echo($mesSeleccionado);
         $data=[];
           
 
@@ -505,13 +580,12 @@ class DashboardController extends Controller
             //$data['data'][] = $mesSeleccionado;
         }
 
-        //echo($mesSeleccionado);
-
+        echo($mesSeleccionado);
 
         $data['data'] = json_encode($data); 
         $data['data'] = json_encode($medicionesContinuas); 
 
-        return view('admin.panel-consumo', $data, compact('user', 'userId', 'deviceIds', 'end', 'start'));  
+        return view('admin.panel-consumo', $data, compact('user', 'userId', 'deviceIds', 'end', 'start', 'tipoPeriodo'));  
     
     }
 
@@ -523,16 +597,17 @@ class DashboardController extends Controller
         $now = Carbon::now();
         $end = $now->format('Y-m-d');
         $start = $now->subDay()->format('Y-m-d');
+        
 
         $fechaInicioCaudal = $request->get('fechaInicioCaudal');
         $fechaFinCaudal = $request->get('fechaFinCaudal');
 
-        echo($fechaInicioCaudal);
-        echo($fechaFinCaudal);
+        // echo($fechaInicioCaudal);
+        // echo($fechaFinCaudal);
 
         $medicionContinuaFiltroFechas = MedicionContinua::whereBetween('fin', [$fechaInicioCaudal.' 00:00:00', $fechaFinCaudal. ' 23:59:59'])->groupBy(DB::raw('fin::date'))->select(DB::raw('sum(caudalpromedio) as caudalpromedio'), DB::raw('sum(volumen) as volumen'), DB::raw('fin::date'))->get();;
 
-        echo($medicionContinuaFiltroFechas);
+        // echo($medicionContinuaFiltroFechas);
 
         $data=[];
           
@@ -549,8 +624,9 @@ class DashboardController extends Controller
 
         $data['data'] = json_encode($data); 
         $data['data'] = json_encode($medicionContinuaFiltroFechas); 
+        $tipoPeriodo = 'Periodo filtrado por rango de fechas: ' . $fechaInicioCaudal . ' al ' . $fechaFinCaudal . '.';
 
-        return view('admin.panel-consumo', $data, compact('user', 'userId', 'deviceIds', 'end', 'start'));
+        return view('admin.panel-consumo', $data, compact('user', 'userId', 'deviceIds', 'end', 'start', 'tipoPeriodo'));
 
 
     }
@@ -578,13 +654,5 @@ class DashboardController extends Controller
             'idUsuario' => $idUsuario,
             'dispositivos' => $dispositivosArray,
         ]);
-    }
-
-
-
-
-
-    
-
-    
+    }  
 }

@@ -78,6 +78,11 @@ canvas{
   padding:0;
 }
 
+.periodo-filtrado{
+  /* margin-left: 3.5rem; */
+  margin: 1rem 0 1rem 4.5rem;
+}
+
 .biBaja{
   color: #f4a020;
   font-size: 16px;
