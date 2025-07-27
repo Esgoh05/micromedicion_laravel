@@ -57,29 +57,44 @@
           <!--End. Select Id - modelo dispositivo. Modelo:Device-->
 
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Diámetro de tuberia:</label>
-            <input type="text" name="diametroTuberia" class="form-control" id="recipient-name" value="1/2" required>
+            <label for="recipient-name" class="col-form-label">Diámetro de tubería (pulgadas):</label>
+            <input type="text" name="diametroTuberia" class="form-control" id="recipient-name" required
+              oninput="this.value = this.value
+                .replace(/[^0-9\/ ]/g, '')            // solo números, espacio y diagonal
+                .replace(/^\s+/, '')                  // sin espacio al inicio
+                .replace(/\s{2,}/g, ' ')              // no más de un espacio
+                .replace(/ ?\/ ?/g, '/')              // eliminar espacios antes/después de la diagonal
+                .replace(/^([^\/]*\/[^\/]*)\/.*/, '$1') // solo una diagonal
+              ">
             <label class="invalid-feedback">
               Por favor, completa este campo.
             </label>
           </div>
+          
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">SSID:</label>
-            <input type="text" name="ssid" class="form-control" id="recipient-name" value="Default" required>
+            <input type="text" name="ssid" class="form-control" id="recipient-name" value="Default" required pattern="\S+">
             <label class="invalid-feedback">
               Por favor, completa este campo.
             </label>
           </div>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Password SSID:</label>
-            <input type="text" name="passwordSsid" class="form-control" id="recipient-name" value="12345678" required>
+            <input type="text" name="passwordSsid" class="form-control" id="recipient-name" value="12345678" required oninput="this.value = this.value.replace(/\s/g, '')">
             <label class="invalid-feedback">
               Por favor, completa este campo.
             </label>
           </div>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Ubicación de dispositivo:</label>
-            <input type="text" name="ubicacionDispositivo" class="form-control" id="recipient-name" value="Default" required>
+              <input 
+              type="text" 
+              name="ubicacionDispositivo" 
+              class="form-control" 
+              id="recipient-name" 
+              value="Default" 
+              required 
+              oninput="this.value = this.value.replace(/^\s+/, '').replace(/\s{2,}/g, ' ')">
             <label class="invalid-feedback">
               Por favor, completa este campo.
             </label>
