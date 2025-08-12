@@ -28,10 +28,12 @@
     width: 400px;
     /* padding: 30px; */
     padding: 80px 30px 30px; /* más espacio arriba */
-    background: linear-gradient(#7209b7, #3f37c0);
+    /* background: linear-gradient(#7209b7, #3f37c0); */
+    /* background: #2CA8FF; */
+    background: #fff;
     border-radius: 10px;
     margin-top: 12.5%;
-    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.5);
   }
   
   #imgWelcome {
@@ -111,7 +113,8 @@
   #olvidarPassword{
     color:#FFA726;
     font-weight: bold;
-    margin: 25%;
+    /* margin: 25%; */
+    text-align: center;
   }
 
   
@@ -122,7 +125,7 @@
   }
 
   .contenedor .elemento .password-container input {
-    width: calc(100% - 40px); /* Ajusta según sea necesario */
+    width: calc(100% - 40px); /* Ajusta */
     padding: 10px;
     border: 2px solid #e0e6ec;
     color: #000000;
@@ -140,4 +143,8 @@
     position: absolute;
     right: 0;
     top: 0;
+  }
+
+  .contenedor .elemento p{
+    text-align: center;
   }

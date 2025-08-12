@@ -27,7 +27,7 @@
                 <button type="submit" id="btnLogin">Iniciar sesión</button>
             </div>
             <div class="elemento">
-                <p class="mb-1 text-sm mx-auto">
+                <p>
                     <a href="{{ route('password.request') }}" id="olvidarPassword">¿Olvidaste tu contraseña?</a>
                 </p>
             </div>
