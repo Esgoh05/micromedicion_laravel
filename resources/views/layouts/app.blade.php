@@ -18,7 +18,9 @@
     <link rel="stylesheet" href="../assets/css/navbarPrincipal.css">
     <link rel="icon" type="image/png" href="../assets/img/gotita_emergiendo.png">
     <link rel="stylesheet" href="../assets/css/acercaDe.css">
+    <link rel="stylesheet" href="../assets/css/login.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -45,7 +47,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
-                        @guest
+                        {{-- @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
                                     <a class="nav-link" style="color: #ffffff" href="{{ route('login') }}">{{ __('Iniciar sesión') }}</a>
@@ -77,6 +79,18 @@
 
                         <li class="nav-item">
                             <a class="nav-link" style="color: #ffffff" href="/contacto">{{ __('Contacto') }}</a>
+                        </li> --}}
+
+                        <li class="nav-item">
+                            <a class="nav-link"  style="color: #ffffff" href="{{ url('/#login') }}">Inicio de sesion</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"  style="color: #ffffff" href="{{ url('/#nosotros') }}">Nosotros</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"  style="color: #ffffff" href="{{ url('/#contacto') }}">Contáctanos</a>
                         </li>
 
                     </ul>

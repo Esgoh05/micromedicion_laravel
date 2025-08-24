@@ -245,6 +245,7 @@ color: #2a5788;
 
 .navbar-brand{
   color: linear-gradient(to right, #0c2646 0%, #204065 60%, #2a5788 100%);
+  width: 100%;
 }
 .modal-header{
   background: linear-gradient(to right, #0c2646 0%, #204065 60%, #2a5788 100%);

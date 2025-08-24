@@ -1,6 +1,11 @@
     .navbar{
     background-image: linear-gradient(to right, #0c2646 0%, #204065 60%, #2a5788 100%);
+    width: 100%;
     }
+
+    /* .cont{
+        width: 100%;
+    } */
 
     .navbar-light .navbar-brand{
     color: #FFFFFF;

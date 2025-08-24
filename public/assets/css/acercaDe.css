@@ -1,3 +1,44 @@
+.principal{
+    background-color: #f8f9fa !important;
+}
+
+#contacto{
+    margin: 5% 0;
+
+    h2{
+        padding: 1rem 0;
+        font-weight: bold;
+        font-size: 40px;
+        text-align: center;
+    }
+
+    /* h3{
+        text-align: center;
+        font-size: medium;
+        font-weight: bold;
+        padding: 1rem 0;
+        font-size: 18px;
+    } */
+}
+
+.info-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 1rem 0;
+    gap: 20%; /* espacio entre ícono y texto */
+    margin: 2% 0;
+}
+
+
+.info-item {
+    /* width: 50%; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .hstack {
     display: flex;
     flex-direction: row;
@@ -74,14 +115,14 @@
 }
 
 .correoMicromedicion{
-    padding-top: 30px;
     text-decoration: none;
+    text-align: center;
     font-size: 18px;
     color: #000;
 }
 
 .correoMicromedicion:hover{
-    font-size: 25px;
+    font-size: 1.2rem;
 }
 
 .bi-envelope{
@@ -90,13 +131,13 @@
 
 .contenidoDireccion{
     font-size: 18px;
-    padding-top: 15px;
+    text-align: left;
+    margin-bottom: 0;
 }
 
 .bi-geo-alt{
     color: #0a58ca;
-    padding-top: 40px;
-    font-size: 18px;
+    font-size: 1rem;
 }
 
 .contenidoContactos{
@@ -192,6 +233,70 @@
         font-size: 10px;
     }
 }
+
+#nosotros {
+    width: 100%;
+  }
+  
+  .nosotros-content {
+    display: flex;
+    flex-wrap: wrap;   /* para que en pantallas pequeñas se apilen */
+    width: 100%;
+  }
+  
+  /* columna texto */
+  .nosotros-texto {
+    flex: 2; /* ocupa la mitad */
+    background-color:  #257db6; /*#0097b2; azul */
+    color: #fff;
+    padding: 5%;
+    text-align: justify;
+  }
+
+  .nosotros-texto p{
+    font-size: 18px;
+  }
+
+  .nosotros-texto h2{
+    font-size: 40px;
+    margin-bottom: 3%;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .nosotros-texto span{
+    color: #fbff00;
+    font-weight: bold;
+  }
+  
+  /* columna imagen */
+  .nosotros-imagen {
+    flex: 1; /* ocupa la otra mitad */
+    background-color: #1d5284; /* verde */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2%;
+  }
+  
+  .nosotros-imagen img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Responsivo: en móviles se apilan */
+  @media (max-width: 768px) {
+    .nosotros-content {
+      flex-direction: column;
+    }
+  
+    .nosotros-texto, 
+    .nosotros-imagen {
+      flex: 100%; /* ocupan todo el ancho */
+      text-align: center;
+    }
+  }
+  
 
 @media only screen and (min-width: 401px) and (max-width: 500px) {
 
@@ -316,3 +421,19 @@
     }
     
 }
+
+
+/* Responsive: en pantallas pequeñas (ej. <768px) que ocupen todo el ancho */
+@media (max-width: 768px) {
+    .info-item {
+      width: 100%; /* ahora cada div ocupará toda la fila */
+      justify-content: center; /* opcional, centra contenido */
+      text-align: center;      /* opcional, centra texto */
+    }
+
+    
+    .info-item {
+        width: 100%; /* cada uno ocupa todo el ancho */
+        justify-content: flex-start; /* o center según quieras */
+    }
+  }

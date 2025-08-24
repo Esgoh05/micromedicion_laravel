@@ -25,7 +25,8 @@
    .contenedor {
     position: relative;
     margin: 50px auto;
-    width: 400px;
+    /* width: 400px; */
+    width: 50%;
     /* padding: 30px; */
     padding: 80px 30px 30px; /* más espacio arriba */
     /* background: linear-gradient(#7209b7, #3f37c0); */
