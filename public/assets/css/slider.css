@@ -1,31 +1,251 @@
-.carousel-item .custom-carousel-content{
-    width: 50%;
-    transform: translate(0%, -10%);
-  }
-  .custom-carousel-content{
-    text-align: start;
-  }
-  .custom-carousel-content h1{
-    font-size: 40px;
+/* Estilos generales del carrusel */
+.carousel {
+    position: relative;
+}
+
+.carousel-item {
+    height: 450px;
+    position: relative;
+    display: none; /* Ocultar todos los slides por defecto */
+}
+
+.carousel-item.active {
+    display: block; /* Mostrar solo el slide activo */
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Ocultar la caption por defecto de Bootstrap */
+.carousel-caption {
+    display: none !important;
+}
+
+/* Contenedor personalizado para el contenido */
+.custom-carousel-content {
+    position: absolute;
+    top: 30%;
+    left: 10%;
+    width: 45%;
+    color: #fff;
+    z-index: 10;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.custom-carousel-content h1 {
+    font-size: 32px;
     font-weight: 700;
-    color: #fff;
-    margin-bottom: 30px;
-  }
-  .custom-carousel-content h1 span{
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.custom-carousel-content h1 span {
     color: #fbff00;
-  }
-  .custom-carousel-content p{
-    font-size: 18px;
+}
+
+.custom-carousel-content p {
+    font-size: 16px;
     font-weight: 400;
-    color: #fff;
-    margin-bottom: 30px;
-  }
-  .custom-carousel-content .btn-slider{
+    margin-bottom: 20px;
+    line-height: 1.5;
+    text-align: justify;
+}
+
+.btn-slider {
     border: 1px solid #fff;
-    border-radius: 0px;
-    padding: 8px 26px;
+    border-radius: 0;
+    padding: 6px 20px;
     color: #fff;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
     letter-spacing: 0.5px;
-  }
+    background: transparent;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* Overlay para mejor legibilidad */
+.carousel-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0) 100%);
+    z-index: 1;
+}
+
+/* Ajustes para tablets */
+@media (max-width: 992px) {
+    .carousel-item {
+        height: 380px;
+    }
+    
+    .custom-carousel-content {
+        width: 60%;
+        left: 8%;
+        top: 15%;
+        padding: 15px;
+    }
+    
+    .custom-carousel-content h1 {
+        font-size: 28px;
+    }
+    
+    .custom-carousel-content p {
+        font-size: 15px;
+    }
+}
+
+/* Ajustes para móviles */
+@media (max-width: 768px) {
+    .carousel-item {
+        height: 320px;
+    }
+    
+    .custom-carousel-content {
+        width: 80%;
+        left: 10%;
+        text-align: center;
+        top: 20%;
+        padding: 12px;
+    }
+    
+    .custom-carousel-content h1 {
+        font-size: 22px;
+        margin-bottom: 12px;
+    }
+    
+    .custom-carousel-content p {
+        font-size: 14px;
+        margin-bottom: 16px;
+    }
+    
+    .btn-slider {
+        font-size: 14px;
+        padding: 5px 16px;
+    }
+}
+
+/* Ajustes para móviles pequeños */
+@media (max-width: 480px) {
+    .carousel-item {
+        height: 280px;
+    }
+    
+    .custom-carousel-content {
+        width: 85%;
+        left: 7.5%;
+        top: 15%;
+        padding: 10px;
+    }
+    
+    .custom-carousel-content h1 {
+        font-size: 19px;
+    }
+    
+    .custom-carousel-content p {
+        font-size: 13px;
+    }
+}
+
+/* Indicadores más visibles */
+.carousel-indicators button {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin: 0 4px;
+    background-color: rgba(0, 140, 69, 0.5);
+}
+
+.carousel-indicators .active {
+    background-color: #008c45;
+}
+
+/* Ajustes para controles de navegación */
+.carousel-control-prev, .carousel-control-next {
+    width: 5%;
+    margin: 0 2%;
+}
+
+.carousel-control-prev-icon, 
+.carousel-control-next-icon {
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.carousel-control-prev-icon:hover, 
+.carousel-control-next-icon:hover {
+    background-color: #008c45;
+}
+
+/* Estilos para las imágenes del carrusel */
+.carousel-image {
+    width: 100%;
+    height: 450px;
+    background-size: cover;
+    background-position: center;
+}
+
+.carousel-image-1 {
+    background-image: url('../../assets/img/gotita_running.png');
+}
+
+.carousel-image-2 {
+    background-image: url('../../assets/img/slider1.png');
+}
+
+.carousel-image-3 {
+    background-image: url('../../assets/img/slider2.png');
+}
+
+/* Media queries para cambiar imágenes según el dispositivo */
+@media (max-width: 992px) {
+    .carousel-image {
+        height: 380px;
+    }
+    
+    .carousel-image-1 {
+        /* background-image: url('../../assets/img/slider_2_2.png'); */
+        background-image: url('../../assets/img/slider_prueba_2.png');
+    }
+    
+    .carousel-image-2 {
+        background-image: url('../../assets/img/slider_prueba_1.png');
+    }
+
+    .carousel-image-3 {
+        background-image: url('../../assets/img/slider2_2_1.png');
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel-image {
+        height: 320px;
+    }
+    
+    .carousel-image-1 {
+        background-image: url('../../assets/img/slider3_2.png');
+    }
+    
+    .carousel-image-2 {
+        background-image: url('../../assets/img/slider1_3.png');
+    }
+
+    .carousel-image-3 {
+        background-image: url('../../assets/img/slider3_3.png');
+    }
+}
+
+/* El resto de tu CSS permanece igual */
+.carousel {
+    position: relative;
+}
+
+/* ... (el resto de tu CSS existente) ... */
